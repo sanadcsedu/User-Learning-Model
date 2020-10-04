@@ -4,7 +4,7 @@ import numpy as np
 from collections import defaultdict
 from modified_roth_and_erev import modified_roth_and_erev
 import queue
-
+import pdb
 
 class conditional_dependency:
 
@@ -12,8 +12,8 @@ class conditional_dependency:
         self.conn = None
         self.data = None
         self.cur_data = None
-        # self.users = [1,5,9,109,13,25,29,33,37,53,57,61,73,77,81,85,97]
-        self.users = [1, 5, 9, 109, 29, 57, 61, 81, 85, 97]
+        self.users = [1,5,9,109,13,25,29,33,37,53,57,61,73,77,81,85,97]
+        # self.users = [1, 5, 9, 109, 29, 57, 61, 81, 85, 97]
         self.attr_dict = dict()
         self.attributes = defaultdict()
 
@@ -108,7 +108,13 @@ class conditional_dependency:
         rae = modified_roth_and_erev()
         total = 0
         cnt = 0
-        k = 3  # K for Precision @ K
+        # print("Here")
+        k = 4  # K for Precision @ K
+        final = ['"incident_date"', '"number of records"', '"precip"', '"sky"']
+        final_query = defaultdict()
+        for every in final:
+            final_query[every] = 1
+
         precision_at_k = 0
         prev_interactions = queue.Queue(maxsize=2)
         for row in self.cur_data:
@@ -117,9 +123,9 @@ class conditional_dependency:
             state = state.strip('[]')
             states = state.split(', ')
             interactions = []
-            # if len(state) <= 3:
-            #     continue
-            if task != 't4' and task != 't1':
+            if len(state) <= 3:
+                continue
+            if task != 't4' and task != 't1' and task != 't3':
                 for s in states:
                     if len(s) > 1 and s in self.attributes:
                         interactions.append(s)
@@ -130,10 +136,10 @@ class conditional_dependency:
                 else:
                     prev_interactions.put(interactions)
 
-                rae.update_qtable(user, list(prev_interactions.queue), 1, 0.1)
+                rae.update_qtable(user, list(prev_interactions.queue), 1, 0.2)
 
             # Getting the attributes used for Testing on T4
-            elif task == 't4':
+            if task == 't3':
                 if len(states) >= 1:
                     picked_attr = rae.make_choice(user, list(prev_interactions.queue), k, 0.1)
                     test = []
@@ -143,8 +149,8 @@ class conditional_dependency:
                             interactions.append(s)
                             test.append(s)
 
-                    # if len(interactions) < 1:
-                    #     continue
+                    if len(interactions) < 1:
+                        continue
 
                     if prev_interactions.full():
                         prev_interactions.get()
@@ -152,7 +158,19 @@ class conditional_dependency:
                     else:
                         prev_interactions.put(interactions)
 
-                    rae.update_qtable(user, list(prev_interactions.queue), 2, 0.1)
+                    cnt = 0
+                    for attrs in picked_attr:
+                        # if len(interactions )> 3:
+                        #     pdb.set_trace()
+                        if attrs in final_query:
+                            cnt += 1
+                    payoff = 1
+                    # if cnt >= 2:
+                    #     # print("Present")
+                    #     payoff = 10
+                    rae.update_qtable(user, list(prev_interactions.queue), payoff, 0.2)
+
+                    # rae.update_qtable(user, list(prev_interactions.queue), 2, 0.2)
                     precision_at_k += self.find_Precision_at_k(test, picked_attr, k)
                     total += 1
 
@@ -167,13 +185,15 @@ class conditional_dependency:
     def run_roth_and_erev_v4(self, user):
         rae = modified_roth_and_erev()
         prev_interactions = queue.Queue(maxsize=2)
+        final_query = ["incident_date", "number of records", "precip", "sky"]
+
         for row in self.data:
             userid, task, seqid, state = tuple(row)
             # Training on T2, T3, T4
             state = state.strip('[]')
             states = state.split(', ')
             interaction = []
-            if task != 't1':
+            if task == 't3':
                 for s in states:
                     if len(s) > 1 and s in self.attributes:
                         interaction.append(s)
@@ -184,14 +204,23 @@ class conditional_dependency:
                 else:
                     prev_interactions.put(interaction)
 
-                rae.update_qtable(user, list(prev_interactions.queue), 1, 0.4)
+                cnt = 0
+                for attrs in interaction:
+                    if attrs in final_query:
+                        cnt += 1
+                payoff = 1
+                if cnt >= 2:
+                    payoff = 2
+                rae.update_qtable(user, list(prev_interactions.queue), payoff, 0.2)
+
+                # rae.update_qtable(user, list(prev_interactions.queue), 1, 0.2)
 
         while not prev_interactions.empty():
             prev_interactions.get()
 
         total = 0
         cnt = 0
-        k = 3  # K for Precision @ K
+        k = 4  # K for Precision @ K
         precision_at_k = 0
         for row in self.cur_data:
             userid, task, seqid, state = tuple(row)
@@ -201,21 +230,21 @@ class conditional_dependency:
             interactions = []
             # if len(state) <= 3:
             #     continue
-            if task != 't4' and task != 't1':
-                for s in states:
-                    if len(s) > 1 and s in self.attributes:
-                        interactions.append(s)
-                        # rae.update_qtable(user, s, 1, 0.2)
-                if prev_interactions.full():
-                    prev_interactions.get()
-                    prev_interactions.put(interactions)
-                else:
-                    prev_interactions.put(interactions)
-
-                rae.update_qtable(user, list(prev_interactions.queue), 1, 0.3)
+            # if task != 't4' and task != 't1':
+            #     for s in states:
+            #         if len(s) > 1 and s in self.attributes:
+            #             interactions.append(s)
+            #             # rae.update_qtable(user, s, 1, 0.2)
+            #     if prev_interactions.full():
+            #         prev_interactions.get()
+            #         prev_interactions.put(interactions)
+            #     else:
+            #         prev_interactions.put(interactions)
+            #
+            #     rae.update_qtable(user, list(prev_interactions.queue), 1, 0.2)
 
             # Getting the attributes used for Testing on T4
-            elif task == 't4':
+            if task == 't3':
                 if len(states) >= 1:
                     picked_attr = rae.make_choice(user, list(prev_interactions.queue), k, 0.1)
                     test = []
@@ -225,8 +254,8 @@ class conditional_dependency:
                             interactions.append(s)
                             test.append(s)
 
-                    # if len(interactions) < 1:
-                    #     continue
+                    if len(interactions) < 1:
+                        continue
 
                     if prev_interactions.full():
                         prev_interactions.get()
@@ -234,7 +263,16 @@ class conditional_dependency:
                     else:
                         prev_interactions.put(interactions)
 
-                    rae.update_qtable(user, list(prev_interactions.queue), 1, 0.3)
+                    #Newly added
+                    flag = 0
+                    cnt = 0
+                    for attrs in interactions:
+                        if attrs in final_query:
+                            cnt += 1
+                    payoff = 1
+                    if cnt >= 2:
+                        payoff = 2
+                    rae.update_qtable(user, list(prev_interactions.queue), payoff, 0.2)
                     precision_at_k += self.find_Precision_at_k(test, picked_attr, k)
                     total += 1
 
@@ -245,7 +283,7 @@ class conditional_dependency:
         # rae.tester(user)
 
         precision_at_k = precision_at_k / total
-        # print("Hogamara testing: {}".format(precision_at_k))
+        # print("testing: {}".format(precision_at_k))
 
         return precision_at_k
 
@@ -275,16 +313,16 @@ if __name__ == '__main__':
     print("P@k for Roth and Erev = {}".format(average_precision))
 
     # Calculates P@k for Modified Roth and Erev: Trained over the whole group
-    average_precision = 0
-    for experiment in range(50):
-        avrg_user = 0
-        for user in a.users:
-            a.read_data(user)
-            a.read_cur_data(user)
-            accu = a.run_roth_and_erev_v4(user)
-            # print("User: {} Precision@2 {}".format(user, accu))
-            avrg_user += accu
-            # break
-        average_precision += (avrg_user / len(a.users))
-    average_precision /= 50
-    print("P@k for Roth and Erev = {}".format(average_precision))
+    # average_precision = 0
+    # for experiment in range(50):
+    #     avrg_user = 0
+    #     for user in a.users:
+    #         a.read_data(user)
+    #         a.read_cur_data(user)
+    #         accu = a.run_roth_and_erev_v4(user)
+    #         # print("User: {} Precision@2 {}".format(user, accu))
+    #         avrg_user += accu
+    #         # break
+    #     average_precision += (avrg_user / len(a.users))
+    # average_precision /= 50
+    # print("P@k for Roth and Erev = {}".format(average_precision))

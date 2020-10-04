@@ -2,10 +2,15 @@ import numpy as np
 from collections import defaultdict
 
 class BushMosteller:
-    def __init__(self, alpha, strategies):
+    def __init__(self, alpha):
         self.alpha = alpha
         self.prob = defaultdict(float)
         self.cond_prob = defaultdict(lambda: defaultdict(float))
+
+    # User already has some prior knowledge about some strategies regarding the given task
+    def add_prior_strategies(self, priors):
+        for attr in priors:
+            self.prob[attr] += (1 - self.prob[attr]) * self.alpha
 
     def update(self, interactions):
         sz = len(interactions)

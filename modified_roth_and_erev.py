@@ -1,17 +1,28 @@
 import numpy as np
 from collections import defaultdict
 from collections import Counter
+import pdb
 
 class modified_roth_and_erev:
 
     def __init__(self):
         self.cutoff = None
-        # self.forgetting = None
         # self.attributes = attribute
         self.q_value = defaultdict(lambda: defaultdict(float))
         self.cond_q_value = defaultdict(lambda: defaultdict(lambda: defaultdict(float)))
         self.prob = defaultdict(lambda: defaultdict(float))
         self.cond_prob = defaultdict(lambda: defaultdict(lambda: defaultdict(float)))
+
+    #User already has some prior knowledge about some strategies regarding the given task
+    def add_prior_strategies(self, user, priors, payoff):
+        for attr in priors:
+            if user in self.q_value:
+                if attr in self.q_value[user]:
+                    self.q_value[user][attr] += payoff
+                else:
+                    self.q_value[user][attr] = payoff
+            else:
+                self.q_value[user][attr] = payoff
 
     #the Q values are updated using the following function and probablities are immediately calculated
     def update_qtable(self, user, interactions, payoff, forgetting):
@@ -148,7 +159,11 @@ class modified_roth_and_erev:
 
                 if cur_max < threshold:
                     cnt = 0
-                    pick = np.random.randint(0, len(choose_from))
+                    try:
+                        pick = np.random.randint(0, len(choose_from))
+                    except:
+                        # pdb.set_trace()
+                        break
                     # print("Pick {} Length {}".format(pick, len(choose_from)))
                     for attr in choose_from:
                         if cnt == pick:
