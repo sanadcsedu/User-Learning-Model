@@ -3,6 +3,7 @@ import re
 import numpy as np
 from collections import defaultdict
 from BushMosteller import BushMosteller
+import Categorizing
 import queue
 
 
@@ -12,8 +13,15 @@ class TrainingBushMosteller:
         self.conn = None
         self.data = None
         self.cur_data = None
-        # self.users = [1,5,9,109,13,25,29,33,37,53,57,61,73,77,81,85,97]
-        self.users = [1,5,109,13,25,29,33,53,57,61,73,97]
+        # Birdstrikes1
+        # Task 3
+        # self.users = [1,5,109,13,25,29,33,37,53,57,61,73,77,81,85,97]
+        # Task 4
+        # self.users = [1,5,109,13,25,29,33,53,57,61,73,97]
+
+        # weather1
+        self.users = [1, 5, 21, 25, 29, 45, 53, 65, 69, 73, 77, 93, 97, 113, 117]
+
         self.attr_dict = dict()
         self.attributes = defaultdict()
 
@@ -32,7 +40,7 @@ class TrainingBushMosteller:
     def read_data(self, userid):
         c = self.conn.cursor()
         # print(self.users)
-        query = 'SELECT userid, task, seqId, state FROM master_file where dataset = \'birdstrikes1\' and userid <> ' + str(userid)
+        query = 'SELECT userid, task, seqId, state FROM master_file where dataset = \'weather1\' and userid <> ' + str(userid)
         c.execute(query)
         # c.execute('select distinct userid from master_file where dataset = \'birdstrikes1\'')
         self.data = c.fetchall()
@@ -43,7 +51,7 @@ class TrainingBushMosteller:
     # Read all the information form the database and store important ones inside the class for current user
     def read_cur_data(self, userid):
         c = self.conn.cursor()
-        query = 'SELECT userid, task, seqId, state FROM master_file where dataset = \'birdstrikes1\' and userid = ' + str(userid)
+        query = 'SELECT userid, task, seqId, state FROM master_file where dataset = \'weather1\' and userid = ' + str(userid)
         c.execute(query)
         self.cur_data = c.fetchall()
 
@@ -89,17 +97,32 @@ class TrainingBushMosteller:
         return precision_at_k
 
     #Bayesian Learning for Individual User with Uniform Prior (Task 4)
-    def run_bush_mosteller_v2(self, k, alpha = 0.2):
+    def run_bush_mosteller_v2(self, k, alpha = 0.2, cat = False):
+        if cat:
+            c = Categorizing.Categorizing()
+            c.weather1()
 
         rbm = BushMosteller(alpha)
         # Setting up some prior strategies based on Task 2 and Task 3
-        priors = ['"incident_date"', '"precip"', '"sky"', '"birds_struck"', '"ac_class"']
+        # priors = ['"incident_date"', '"precip"', '"sky"', '"birds_struck"', '"ac_class"']
+        # priors = ['"highwinds"', '"state"', '"lat"', '"lang"', '"tmax"', '"tmin"', '"fog"'
+        #           '"drizzle"', '"mist"', '"date"']
+        # if cat:
+        #     priors = c.get_category(priors)
+
+        #For Uniform Prior
+        priors = ['hail', 'fog', 'rain', 'snow', 'location', 'windy', 'time', 'aggregation', 'smoke', 'precip',
+                  'tornado', 'temperature']
         rbm.add_prior_strategies(priors)
 
         # Final query holds the attributes used in final query. So only this particular set of
         # of attributes will be rewarded
-        final = ['"atype"', '"ac_class"', '"type_eng"', '"time_of_day"', '"incident_date"', '"number of records"',
-                 '"precip"', '"sky"', '"birds_struck"', '"state"', '"size"', '"height"', '"distance"', '"phase_of_flt"']
+        # final = ['"atype"', '"ac_class"', '"type_eng"', '"time_of_day"', '"incident_date"', '"number of records"',
+        #          '"precip"', '"sky"', '"birds_struck"', '"state"', '"size"', '"height"', '"distance"', '"phase_of_flt"']
+        final = ['"date"', '"lat"', '"lng"', '"state"', '"tmax_f"', '"tmin_f"', '"prcp"', '"rain"',
+                 '"tmax"', '"tmin"', '"snow"', '"fog"']
+        if cat:
+            final = c.get_category(final)
         final_query = defaultdict()
         for every in final:
             final_query[every] = 1
@@ -126,6 +149,10 @@ class TrainingBushMosteller:
 
                     if len(interactions) < 1:
                         continue
+
+                    if cat:
+                        test = c.get_category(test)
+                        interactions = c.get_category(interactions)
 
                     if prev_interactions.full():
                         prev_interactions.get()
@@ -158,16 +185,23 @@ class TrainingBushMosteller:
 
 
     #Bayesian Learning for Individual User with Uniform Prior (Task 3)
-    def run_bush_mosteller_v1(self, k, alpha = 0.2):
+    def run_bush_mosteller_v1(self, k, alpha = 0.2, cat = False):
+        if cat:
+            c = Categorizing.Categorizing()
+            c.birdstrikes1()
 
         rbm = BushMosteller(alpha)
         # Setting up some prior strategies based on Task 2 and Task 3
         priors = ['"incident_date"', '"precip"', '"sky"']
+        if cat:
+            priors = c.get_category(priors)
         rbm.add_prior_strategies(priors)
 
         # Final query holds the attributes used in final query. So only this particular set of
         # of attributes will be rewarded
         final = ['"incident_date"', '"number of records"', '"precip"', '"sky"']
+        if cat:
+            final = c.get_category(final)
         final_query = defaultdict()
         for every in final:
             final_query[every] = 1
@@ -194,6 +228,10 @@ class TrainingBushMosteller:
 
                     if len(interactions) < 1:
                         continue
+
+                    if cat:
+                        test = c.get_category(test)
+                        interactions = c.get_category(interactions)
 
                     if prev_interactions.full():
                         prev_interactions.get()
@@ -307,28 +345,31 @@ if __name__ == '__main__':
     #Calculates average precision for individual user trained against all other users
     average_precision = 0
     epoch = 20
-    k = 4
+    k = 3
     for user in a.users:
         avrg_user = 0
         for experiment in range(epoch):
             a.read_cur_data(user)
-            accu = a.run_bush_mosteller_v2(k, 0.2)
+            accu = a.run_bush_mosteller_v2(k, 0.2, True)
             avrg_user += accu
+            # break
         average_precision += (avrg_user / epoch)
+        # break
     average_precision /= len(a.users)
     print("P@{} for Bush and Mosteller Task 4 = {}".format(k, average_precision))
 
-    k = 4
-    average_precision = 0
-    for user in a.users:
-        avrg_user = 0
-        for experiment in range(epoch):
-            a.read_cur_data(user)
-            accu = a.run_bush_mosteller_v1(k, 0.2)
-            avrg_user += accu
-        average_precision += (avrg_user / epoch)
-    average_precision /= len(a.users)
-    print("P@{} for Bush and Mosteller Task 3 = {}".format(k, average_precision))
+    # k = 3
+    # epoch = 20
+    # average_precision = 0
+    # for user in a.users:
+    #     avrg_user = 0
+    #     for experiment in range(epoch):
+    #         a.read_cur_data(user)
+    #         accu = a.run_bush_mosteller_v1(k, 0.2, True)
+    #         avrg_user += accu
+    #     average_precision += (avrg_user / epoch)
+    # average_precision /= len(a.users)
+    # print("P@{} for Bush and Mosteller Task 3 = {}".format(k, average_precision))
 
     #Calculates average precision for individual user trained against all other users
     # average_precision = 0

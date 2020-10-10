@@ -23,7 +23,7 @@ class BushMosteller:
                 self.prob[attr] += (1 - self.prob[attr]) * self.alpha
             for keys in self.prob:
                 if keys not in cur:
-                    self.prob[attr] -= self.prob[attr] * self.alpha
+                    self.prob[keys] -= self.prob[keys] * self.alpha
 
         else:
             prev = interactions[0]

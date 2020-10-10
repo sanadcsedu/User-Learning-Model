@@ -4,6 +4,7 @@ import numpy as np
 from collections import defaultdict
 from modified_roth_and_erev import modified_roth_and_erev
 import queue
+import Categorizing
 import pdb
 
 #Main goal of this class is to find out which model replicates
@@ -18,10 +19,15 @@ class UserLearningV2:
         self.conn = None
         self.data = None
         self.cur_data = None
-        #Task 3
-        # self.users = [1,5,109,13,25,29,33,37,53,57,61,73,77,81,85,97]
-        #Task 4
-        self.users = [1,5,109,13,25,29,33,53,57,61,73,97]
+        # Birdstrikes1
+        # Task 3
+        self.users = [1,5,109,13,25,29,33,37,53,57,61,73,77,81,85,97]
+        # Task 4
+        # self.users = [1,5,109,13,25,29,33,53,57,61,73,97]
+
+        # weather1
+        # self.users = [1, 5, 21, 25, 29, 45, 53, 65, 69, 73, 77, 93, 97, 113, 117]
+
         self.attr_dict = dict()
         self.attributes = defaultdict()
 
@@ -59,22 +65,32 @@ class UserLearningV2:
         return precision_at_k
 
 #Running Roth and Erev algorithm for an individual user (Task 3)
-    def run_roth_and_erev(self, user):
+    def run_roth_and_erev(self, user, cat = False):
+        if cat:
+            c = Categorizing.Categorizing()
+            c.birdstrikes1()
         rae = modified_roth_and_erev()
         total = 0
 
         #Setting up some prior strategies
-        priors = ['"incident_date"', '"number of records"', '"precip"', '"sky"']
+        # priors = ['"incident_date"', '"precip"', '"sky"']
+        priors = ['"longitude (generated)"', '"dam_tail"', '"faaregion"', '"indicated_damage"', '"index_nr"', '"sky"', '"latitude (generated)"', '"time_of_day"', '"reported_date"', '"damage"', '"birds_struck"', '"ac_class"', '"phase_of_flt"', '"distance"', '"dam_eng1"', '"height"', '"atype"', '"dam_lg"', '"birds_seen"', '"dam_wing_rot"', '"number of records"', '"state"', '"dam_windshld"', '"time"', '"location"', '"ac_mass"', '"dam_prop"', '"airport"', '"dam_fuse"', '"type_eng"', '"precip"', '"incident_year"', '"dam_nose"', '"calculation(phase of flt dedup)"', '"dam_other"', '"dam_rad"', '"dam_eng3"', '"warned"', '"dam_eng4"', '"dam_eng2"', '"incident_date"', '"dam_lghts"', '"size"', '"airport_id"', '"speed"', '"incident_month"', '"operator"']
+
+        # if cat:
+        #     priors = c.get_category(priors)
+        # priors = ['airplane', 'flight_related', 'weather', 'damaged_parts', 'event_time', 'aggregation', 'location', 'birds']
         rae.add_prior_strategies(user, priors, 1)
 
         #Final query holds the attributes used in final query. So only this particular set of
         #of attributes will be rewarded
         final = ['"incident_date"', '"number of records"', '"precip"', '"sky"']
+        if cat:
+            final = c.get_category(final)
         final_query = defaultdict()
         for every in final:
             final_query[every] = 1
 
-        k = 4  # K for Precision @ K
+        k = 3  # K for Precision @ K
         precision_at_k = 0
         prev_interactions = queue.Queue(maxsize=2)
         no_of_intr = 0
@@ -117,14 +133,17 @@ class UserLearningV2:
                             interactions.append(s)
                             test.append(s)
 
+                    if cat:
+                        test = c.get_category(test)
+                        interactions = c.get_category(interactions)
+
                     if prev_interactions.full():
                         prev_interactions.get()
                         prev_interactions.put(interactions)
                     else:
                         prev_interactions.put(interactions)
 
-                    #Payoff is calculated based on the number of *correct attributes* in the current
-                    #interaction
+                    #Payoff is calculated based on the number of *correct attributes* in the current interaction
                     cnt = 0
                     for attrs in picked_attr:
                         if attrs in final_query:
@@ -151,23 +170,37 @@ class UserLearningV2:
         return precision_at_k
 
 #Running Roth and Erev algorithm for an individual user (Task 4)
-    def run_roth_and_erev_v2(self, user):
+    def run_roth_and_erev_v2(self, user, cat = False):
+        if cat:
+            c = Categorizing.Categorizing()
+            c.weather1()
+
         rae = modified_roth_and_erev()
         total = 0
 
         #Setting up some prior strategies based on Task 2 and Task 3
-        priors = ['"incident_date"', '"precip"', '"sky"', '"birds_struck"', '"ac_class"']
+        # priors = ['"incident_date"', '"precip"', '"sky"', '"birds_struck"', '"ac_class"']
+        # priors = ['"highwinds"', '"state"', '"lat"', '"lang"', '"tmax"', '"tmin"', '"fog"'
+        #           '"drizzle"', '"mist"', '"date"']
+        # if cat:
+        #     priors = c.get_category(priors)
+        priors = ['hail', 'fog', 'rain', 'snow', 'location', 'windy', 'time', 'aggregation', 'smoke', 'precip', 'tornado', 'temperature']
         rae.add_prior_strategies(user, priors, 1)
 
         #Final query holds the attributes used in final query. So only this particular set of
         #of attributes will be rewarded
-        final = ['"atype"', '"ac_class"', '"type_eng"', '"time_of_day"', '"incident_date"', '"number of records"', '"precip"', '"sky"',
-                 '"birds_struck"', '"state"', '"size"', '"height"', '"distance"', '"phase_of_flt"']
+        # final = ['"atype"', '"ac_class"', '"type_eng"', '"time_of_day"', '"incident_date"', '"number of records"', '"precip"', '"sky"',
+        #          '"birds_struck"', '"state"', '"size"', '"height"', '"distance"', '"phase_of_flt"']
+        final = ['"date"', '"lat"', '"lng"', '"state"', '"tmax_f"', '"tmin_f"', '"prcp"', '"rain"',
+                 '"tmax"', '"tmin"', '"snow"', '"fog"']
+        if cat:
+            final = c.get_category(final)
         final_query = defaultdict()
         for every in final:
             final_query[every] = 1
+        # pdb.set_trace()
 
-        k = 4  # K for Precision @ K
+        k = 4 # K for Precision @ K
         precision_at_k = 0
         prev_interactions = queue.Queue(maxsize=2)
         no_of_intr = 0
@@ -196,6 +229,11 @@ class UserLearningV2:
                             interactions.append(s)
                             test.append(s)
 
+                    if cat:
+                        interactions = c.get_category(interactions)
+                        test = c.get_category(test)
+                    count_attributes += len(test)
+
                     if prev_interactions.full():
                         prev_interactions.get()
                         prev_interactions.put(interactions)
@@ -217,15 +255,17 @@ class UserLearningV2:
 
                     #Calculate precision after 1st 3 interactions
                     if no_of_intr >= 5:
-                        # print("TEST")
+                        # print(user)
+                        # print("Current interaction: ", end='  ')
                         # print(test)
+                        # print("Predicted interaction: ", end='')
                         # print(picked_attr)
                         precision_at_k += self.find_Precision_at_k(test, picked_attr, k)
                         total += 1
                     no_of_intr += 1
 
         # rae.tester(user)
-        # print("{:.2f},".format(count_attributes/no_of_intr))
+        # print("{:.2f},".format(count_attributes/no_of_intr), end=' ')
         precision_at_k = precision_at_k / total
         return precision_at_k
 
@@ -241,7 +281,7 @@ if __name__ == '__main__':
         avrg_user = 0
         a.read_cur_data(user)
         for experiment in range(epoch):
-            accu = a.run_roth_and_erev_v2(user)
+            accu = a.run_roth_and_erev(user, False)
             # print("User: {} Precision@K {}".format(user, accu))
             avrg_user += accu
             # break

@@ -35,7 +35,7 @@ class conditional_dependency:
     # Read all the information form the database and store important ones inside the class for current user
     def read_cur_data(self, userid):
         c = self.conn.cursor()
-        query = 'SELECT userid, task, seqId, state FROM master_file where dataset = \'birdstrikes1\' and userid = ' + str(
+        query = 'SELECT userid, task, seqId, state FROM master_file where dataset = \'weather1\' and userid = ' + str(
             userid)
         c.execute(query)
         self.cur_data = c.fetchall()
@@ -297,20 +297,21 @@ if __name__ == '__main__':
 
     # removes attributes with minimum appearances
     a.remove_attr()
+    print(a.attr_dict.keys())
 
-    # Calculates P@k for Modified Roth and Erev: Individual User
-    average_precision = 0
-    for experiment in range(50):
-        avrg_user = 0
-        for user in a.users:
-            a.read_cur_data(user)
-            accu = a.run_roth_and_erev_v2(user)
-            # print("User: {} Precision@2 {}".format(user, accu))
-            avrg_user += accu
-            # break
-        average_precision += (avrg_user / len(a.users))
-    average_precision /= 50
-    print("P@k for Roth and Erev = {}".format(average_precision))
+    # # Calculates P@k for Modified Roth and Erev: Individual User
+    # average_precision = 0
+    # for experiment in range(50):
+    #     avrg_user = 0
+    #     for user in a.users:
+    #         a.read_cur_data(user)
+    #         accu = a.run_roth_and_erev_v2(user)
+    #         # print("User: {} Precision@2 {}".format(user, accu))
+    #         avrg_user += accu
+    #         # break
+    #     average_precision += (avrg_user / len(a.users))
+    # average_precision /= 50
+    # print("P@k for Roth and Erev = {}".format(average_precision))
 
     # Calculates P@k for Modified Roth and Erev: Trained over the whole group
     # average_precision = 0
