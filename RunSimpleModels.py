@@ -60,7 +60,7 @@ class RunBaselineModels:
         precision_at_k = found / k
         return precision_at_k
 
-#Running the baseline of Latest-Reward
+#Running Latest-Reward
     def LatestReward(self, task, k):
         c = Categorizing.Categorizing()
         c.weather1()
