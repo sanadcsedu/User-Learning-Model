@@ -20,30 +20,20 @@ class Categorizing:
 
         self.categorized_attrs = defaultdict()
         test = set()
-        final = ['"atype"', '"ac_class"', '"type_eng"', '"time_of_day"', '"incident_date"', '"number of records"',
-                '"precip"', '"sky"', '"birds_struck"', '"state"', '"size"', '"height"', '"distance"', '"phase_of_flt"']
 
         for attrs, category in self.all_attrs:
             self.categorized_attrs[attrs] = category
+            test.add(category)
+        # self.show(test)
 
-        for attrs in final:
-            test.add(self.categorized_attrs[attrs])
-        test = list(test)
-        print(test)
 
-        # for cat in test:
-        #     print("{} = [".format(cat), end=" ")
-        #     for attrs, category in self.all_attrs:
-        #         if category == cat:
-        #             print(attrs, end=", ")
-        #     print(" ]")
 
     def weather1(self):
         self.all_attrs = [('"heavyfog"', 'fog'), ('"number of records"', 'aggregation'), ('"calculation(heavy fog (is null))"', 'fog'), ('"date"', 'time'), ('"tmax_f"', 'temperature'),
                           ('"tmin_f"', 'temperature'), ('"latitude (generated)"', 'location'), ('"longitude (generated)"', 'location'), ('"lat"', 'location'), ('"lng"', 'location'),
                           ('"state"', 'location'), ('"freezingrain"', 'rain'), ('"blowingsnow"', 'snow'), ('"blowingspray"', 'snow'), ('"drizzle"', 'rain'), ('"dust"', 'windy'),
-                          ('"fog"', 'fog'), ('"mist"', 'fog'), ('"groundfog"', 'fog'), ('"freezingdrizzle"','rain'), ('"glaze"', 'snow'), ('"hail"', 'hail'), ('"highwinds"', 'windy'),
-                          ('"icefog"', 'fog'), ('"icepellets"', 'snow'), ('"prcp"', 'precip'), ('"rain"', 'rain'), ('"smoke"', 'smoke'), ('"tmax"', 'temperature'), ('"tmin"', 'temperature'),
+                          ('"fog"', 'fog'), ('"mist"', 'fog'), ('"groundfog"', 'fog'), ('"freezingdrizzle"','rain'), ('"glaze"', 'snow'), ('"hail"', 'rain'), ('"highwinds"', 'windy'),
+                          ('"icefog"', 'fog'), ('"icepellets"', 'snow'), ('"prcp"', 'rain'), ('"rain"', 'rain'), ('"smoke"', 'smoke'), ('"tmax"', 'temperature'), ('"tmin"', 'temperature'),
                           ('"snow"', 'snow'), ('"snowgeneral"', 'snow'), ('"snwd"', 'snow'), ('"thunder"', 'rain'), ('"tornado"', 'tornado')]
 
         self.categorized_attrs = defaultdict()
@@ -52,8 +42,25 @@ class Categorizing:
             self.categorized_attrs[attrs] = category
             test.add(category)
         test = list(test)
-        # print(test)
+        # self.show(test)
 
+    def faa1(self):
+        self.all_attrs = [('"calculation(percent delta)"', 'carrier'), ('"destcityname"', 'dest'), ('"calculation(arrival y/n)"', 'delay'), ('"longitude (generated)"', 'aggregate'),
+                          ('"deststate"', 'dest'), ('"weatherdelay"', 'delay'), ('"uniquecarrier"', 'carrier'), ('"crsdeptime"', 'time'), ('"deptime"', 'time'), ('"distance"', 'distance'),
+                          ('"depdelay"', 'delay'), ('"arrdelay"', 'delay'), ('"calculation(delayed y/n)"', 'delay'), ('"calculation(total delays)"', 'delay'),
+                          ('"flightdate"', 'time'), ('"calculation(arrdelayed)"', 'delay'), ('"carrierdelay"', 'delay'), ('"calculation([arrdelay]+[depdelay])"', 'delay'),
+                          ('"latitude (generated)"', 'aggregate'), ('"airtime"', 'time'), ('"arrtime"', 'time'), ('"calculation(is delta flight)"', 'carrier'), ('"crselapsedtime"', 'time'), ('"taxiin"', 'taxi'),
+                          ('"crsarrtime"', 'time'), ('"originstate"', 'origin'), ('"taxiout"', 'taxi'), ('"diverted"', 'diverted'), ('"lateaircraftdelay"', 'delay'), ('"calculation(delay?)"', 'delay'),
+                          ('"origincityname"', 'origin'), ('"securitydelay"', 'delay'), ('"cancellationcode"', 'cancellation'), ('"origin"', 'origin'), ('"calculation([dest]+[origin])"', 'dest'),
+                          ('"nasdelay"', 'delay'), ('"calculation(depdelayed)"', 'delay'), ('"number of records"', 'aggregate'), ('"cancelled"', 'cancellation'),
+                          ('"dest"', 'dest'), ('"actualelapsedtime"', 'time')]
+
+        self.categorized_attrs = defaultdict()
+        test = set()
+        for attrs, category in self.all_attrs:
+            self.categorized_attrs[attrs] = category
+            test.add(category)
+        # self.show(test)
 
     def get_category(self, cur_attrs):
         ret = set()
@@ -66,9 +73,18 @@ class Categorizing:
         # pdb.set_trace()
         return ret
 
-    def show(self):
-        print(self.check)
+    def show(self, test):
+        # print(self.check)
+        print(test)
+        for t in test:
+            print(t, end=' : ')
+            for attrs, category in self.all_attrs:
+                if t == category:
+                    print(attrs, end=' ')
+            print()
+        print(len(self.all_attrs))
+
 
 if __name__ == '__main__':
     c = Categorizing()
-    c.birdstrikes1()
+    c.faa1()

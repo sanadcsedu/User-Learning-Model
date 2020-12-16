@@ -1,6 +1,6 @@
 import numpy as np
 from collections import defaultdict
-
+import pdb
 
 class roth_and_erev:
 
@@ -51,11 +51,11 @@ class roth_and_erev:
     def make_choice(self, user, k, threshold, attributes):
         # print(k)
         ret_attr = defaultdict()
-        temp_attr_list = attributes
+        temp_attr_list = attributes.copy()
         temp_prob = self.prob[user]
         # print(temp_prob)
         # print(temp_attr_list.keys())
-        while k >= 0:
+        while k > 0:
             ret = None
             cur_max = -1
             for attr in temp_prob:
@@ -65,12 +65,15 @@ class roth_and_erev:
 
             n = len(temp_attr_list)
             if cur_max < threshold:
+                # print("n {} {}".format(n, user))
                 pick = np.random.randint(0, n)
+                # print(pick)
                 cnt = 0
                 for attr in temp_attr_list:
                     if cnt == pick:
                         ret_attr[attr] = 1
-                        del temp_attr_list[attr]
+                        # pdb.set_trace()
+                        del temp_attr_list[pick]
                         if attr in temp_prob:
                             del temp_prob[attr]
                         break
@@ -81,17 +84,13 @@ class roth_and_erev:
                 if ret in temp_attr_list:
                     del temp_attr_list[ret]
             k -= 1
-        return ret_attr
+        return list(ret_attr.keys())
 
     #Choosing strategy.(k strategies needs to be choosen to calculate P@k)
     def make_choice_v2(self, user, k, threshold):
         self.update_prob_qtable(user)
         temp_prob = self.prob[user]
-
-        # print(len(temp_prob))
-        # print(temp_prob)
-        # print(temp_prob.keys())
-
+        pdb.set_trace()
         ret = None
         ret_list = []
         while k > 0:
