@@ -46,6 +46,7 @@ class read_data:
                 users = [1, 5, 109, 13, 25, 33, 53, 57, 61, 73]
                 final = ['"dam_eng1"', '"dam_eng2"', '"dam_windshld"', '"dam_wing_rot"']
             elif task == 't2':
+                users = [5, 109, 13, 25, 29, 33, 53, 57, 61, 73, 97]
                 final = ['"ac_class"', '"damage"']
             elif task == 't3':
                 # self.users = [1,5,109,13,25,29,33,37,53,57,61,73,77,81,85,97]
@@ -66,11 +67,13 @@ class read_data:
             all_attrs = ['"heavyfog"', '"number of records"', '"calculation(heavy fog (is null))"', '"date"', '"tmax_f"', '"tmin_f"', '"latitude (generated)"', '"longitude (generated)"', '"lat"', '"lng"', '"state"', '"freezingrain"', '"blowingsnow"', '"blowingspray"', '"drizzle"', '"dust"', '"fog"', '"mist"', '"groundfog"', '"freezingdrizzle"', '"glaze"', '"hail"', '"highwinds"', '"icefog"', '"icepellets"', '"prcp"', '"rain"', '"smoke"', '"tmax"', '"tmin"', '"snow"', '"snowgeneral"', '"snwd"', '"thunder"', '"tornado"']
             priors = ['fog', 'rain', 'snow', 'location', 'windy', 'time', 'aggregation', 'smoke', 'tornado', 'temperature']
             if task == 't1':
+                users = [1, 5, 25, 53, 65, 69, 73, 93, 97, 113, 117]
                 final = ['"heavyfog"', '"groundfog"', '"mist"', '"drizzle"']
             elif task == 't2':
                 final = ['"tmax"', '"tmin"', '"date"']
             elif task == 't3':
                 final = ['"highwinds"', '"state"', '"lat"', '"lng"']
+                users = [1, 5, 25, 29, 53, 69, 73, 93, 97, 113, 117]
             else: # task == 't4':
                 final = ['"date"', '"lat"', '"lng"', '"state"', '"tmax_f"', '"tmin_f"', '"prcp"', '"rain"',
                          '"tmax"', '"tmin"', '"snow"', '"fog"']
@@ -87,6 +90,7 @@ class read_data:
                 final = ['"depdelay"', '"arrdelay"', '"cancelled"', '"diverted"']
             elif task == 't2':
                 final = ['"uniquecarrier"', '"flightdate"', '"number of records"']
+                users = [57, 45, 89, 37, 93, 9, 33, 13, 21]
             elif task == 't3':
                 final = ['"distance"', '"arrdelay"']
             else: # task == 't4':

@@ -76,7 +76,7 @@ class EpsilonGreedy:
             self.epsilon -= 0.5
             self.epsilon /= 2
         else:
-            self.epsilon = 0.5
+            self.epsilon = 0.05
 
     def update(self, interactions, reward):
         self.max_cur += reward

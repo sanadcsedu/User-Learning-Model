@@ -40,6 +40,25 @@ class Evaluators:
             f1 = (2 * p * r) / (p + r)
         return p, r, f1
 
+    def before_after(self, f1_score, total, threshold):
+        # Check the f1 accuracy before/after certain threshold
+        threshold = int(total * threshold)
+        f1_before = f1_after = final_f1 = 0
+        cnt1 = cnt2 = 0
+        for idx in range(len(f1_score)):
+            if idx < threshold:
+                f1_before += f1_score[idx]
+                cnt1 += 1
+            else:
+                f1_after += f1_score[idx]
+                cnt2 += 1
+            final_f1 += f1_score[idx]
+        f1_before /= threshold
+        f1_after /= (len(f1_score) - threshold)
+        final_f1 /= len(f1_score)
+        # pdb.set_trace()
+        return f1_before, f1_after, final_f1
+
 
 if __name__ == "__main__":
     e = Evaluators()

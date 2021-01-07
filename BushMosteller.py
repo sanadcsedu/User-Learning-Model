@@ -21,10 +21,8 @@ class BushMosteller:
             for attr in priors:
                 self.prob[attr] = (1 - self.prob[attr]) * self.alpha
             # self.prob[attr] -= self.prob[attr] * self.beta
-        # print(self.cond_prob.keys())
 
     def update(self, user, interactions, r):
-        # print("update")
         if not self.state:
             cur = interactions
             for attr in cur:
@@ -40,7 +38,6 @@ class BushMosteller:
                         self.prob[keys] += (1 - self.prob[keys]) * self.beta
         else:
             if len(interactions) < 2:
-                # print("Update")
                 return
             prev = interactions[0]
             cur = interactions[1]
@@ -80,9 +77,33 @@ class BushMosteller:
             for attr in self.prob:
                 self.prob[attr] /= sum
 
+    #This method selects action with highest probablity
+    # def select_from_ptable(self, temp_prob, k):
+    #     ret_list = []
+    #     total_prob = 0
+    #     while k > 0:
+    #         k -= 1
+    #         cur_max = -1
+    #         for attr in temp_prob:
+    #             if cur_max < temp_prob[attr]:
+    #                 cur_max = temp_prob[attr]
+    #                 ret = []
+    #                 ret.append(attr)
+    #             elif cur_max == temp_prob[attr]:
+    #                 ret.append(attr)
+    #
+    #         picked = np.random.randint(0, len(ret))
+    #         ret_list.append(ret[picked])
+    #         total_prob += cur_max
+    #         del temp_prob[ret[picked]]
+    #
+    #     return ret_list
+
+    #This method selects action proportional to probablity distribution
     def select_from_ptable(self, temp_prob, k):
         ret_list = []
         total_prob = 0
+        tempk = k
         while k > 0:
             k -= 1
             cur_max = -1
@@ -99,15 +120,15 @@ class BushMosteller:
             total_prob += cur_max
             del temp_prob[ret[picked]]
 
+        threshold = np.random.random()
+        if threshold > total_prob:
+            ret_list = self.random_selection(tempk)
+
         return ret_list
 
     def make_choice_state(self, user, interactions, k):
         if len(interactions) < 2:
-            # print(user)
-            # print(interactions)
-            # print(self.cond_prob.keys())
             return self.random_selection(k)
-        # print(self.cond_prob.keys())
         self.normalize()
         temp_cond_prob = self.cond_prob.copy()
 
@@ -121,11 +142,10 @@ class BushMosteller:
                 prob *= temp_cond_prob[prev_strat][all_strat]
             temp_prob[all_strat] = prob
             norm += prob
-            # pdb.set_trace()
 
         for attrs in temp_prob:
             temp_prob[attrs] /= norm
-        # print(temp_prob)
+
         return self.select_from_ptable(temp_prob, k)
 
     def make_choice_nostate(self, k):
