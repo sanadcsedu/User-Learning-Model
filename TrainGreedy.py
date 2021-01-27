@@ -36,6 +36,7 @@ class TrainGreedy:
         total = 0
         after = 2
         epg = EpsilonGreedy(self.all_attrs, epsilon, 0, 0, state)
+        epg.update([self.priors], 1)
 
         f1_score = []
         prev_interactions = queue.Queue(maxsize=2)
@@ -65,14 +66,22 @@ class TrainGreedy:
                 else:
                     prev_interactions.put(ground)
 
-                #Payoff is calculated based on the number of *correct attributes* in the current interaction
+                # reinforcing the learning model
+                ##########################################################
                 payoff = 0
                 for attrs in picked_attr:
+                    if attrs in ground:
+                        payoff += 1
+                if payoff > 0:
+                    epg.update([picked_attr], payoff)
+
+                payoff = 0
+                for attrs in ground:
                     if attrs in self.final:
                         payoff += 1
-
                 if payoff > 0:
-                    epg.update(list(prev_interactions.queue), payoff)
+                    epg.update([ground], payoff)
+                ###########################################################
 
                 if no_of_intr >= after:
                     _, _, get_f1 = e.f1_score(ground, picked_attr)
@@ -96,6 +105,8 @@ class TrainGreedy:
         total = 0
         after = 2
         aepg = EpsilonGreedy(self.all_attrs, epsilon, l, f, state)
+        # pdb.set_trace()
+        aepg.update([self.priors], 1)
 
         f1_score = []
         prev_interactions = queue.Queue(maxsize=2)
@@ -125,27 +136,35 @@ class TrainGreedy:
                 else:
                     prev_interactions.put(ground)
 
+                # reinforcing the learning model
+                ##########################################################
                 payoff = 0
                 for attrs in picked_attr:
+                    if attrs in ground:
+                        payoff += 1
+                if payoff > 0:
+                    aepg.update([picked_attr], payoff)
+
+                payoff = 0
+                for attrs in ground:
                     if attrs in self.final:
                         payoff += 1
-
                 if payoff > 0:
-                    aepg.update(list(prev_interactions.queue), payoff)
-
+                    aepg.update([ground], payoff)
+                ###########################################################
                 if no_of_intr >= after:
                     _, _, get_f1 = e.f1_score(ground, picked_attr)
                     f1_score.append(get_f1)
                     total += 1
                 no_of_intr += 1
-
+        # pdb.set_trace()
         return e.before_after(f1_score, total, self.threshold)
 
     def hyperparameter_classic(self):
         obj = read_data.read_data()
         obj.create_connection(r"D:\Tableau Learning\Tableau.db")
         dataset = 'birdstrikes1'
-        task = 't4'
+        task = 't2'
         users, all_attrs, priors, final = obj.TableauDataset(dataset, task)
         self.set_data(users, all_attrs, priors, final)
 
@@ -169,13 +188,13 @@ class TrainGreedy:
                     _max = f1_score
                     best_epsilon = epsilon
 
-        print(" Epsilon {} Greedy (no state) -> F1 Score= {}".format(best_epsilon, _max))
+        print(" Epsilon {} Greedy (no state) -> F1 Score= {:.2f}".format(best_epsilon, _max))
 
     def hyperparameter_adaptive(self):
         obj = read_data.read_data()
         obj.create_connection(r"D:\Tableau Learning\Tableau.db")
         dataset = 'birdstrikes1'
-        task = 't4'
+        task = 't2'
         users, all_attrs, priors, final = obj.TableauDataset(dataset, task)
         self.set_data(users, all_attrs, priors, final)
 
@@ -201,64 +220,64 @@ class TrainGreedy:
                     _max = f1_score
                     best_f = f
                     best_l = l
-        print("l {} f {} F1 Score Adaptive Epsilon Greedy (no-state) = {}".format(best_l, best_f, _max))
+        print("l {} f {} F1 Score Adaptive Epsilon Greedy (no-state) = {:.2f}".format(best_l, best_f, _max))
+
+    def f1_data(self, adaptive, obj, dataset, task, epoch, k, epsilon, l, f, state = False, cat = True):
+        f1_score = f1_before = f1_after = 0
+        for user in self.users:
+            avrg_user = avg_userb = avg_usera = 0
+            data = obj.read_cur_data(user, dataset)
+            for experiment in range(epoch):
+                if adaptive:
+                    accu_b, accu_a, accu = self.run_adaptive_epsilon_greedy(data, user, dataset, task, k, epsilon, l, f, state, cat)
+                else:
+                    accu_b, accu_a, accu = self.run_epsilon_greedy(data, user, dataset, task, k, epsilon, state, cat)
+                avrg_user += accu
+                avg_userb += accu_b
+                avg_usera += accu_a
+            f1_score += (avrg_user / epoch)
+            f1_before += (avg_userb / epoch)
+            f1_after += (avg_usera / epoch)
+        f1_score /= len(self.users)
+        f1_before /= len(self.users)
+        f1_after /= len(self.users)
+        print("Task {} f1_score, f1_before, f1_after = {:.2f} [{:.2f}, {:.2f}]".format(task, f1_score, f1_before,
+                                                                                       f1_after))
 
 
 if __name__ == '__main__':
-    greedy = TrainGreedy()
-    greedy.hyperparameter_classic()
+    # greedy = TrainGreedy()
+    # greedy.hyperparameter_classic()
     # greedy.hyperparameter_adaptive()
 
-    # obj = read_data.read_data()
-    # obj.create_connection(r"D:\Tableau Learning\Tableau.db")
-    # dataset = 'faa1'
-    # task = 't4'
-    # users, all_attrs, priors, final = obj.TableauDataset(dataset, task)
-    # greedy.set_data(users, all_attrs, priors, final)
-    #
-    # #Adaptive Epsilon-Greedy
-    # epoch = 10
-    # k = 3
-    # epsilon = 0.05
-    # l = 5
-    # f = 1
-    # f1_score = f1_before = f1_after = 0
-    # for user in greedy.users:
-    #     avrg_user = avg_userb = avg_usera = 0
-    #     data = obj.read_cur_data(user, dataset)
-    #     for experiment in range(epoch):
-    #         accu_b, accu_a, accu = greedy.run_adaptive_epsilon_greedy(data, user, dataset, task, k, epsilon, l, f, False, True)
-    #         avrg_user += accu
-    #         avg_userb += accu_b
-    #         avg_usera += accu_a
-    #     f1_score += (avrg_user / epoch)
-    #     f1_before += (avg_userb / epoch)
-    #     f1_after += (avg_usera / epoch)
-    # f1_score /= len(greedy.users)
-    # f1_before /= len(greedy.users)
-    # f1_after /= len(greedy.users)
-    # print("l {} f {} F1 Score Adaptive Epsilon Greedy (no-state) ={} {} {}".format(l, f, f1_before, f1_after, f1_score))
+    obj = read_data.read_data()
+    obj.create_connection(r"D:\Tableau Learning\Tableau.db")
+    dataset = ['birdstrikes1', 'weather1', 'faa1']
+    task = ['t2', 't3', 't4']
 
-    #Classical Epsilon-Greedy
-    # epoch = 10
-    # k = 3
-    # epsilon = 0.05
-    # states = [False]
-    # for state in states:
-    #     f1_score = 0
-    #     f1_before = f1_after = 0
-    #     for user in greedy.users:
-    #         avrg_user = avg_userb = avg_usera = 0
-    #         data = obj.read_cur_data(user, dataset)
-    #         for experiment in range(epoch):
-    #             accu_b, accu_a, accu = greedy.run_epsilon_greedy(data, user, dataset, task, k, epsilon, state, True)
-    #             avrg_user += accu
-    #             avg_userb += accu_b
-    #             avg_usera += accu_a
-    #         f1_score += (avrg_user / epoch)
-    #         f1_before += (avg_userb / epoch)
-    #         f1_after += (avg_usera / epoch)
-    #     f1_score /= len(greedy.users)
-    #     f1_before /= len(greedy.users)
-    #     f1_after /= len(greedy.users)
-    #     print("Epsilon {} Greedy: F1 Score ={} {} {}".format(epsilon, f1_before, f1_after, f1_score))
+    #Adaptive Epsilon-Greedy
+    print("***** F1-score Adaptive Epsilon-Greedy no-state *****")
+    epoch = 10
+    k = 3
+    epsilon = [0.15, 0.05, 0.05]
+    l = [8, 5, 6]
+    f = [4, 2, 2]
+    for d in dataset:
+        print("Dataset: {}".format(d))
+        print("###########################")
+        for idx in range(len(task)):
+            users, all_attrs, priors, final = obj.TableauDataset(d, task[idx])
+            greedy = TrainGreedy()
+            greedy.set_data(users, all_attrs, priors, final)
+            greedy.f1_data(True, obj, d, task[idx], epoch, k, epsilon[idx], l[idx], f[idx])
+
+    # Classical Epsilon-Greedy
+    print("***** F1-score Classical Epsilon-Greedy no-state *****")
+    for d in dataset:
+        print("Dataset: {}".format(d))
+        print("###########################")
+        for idx in range(len(task)):
+            users, all_attrs, priors, final = obj.TableauDataset(d, task[idx])
+            greedy = TrainGreedy()
+            greedy.set_data(users, all_attrs, priors, final)
+            greedy.f1_data(False, obj, d, task[idx], epoch, k, epsilon[idx], None, None)

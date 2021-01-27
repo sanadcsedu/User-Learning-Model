@@ -25,7 +25,10 @@ class TrainRothAndErev:
     def run_roth_and_erev(self, cur_data, user, dataset, cur_task, k, forgetting, cat = True):
         e = Evaluators.Evaluators()
         rae = modified_roth_and_erev(False)
+
+        rae.add_prior_strategies(user, self.all_attrs, 0)
         rae.add_prior_strategies(user, self.priors, 1)
+
         if cat:
             c = Categorizing.Categorizing()
             if dataset == 'birdstrikes1':
@@ -56,13 +59,20 @@ class TrainRothAndErev:
                 if len(ground) == 0:
                     continue
 
-                #Payoff is calculated based on the number of *correct attributes* in the current interaction
+                #reinforcing the learning model
+                ##########################################################
                 payoff = 0
-                for attrs in picked_attr:
+                for attrs in ground:
                     if attrs in self.final:
                         payoff += 1
-
                 rae.update_qtable(user, ground, payoff, forgetting)
+
+                payoff = 0
+                for attrs in picked_attr:
+                    if attrs in ground:
+                        payoff += 1
+                rae.update_qtable(user, picked_attr, payoff, forgetting)
+                ###########################################################
 
                 if no_of_intr >= 2:
                     # print(ground)
@@ -156,7 +166,7 @@ class TrainRothAndErev:
         obj = read_data.read_data()
         obj.create_connection(r"D:\Tableau Learning\Tableau.db")
         dataset = 'birdstrikes1'
-        task = 't3'
+        task = 't4'
         users, all_attrs, priors, final = obj.TableauDataset(dataset, task)
         self.set_data(users, all_attrs, priors, final)
 
@@ -178,37 +188,45 @@ class TrainRothAndErev:
             if _max < f1_score:
                 _max = f1_score
                 best_forget = ff
-        print("Roth and Erev F1 Score (No State) = {} -> Forgetting = {}".format(_max, best_forget))
+        print("Roth and Erev F1 Score (No State) = {:.2f} -> Forgetting = {:.2f}".format(_max, best_forget))
 
+    def f1_data(self, obj, dataset, task, epoch, k, ff):
+        f1_score = f1_before = f1_after = 0
+        for user in self.users:
+            avrg_user = 0
+            avg_userb = avg_usera = 0
+            data = obj.read_cur_data(user, dataset)
+            for experiment in range(epoch):
+                accu_b, accu_a, accu = self.run_roth_and_erev(data, user, dataset, task, k, ff, True)
+                avrg_user += accu
+                avg_userb += accu_b
+                avg_usera += accu_a
+            f1_score += (avrg_user / epoch)
+            f1_before += (avg_userb / epoch)
+            f1_after += (avg_usera / epoch)
+        f1_score /= len(self.users)
+        f1_before /= len(self.users)
+        f1_after /= len(self.users)
+        print("Task {} f1_score, f1_before, f1_after = {:.2f} [{:.2f}, {:.2f}]".format(task, f1_score, f1_before, f1_after))
 
 if __name__ == '__main__':
-    roth = TrainRothAndErev()
-    roth.hyperparameter()
+    # roth = TrainRothAndErev()
+    # roth.hyperparameter()
 
-    # obj = read_data.read_data()
-    # obj.create_connection(r"D:\Tableau Learning\Tableau.db")
-    # dataset = 'faa1'
-    # task = 't4'
-    # users, all_attrs, priors, final = obj.TableauDataset(dataset, task)
-    # roth.set_data(users, all_attrs, priors, final)
-    #
-    # epoch = 10
-    # k = 3
-    # ff  = 0.45
-    # f1_score = f1_before = f1_after = 0
-    # for user in roth.users:
-    #     avrg_user = 0
-    #     avg_userb = avg_usera = 0
-    #     data = obj.read_cur_data(user, dataset)
-    #     for experiment in range(epoch):
-    #         accu_b, accu_a, accu = roth.run_roth_and_erev(data, user, dataset, task, k, ff, True)
-    #         avrg_user += accu
-    #         avg_userb += accu_b
-    #         avg_usera += accu_a
-    #     f1_score += (avrg_user / epoch)
-    #     f1_before += (avg_userb / epoch)
-    #     f1_after += (avg_usera / epoch)
-    # f1_score /= len(roth.users)
-    # f1_before /= len(roth.users)
-    # f1_after /= len(roth.users)
-    # print("Forgetting: {} Roth and Erev F1 Score (No State) = {} {} {}".format(ff, f1_before, f1_after, f1_score))
+    obj = read_data.read_data()
+    obj.create_connection(r"D:\Tableau Learning\Tableau.db")
+    dataset = ['birdstrikes1', 'weather1', 'faa1']
+    task = ['t2', 't3', 't4']
+
+    epoch = 10
+    k = 3
+    ff = [0.25, 0.25, 0.25]
+    print("***** F1-score Roth and Erev no-state *****")
+    for d in dataset:
+        print("Dataset: {}".format(d))
+        print("###########################")
+        for idx in range(len(task)):
+            users, all_attrs, priors, final = obj.TableauDataset(d, task[idx])
+            roth = TrainRothAndErev()
+            roth.set_data(users, all_attrs, priors, final)
+            roth.f1_data(obj, d, task[idx], epoch, k, ff[idx])

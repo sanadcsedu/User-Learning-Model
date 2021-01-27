@@ -34,6 +34,7 @@ class TrainingBushMosteller:
                 c.faa1()
 
         rbm = BushMosteller(alpha, beta, False)
+        rbm.add_prior_strategies(self.all_attrs)
         rbm.add_prior_strategies(self.priors)
 
         total = 0
@@ -59,17 +60,26 @@ class TrainingBushMosteller:
                     if len(ground) == 0:
                         continue
 
-                    # Payoff is calculated based on the number of *correct attributes* in the current interaction
-                    cnt = 0
+                    # reinforcing the learning model
+                    ##########################################################
+                    payoff = 0
                     for attrs in picked_attr:
-                        if attrs in self.final:
-                            cnt += 1
-
-                    if cnt > 0: #Positive reward if we find the interaction useful
-                        rbm.update(user, picked_attr, 1)
-                    else: #Negative reward if we find the interaction not useful
+                        if attrs in ground:
+                            payoff += 1
+                    if payoff > 0:  # Positive reward if we find the prediction useful
+                        rbm.update(user, picked_attr, payoff)
+                    else:  # Negative reward if we find the prediction not useful
                         rbm.update(user, picked_attr, -1)
 
+                    payoff = 0
+                    for attrs in ground:
+                        if attrs in self.final:
+                            payoff += 1
+                    if payoff > 0: #Positive reward if we find the interaction useful
+                        rbm.update(user, ground, payoff)
+                    else: #Negative reward if we find the interaction not useful
+                        rbm.update(user, ground, -1)
+                    ###########################################################
                     if no_of_intr >= 2:
                         # print("Ground {}".format(ground))
                         # print("Picked {}".format(picked_attr))
@@ -165,9 +175,8 @@ class TrainingBushMosteller:
         obj = read_data.read_data()
         obj.create_connection(r"D:\Tableau Learning\Tableau.db")
         dataset = 'birdstrikes1'
-        task = 't3'
+        task = 't4'
         users, all_attrs, priors, final = obj.TableauDataset(dataset, task)
-        # bush = TrainingBushMosteller()
         self.set_data(users, all_attrs, priors, final)
 
         epoch = 10
@@ -193,36 +202,46 @@ class TrainingBushMosteller:
                     best_beta = beta
         print("Bush and Mosteller f1-score (no-state) {} -> Alpha {} Beta {}".format(_max, best_alpha, best_beta))
 
-if __name__ == '__main__':
-    bush = TrainingBushMosteller()
-    bush.hyperparameter()
+    def f1_data(self, obj, dataset, task, epoch, k, alpha, beta):
+        f1_score = f1_before = f1_after = 0
+        num_users = bush.users
+        for user in num_users:
+            avrg_user = 0
+            avg_userb = avg_usera = 0
+            data = obj.read_cur_data(user, dataset)
+            for experiment in range(epoch):
+                accu_b, accu_a, accu = self.run_bush_mosteller_nostate(user, data, dataset, task, k, alpha, beta, True)
+                avrg_user += accu
+                avg_userb += accu_b
+                avg_usera += accu_a
+            f1_score += (avrg_user / epoch)
+            f1_before += (avg_userb / epoch)
+            f1_after += (avg_usera / epoch)
+        f1_score /= len(num_users)
+        f1_before /= len(num_users)
+        f1_after /= len(num_users)
+        print("Task {} f1_score, f1_before, f1_after = {:.2f} [{:.2f}, {:.2f}]".format(task, f1_score, f1_before, f1_after))
 
-    # obj = read_data.read_data()
-    # obj.create_connection(r"D:\Tableau Learning\Tableau.db")
-    # dataset = 'weather1'
-    # task = 't4'
-    # users, all_attrs, priors, final = obj.TableauDataset(dataset, task)
+if __name__ == '__main__':
     # bush = TrainingBushMosteller()
-    # bush.set_data(users, all_attrs, priors, final)
-    #
-    # epoch = 10
-    # k = 3
-    # alpha = 0.5
-    # beta = 0.4
-    # f1_score = f1_before = f1_after = 0
-    # for user in bush.users:
-    #     avrg_user = 0
-    #     avg_userb = avg_usera = 0
-    #     data = obj.read_cur_data(user, dataset)
-    #     for experiment in range(epoch):
-    #         accu_b, accu_a, accu = bush.run_bush_mosteller_nostate(user, data, dataset, task, k, alpha, beta, True)
-    #         avrg_user += accu
-    #         avg_userb += accu_b
-    #         avg_usera += accu_a
-    #     f1_score += (avrg_user / epoch)
-    #     f1_before += (avg_userb / epoch)
-    #     f1_after += (avg_usera / epoch)
-    # f1_score /= len(bush.users)
-    # f1_before /= len(bush.users)
-    # f1_after /= len(bush.users)
-    # print("A = {} B = {} f1 score Bush and Mosteller without state = {} {} {}".format(alpha, beta, f1_before, f1_after, f1_score))
+    # bush.hyperparameter()
+
+    obj = read_data.read_data()
+    obj.create_connection(r"D:\Tableau Learning\Tableau.db")
+    dataset = ['birdstrikes1', 'weather1', 'faa1']
+    task = ['t2', 't3', 't4']
+
+    epoch = 10
+    k = 3
+    #Hyper-parameter values for task t2, t3 and t4
+    alpha = [0.5, 0.5, 0.5]
+    beta = [0.1, 0.15, 0.05]
+    print("***** F1-score Bush and Mosteller no-state *****")
+    for d in dataset:
+        print("Dataset: {}".format(d))
+        print("###########################")
+        for idx in range(len(task)):
+            users, all_attrs, priors, final = obj.TableauDataset(d, task[idx])
+            bush = TrainingBushMosteller()
+            bush.set_data(users, all_attrs, priors, final)
+            bush.f1_data(obj, d, task[idx], epoch, k, alpha[idx], beta[idx])

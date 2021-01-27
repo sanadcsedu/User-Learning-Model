@@ -1,5 +1,6 @@
 import Categorizing
 import sqlite3
+import pdb
 
 class read_data:
 
@@ -39,8 +40,8 @@ class read_data:
                          '"dam_tail"', '"dam_nose"', '"dam_lghts"', '"dam_lg"', '"dam_fuse"', '"dam_eng4"',
                          '"dam_other"', '"reported_date"', '"warned"', '"dam_prop"', '"dam_rad"', '"index_nr"',
                          '"speed"', '"incident_month"', '"faaregion"', '"location"', '"airport_id"']
-            priors = ['airplane', 'flight_related', 'weather', 'damaged_parts', 'event_time', 'aggregation',
-                      'location', 'birds']
+            # priors = ['airplane', 'flight_related', 'weather', 'damaged_parts', 'event_time', 'aggregation', 'location', 'birds']
+            priors = self.get_prior(dataset, task)
             users = [1, 5, 109, 13, 25, 29, 33, 53, 57, 61, 73, 97]
             if task == 't1':
                 users = [1, 5, 109, 13, 25, 33, 53, 57, 61, 73]
@@ -58,6 +59,7 @@ class read_data:
             if cat:
                 all_attrs = c.get_category(all_attrs)
                 final = c.get_category(final)
+                priors = c.get_category(priors)
 
         elif dataset == 'weather1':
             c.weather1()
@@ -65,7 +67,8 @@ class read_data:
             users = [1, 5, 25, 29, 53, 65, 69, 73, 93, 97, 113, 117]
 
             all_attrs = ['"heavyfog"', '"number of records"', '"calculation(heavy fog (is null))"', '"date"', '"tmax_f"', '"tmin_f"', '"latitude (generated)"', '"longitude (generated)"', '"lat"', '"lng"', '"state"', '"freezingrain"', '"blowingsnow"', '"blowingspray"', '"drizzle"', '"dust"', '"fog"', '"mist"', '"groundfog"', '"freezingdrizzle"', '"glaze"', '"hail"', '"highwinds"', '"icefog"', '"icepellets"', '"prcp"', '"rain"', '"smoke"', '"tmax"', '"tmin"', '"snow"', '"snowgeneral"', '"snwd"', '"thunder"', '"tornado"']
-            priors = ['fog', 'rain', 'snow', 'location', 'windy', 'time', 'aggregation', 'smoke', 'tornado', 'temperature']
+            # priors = ['fog', 'rain', 'snow', 'location', 'windy', 'time', 'aggregation', 'smoke', 'tornado', 'temperature']
+            priors = self.get_prior(dataset, task)
             if task == 't1':
                 users = [1, 5, 25, 53, 65, 69, 73, 93, 97, 113, 117]
                 final = ['"heavyfog"', '"groundfog"', '"mist"', '"drizzle"']
@@ -80,12 +83,14 @@ class read_data:
             if cat:
                 all_attrs = c.get_category(all_attrs)
                 final = c.get_category(final)
+                priors = c.get_category(priors)
 
         else: #faa1
             c.faa1()
             all_attrs = ['"calculation(percent delta)"', '"destcityname"', '"calculation(arrival y/n)"', '"longitude (generated)"', '"deststate"', '"weatherdelay"', '"uniquecarrier"', '"crsdeptime"', '"deptime"', '"distance"', '"depdelay"', '"arrdelay"', '"calculation(delayed y/n)"', '"calculation(total delays)"', '"flightdate"', '"calculation(arrdelayed)"', '"carrierdelay"', '"calculation([arrdelay]+[depdelay])"', '"latitude (generated)"', '"airtime"', '"arrtime"', '"calculation(is delta flight)"', '"crselapsedtime"', '"taxiin"', '"crsarrtime"', '"originstate"', '"taxiout"', '"diverted"', '"lateaircraftdelay"', '"calculation(delay?)"', '"origincityname"', '"securitydelay"', '"cancellationcode"', '"origin"', '"calculation([dest]+[origin])"', '"nasdelay"', '"calculation(depdelayed)"', '"number of records"', '"cancelled"', '"dest"', '"actualelapsedtime"']
             users = [57, 45, 89, 65, 37, 93, 9, 33, 13, 21]
-            priors = ['time', 'carrier', 'diverted', 'origin', 'delay', 'aggregate', 'distance', 'cancellation', 'dest', 'taxi']
+            # priors = ['time', 'carrier', 'diverted', 'origin', 'delay', 'aggregate', 'distance', 'cancellation', 'dest', 'taxi']
+            priors = self.get_prior(dataset, task)
             if task == 't1':
                 final = ['"depdelay"', '"arrdelay"', '"cancelled"', '"diverted"']
             elif task == 't2':
@@ -99,16 +104,42 @@ class read_data:
             if cat:
                 all_attrs = c.get_category(all_attrs)
                 final = c.get_category(final)
+                priors = c.get_category(priors)
 
         return users, all_attrs, priors, final
+
+    #Priors for the learning algorithms
+    #Assign some initial probabilities to the prior attributes to minimize cold start
+    def get_prior(self, dataset, task):
+        ret = None
+        if dataset == 'birdstrikes1':
+            if task == 't2':
+                ret = ['"ac_class"', '"damage"']
+            elif task == 't3':
+                ret = ['"incident_date"', '"precip"', '"sky"']
+            else: #task == 't4'
+                ret = ['"damage"', '"precip"', '"sky"']
+        if dataset == 'weather1':
+            if task == 't2':
+                ret = ['"tmax"', '"tmin"', '"date"']
+            elif task == 't3':
+                ret = ['"highwinds"', '"state"']
+            else:  # task == 't4'
+                ret = ['"tmax"', '"tmin"', '"heavyfog"', '"groundfog"', '"mist"', '"drizzle"']
+        if dataset == 'faa1':
+            if task == 't2':
+                ret = ['"uniquecarrier"', '"flightdate"']
+            elif task == 't3':
+                ret = ['"distance"', '"arrdelay"']
+            else:  # task == 't4'
+                ret = ['"arrdelay"', '"depdelay"', '"cancelled"', '"diverted"', '"uniquecarrier"', '"flightdate"']
+        return ret
 
 if __name__ == '__main__':
     obj = read_data()
     obj.create_connection(r"D:\Tableau Learning\Tableau.db")
     datasets = ['birdstrikes1', 'weather1', 'faa1']
-    tasks = ['t1', 't2', 't3', 't4']
+    tasks = ['t2', 't3', 't4']
     for d in datasets:
         for t in tasks:
-            _, _, _, final = obj.TableauDataset(d, t, False)
-            print("{} {}".format(d, t))
-            print(final)
+            _, all, prior, final = obj.TableauDataset(d, t, True)
