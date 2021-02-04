@@ -4,6 +4,7 @@ from WinKeepLoseRandomize import WinKeepLoseRandomize
 import Categorizing
 import Evaluators
 import read_data
+import numpy as np
 import queue
 import pdb
 
@@ -84,10 +85,23 @@ class TrainHeuristics:
                 c.faa1()
 
         total = 0
-        sim = WinKeepLoseRandomize(self.all_attrs, self.final)
+        # sim = WinKeepLoseRandomize(self.all_attrs, self.final)
+        action_set = []
+        for cs in self.all_attrs:
+            action_set.append("add+"+ str(cs))
+        for cs in self.all_attrs:
+            action_set.append("drop+" + str(cs))
+        action_set.append("reset")
+        action_set.append("unchanged")
+
+        # pdb.set_trace()
+
         after = 2
         f1_score = []
         no_of_intr = 0
+        prev_action = "reset"
+        prev_attrs = []
+
         for row in cur_data:
             userid, ttask, seqid, state = tuple(row)
             # Getting the states
@@ -95,67 +109,127 @@ class TrainHeuristics:
             states = state.split(', ')
 
             if ttask == task:
-                picked_attr = sim.make_choice(k)
-                ground = []
+                picked_action = prev_action
+
+                #Figuring out which action has been performed
+                cur_attrs = []
                 for s in states:
                     if len(s) >= 1:
-                        ground.append(s)
+                        cur_attrs.append(s)
                 if cat:
-                    ground = c.get_category(ground)
-                if len(ground) == 0:
-                    continue
+                    cur_attrs = c.get_category(cur_attrs)
+                action = None
+                if len(cur_attrs) == 0:
+                    action = "reset"
+                elif cur_attrs == prev_attrs:
+                    action = "unchanged"
+                elif len(prev_attrs) == len(cur_attrs):
+                    #Check if the interaction is equal
+                    action = "unchanged"
+                    for attrs in prev_attrs:
+                        if attrs not in cur_attrs:
+                            action = "replace"
+                            break
+                    if action == "unchanged":
+                        continue
 
-                sim.assign_reward(ground)
+                    # pdb.set_trace()
+                    # replace can be considered as a combo of existing actions. 1. Drop attributes 2. Add attirbutes
+                    dropped = []
+                    for attrs in prev_attrs:
+                        if attrs not in cur_attrs:
+                            dropped.append(attrs)
+                    new_attrs = []
+                    for attrs in cur_attrs:
+                        if attrs not in prev_attrs:
+                            new_attrs.append(attrs)
+                else:
+                    if len(prev_attrs) < len(cur_attrs): #new attribute has been added
+                        #Find out the new attribute that has been added
+                        new_attrs = []
+                        for attrs in cur_attrs:
+                            if attrs not in prev_attrs:
+                                new_attrs.append(attrs)
+                        action = "add"
+                    elif len(prev_attrs) > len(cur_attrs): #attribute has been deleted
+                        #Find out which attributes has been deleted
+                        dropped = []
+                        for attrs in prev_attrs:
+                            if attrs not in cur_attrs:
+                                dropped.append(attrs)
+                        action = "drop"
+
+
+                prev_attrs = cur_attrs
+
+                if action == "add":
+                    cur_action = "add+" + new_attrs[0]
+                elif action == "drop":
+                    cur_action = "drop+" + dropped[0]
+                elif action == "replace":
+                    cur_action = "add+" + new_attrs[0]
+                else:
+                    cur_action = action
 
                 if no_of_intr >= after:
-                    _, _, get_f1 = e.f1_score(ground, picked_attr)
-                    # print("Ground: {}".format(ground))
-                    # print("Picked: {}".format(picked_attr))
+                    # _, _, get_f1 = e.f1_score(ground, picked_attr)
+                    # print("interaction: {}".format(cur_attrs))
+                    # print("Picked: {}".format(picked_action))
+                    # print("Cur Action: {}".format(cur_action))
+
+                    get_f1 = 0
+                    if cur_action == picked_action:
+                        get_f1 = 1
                     f1_score.append(get_f1)
                     total += 1
                 no_of_intr += 1
+
+                if cur_action == picked_action:
+                    prev_action = cur_action
+                else:
+                    # pick = np.random.randint(len(action_set))
+                    # prev_action = action_set[pick]
+                    prev_action = cur_action
+                # pdb.set_trace()
+        # print(f1_score)
         return e.before_after(f1_score, total, self.threshold)
+
+    def f1_data(self, obj, dataset, task, epoch, k):
+        f1_score = f1_before = f1_after = 0
+        num_users = self.users
+        for user in num_users:
+            avrg_user = 0
+            avg_userb = avg_usera = 0
+            data = obj.read_cur_data(user, dataset)
+            for experiment in range(epoch):
+                accu_b, accu_a, accu = self.WinKeepLoseRandomize(data, dataset, task, k, True)
+                avrg_user += accu
+                avg_userb += accu_b
+                avg_usera += accu_a
+            f1_score += (avrg_user / epoch)
+            f1_before += (avg_userb / epoch)
+            f1_after += (avg_usera / epoch)
+        f1_score /= len(num_users)
+        f1_before /= len(num_users)
+        f1_after /= len(num_users)
+        print("Task {} f1_score, f1_before, f1_after = {:.2f} [{:.2f}, {:.2f}]".format(task, f1_score, f1_before, f1_after))
 
 if __name__ == '__main__':
     obj = read_data.read_data()
     obj.create_connection(r"D:\Tableau Learning\Tableau.db")
-    dataset = 'faa1'
-    task = 't4'
-    users, all_attrs, priors, final = obj.TableauDataset(dataset, task)
-    heu = TrainHeuristics()
-    heu.set_data(users, all_attrs, priors, final)
 
-    f1_score = f1_before = f1_after = 0
-    epoch = 10
+    dataset = ['birdstrikes1', 'weather1', 'faa1']
+    task = ['t2', 't3', 't4']
+
+    epoch = 1
     k = 3
-    for user in heu.users:
-        avrg_user = avg_userb = avg_usera = 0
-        data = obj.read_cur_data(user, dataset)
-        for experiment in range(epoch):
-            accu_b, accu_a, accu = heu.WinKeepLoseRandomize(data, dataset, task, k, True)
-            avrg_user += accu
-            avg_userb += accu_b
-            avg_usera += accu_a
-        f1_score += (avrg_user / epoch)
-        f1_before += (avg_userb / epoch)
-        f1_after += (avg_usera / epoch)
-    f1_score /= len(heu.users)
-    f1_before /= len(heu.users)
-    f1_after /= len(heu.users)
-    print("F1 Score Win-Keep Lose-Randomize (nostate) = {:.2f} [{:.2f}, {:.2f}]".format(f1_score, f1_before, f1_after))
 
-    # f1_before = f1_after = 0
-    # epoch = 10
-    # k = 3
-    # for user in heu.users:
-    #     avg_userb = avg_usera = 0
-    #     data = obj.read_cur_data(user, dataset)
-    #     for experiment in range(epoch):
-    #         accu_b, accu_a = heu.LatestReward(data, dataset, task, k, True)
-    #         avg_userb += accu_b
-    #         avg_usera += accu_a
-    #     f1_before += (avg_userb / epoch)
-    #     f1_after += (avg_usera / epoch)
-    # f1_before /= len(heu.users)
-    # f1_after /= len(heu.users)
-    # print("F1 Score Latest-Reward (nostate) = {} {}".format(f1_before, f1_after))
+    print("***** F1-score Win-Keep Lose-Randomize no-state *****")
+    for d in dataset:
+        print("Dataset: {}".format(d))
+        print("###########################")
+        for idx in range(len(task)):
+            users, all_attrs, priors, final = obj.TableauDataset(d, task[idx])
+            heu = TrainHeuristics()
+            heu.set_data(users, all_attrs, priors, final)
+            heu.f1_data(obj, d, task[idx], epoch, k)

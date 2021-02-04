@@ -24,6 +24,7 @@ class TrainingBushMosteller:
     #Bush and Mosteller algorithm without states
     def run_bush_mosteller_nostate(self, user, cur_data, dataset, cur_task, k, alpha, beta, cat = False):
         e = Evaluators.Evaluators()
+
         if cat:
             c = Categorizing.Categorizing()
             if dataset == 'birdstrikes1':
@@ -34,12 +35,26 @@ class TrainingBushMosteller:
                 c.faa1()
 
         rbm = BushMosteller(alpha, beta, False)
-        rbm.add_prior_strategies(self.all_attrs)
-        rbm.add_prior_strategies(self.priors)
+        # Setting up action set for the Bush and Mosteller model
+        action_set = []
+        for cs in self.all_attrs:
+            action_set.append("add+" + str(cs))
+        for cs in self.all_attrs:
+            action_set.append("drop+" + str(cs))
+        action_set.append("reset")
+        action_set.append("unchanged")
+        rbm.add_prior_strategies(action_set)
+
+        # Assigning some probabilities based on prior
+        prior_set = []
+        for cs in self.priors:
+            prior_set.append("add+" + str(cs))
+        rbm.add_prior_strategies(prior_set)
 
         total = 0
         f1_score = []
         no_of_intr = 0
+        prev_attrs = []
 
         for row in cur_data:
             userid, task, seqid, state = tuple(row)
@@ -48,42 +63,87 @@ class TrainingBushMosteller:
 
             if task == cur_task:
                 if len(states) >= 1:
-                    picked_attr = rbm.make_choice_nostate(k)
-                    ground = []
+                    picked_action = rbm.make_choice_nostate(k)
+
+                    # Figuring out which action has been performed
+                    cur_attrs = []
                     for s in states:
                         if len(s) >= 1:
-                            ground.append(s)
-
+                            cur_attrs.append(s)
                     if cat:
-                        ground = c.get_category(ground)
+                        cur_attrs = c.get_category(cur_attrs)
+                    action = None
+                    if len(cur_attrs) == 0:
+                        action = "reset"
+                    elif cur_attrs == prev_attrs:
+                        action = "unchanged"
+                    elif len(prev_attrs) == len(cur_attrs):
+                        # Check if the interaction is equal
+                        action = "unchanged"
+                        for attrs in prev_attrs:
+                            if attrs not in cur_attrs:
+                                action = "replace"
+                                break
+                        if action == "unchanged":
+                            continue
 
-                    if len(ground) == 0:
-                        continue
+                        # pdb.set_trace()
+                        # replace can be considered as a combo of existing actions. 1. Drop attributes 2. Add attirbutes
+                        dropped = []
+                        for attrs in prev_attrs:
+                            if attrs not in cur_attrs:
+                                dropped.append(attrs)
+                        new_attrs = []
+                        for attrs in cur_attrs:
+                            if attrs not in prev_attrs:
+                                new_attrs.append(attrs)
+                    else:
+                        if len(prev_attrs) < len(cur_attrs):  # new attribute has been added
+                            # Find out the new attribute that has been added
+                            new_attrs = []
+                            for attrs in cur_attrs:
+                                if attrs not in prev_attrs:
+                                    new_attrs.append(attrs)
+                            action = "add"
+                        elif len(prev_attrs) > len(cur_attrs):  # attribute has been deleted
+                            # Find out which attributes has been deleted
+                            dropped = []
+                            for attrs in prev_attrs:
+                                if attrs not in cur_attrs:
+                                    dropped.append(attrs)
+                            action = "drop"
+
+                    prev_attrs = cur_attrs
+                    cur_action = []
+                    if action == "add":
+                        for indx in range(len(new_attrs)):
+                            cur_action.append("add+" + new_attrs[indx])
+                    elif action == "drop":
+                        for indx in range(len(dropped)):
+                            cur_action.append("drop+" + dropped[indx])
+                    elif action == "replace":
+                        for indx in range(len(new_attrs)):
+                            cur_action.append("add+" + new_attrs[indx])
+                    else:
+                        cur_action.append(action)
 
                     # reinforcing the learning model
                     ##########################################################
-                    payoff = 0
-                    for attrs in picked_attr:
-                        if attrs in ground:
-                            payoff += 1
-                    if payoff > 0:  # Positive reward if we find the prediction useful
-                        rbm.update(user, picked_attr, payoff)
-                    else:  # Negative reward if we find the prediction not useful
-                        rbm.update(user, picked_attr, -1)
-
-                    payoff = 0
-                    for attrs in ground:
-                        if attrs in self.final:
-                            payoff += 1
-                    if payoff > 0: #Positive reward if we find the interaction useful
-                        rbm.update(user, ground, payoff)
-                    else: #Negative reward if we find the interaction not useful
-                        rbm.update(user, ground, -1)
+                    if picked_action[0] in cur_action:
+                        rbm.update(user, cur_action, 1)
+                    else:
+                        rbm.update(user, cur_action, 1)
+                        # rbm.update(user, picked_action, -1)
                     ###########################################################
+
                     if no_of_intr >= 2:
-                        # print("Ground {}".format(ground))
-                        # print("Picked {}".format(picked_attr))
-                        _, _, get_f1 = e.f1_score(ground, picked_attr)
+                        # print("interaction: {}".format(cur_attrs))
+                        # print("Picked: {}".format(picked_action))
+                        # print("Cur Action: {}".format(cur_action))
+
+                        get_f1 = 0
+                        if picked_action[0] in cur_action:
+                            get_f1 = 1
                         f1_score.append(get_f1)
                         total += 1
                     no_of_intr += 1
@@ -232,7 +292,7 @@ if __name__ == '__main__':
     task = ['t2', 't3', 't4']
 
     epoch = 10
-    k = 3
+    k = 1
     #Hyper-parameter values for task t2, t3 and t4
     alpha = [0.5, 0.5, 0.5]
     beta = [0.1, 0.15, 0.05]

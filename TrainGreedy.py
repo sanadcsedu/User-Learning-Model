@@ -35,12 +35,30 @@ class TrainGreedy:
 
         total = 0
         after = 2
-        epg = EpsilonGreedy(self.all_attrs, epsilon, 0, 0, state)
-        epg.update([self.priors], 1)
+        # epg = EpsilonGreedy(self.all_attrs, epsilon, 0, 0, state)
+        # epg.update([self.priors], 1)
+
+        # Setting up action set for the Epsilon-Greedy Algorithm
+        action_set = []
+        for cs in self.all_attrs:
+            action_set.append("add+" + str(cs))
+        for cs in self.all_attrs:
+            action_set.append("drop+" + str(cs))
+        action_set.append("reset")
+        action_set.append("unchanged")
+        epg = EpsilonGreedy(action_set, epsilon, 0, 0, state)
+
+        # Assigning some probabilities based on prior
+        prior_set = []
+        for cs in self.priors:
+            prior_set.append("add+" + str(cs))
+        # pdb.set_trace()
+        epg.update([prior_set], 1)
 
         f1_score = []
-        prev_interactions = queue.Queue(maxsize=2)
+        prev_interactions = None # Because no-state
         no_of_intr = 0
+        prev_attrs = []
 
         for row in cur_data:
             userid, task, seqid, state = tuple(row)
@@ -48,43 +66,76 @@ class TrainGreedy:
             states = state.split(', ')
 
             if task == cur_task:
-                picked_attr = epg.make_choice_classic(k, list(prev_interactions.queue))
-                ground = []
+                picked_action = epg.make_choice_classic(k, prev_interactions)
+
+                # Figuring out which action has been performed
+                cur_attrs = []
                 for s in states:
                     if len(s) >= 1:
-                        ground.append(s)
-
+                        cur_attrs.append(s)
                 if cat:
-                    ground = c.get_category(ground)
+                    cur_attrs = c.get_category(cur_attrs)
+                action = None
+                if len(cur_attrs) == 0:
+                    action = "reset"
+                elif cur_attrs == prev_attrs:
+                    action = "unchanged"
+                elif len(prev_attrs) == len(cur_attrs):
+                    # Check if the interaction is equal
+                    action = "unchanged"
+                    for attrs in prev_attrs:
+                        if attrs not in cur_attrs:
+                            action = "replace"
+                            break
+                    if action == "unchanged":
+                        continue
 
-                if len(ground) == 0:
-                    continue
-
-                if prev_interactions.full():
-                    prev_interactions.get()
-                    prev_interactions.put(ground)
+                    # pdb.set_trace()
+                    # replace can be considered as a combo of existing actions. 1. Drop attributes 2. Add attirbutes
+                    dropped = []
+                    for attrs in prev_attrs:
+                        if attrs not in cur_attrs:
+                            dropped.append(attrs)
+                    new_attrs = []
+                    for attrs in cur_attrs:
+                        if attrs not in prev_attrs:
+                            new_attrs.append(attrs)
                 else:
-                    prev_interactions.put(ground)
+                    if len(prev_attrs) < len(cur_attrs):  # new attribute has been added
+                        # Find out the new attribute that has been added
+                        new_attrs = []
+                        for attrs in cur_attrs:
+                            if attrs not in prev_attrs:
+                                new_attrs.append(attrs)
+                        action = "add"
+                    elif len(prev_attrs) > len(cur_attrs):  # attribute has been deleted
+                        # Find out which attributes has been deleted
+                        dropped = []
+                        for attrs in prev_attrs:
+                            if attrs not in cur_attrs:
+                                dropped.append(attrs)
+                        action = "drop"
 
-                # reinforcing the learning model
-                ##########################################################
-                payoff = 0
-                for attrs in picked_attr:
-                    if attrs in ground:
-                        payoff += 1
-                if payoff > 0:
-                    epg.update([picked_attr], payoff)
+                prev_attrs = cur_attrs
+                cur_action = []
+                if action == "add":
+                    for indx in range(len(new_attrs)):
+                        cur_action.append("add+" + new_attrs[indx])
+                elif action == "drop":
+                    for indx in range(len(dropped)):
+                        cur_action.append("drop+" + dropped[indx])
+                elif action == "replace":
+                    for indx in range(len(new_attrs)):
+                        cur_action.append("add+" + new_attrs[indx])
+                else:
+                    cur_action.append(action)
 
-                payoff = 0
-                for attrs in ground:
-                    if attrs in self.final:
-                        payoff += 1
-                if payoff > 0:
-                    epg.update([ground], payoff)
-                ###########################################################
+                epg.update([cur_action], 1)
 
                 if no_of_intr >= after:
-                    _, _, get_f1 = e.f1_score(ground, picked_attr)
+                    get_f1 = 0
+                    if picked_action[0] in cur_action:
+                        get_f1 = 1
                     f1_score.append(get_f1)
                     total += 1
                 no_of_intr += 1
@@ -104,13 +155,28 @@ class TrainGreedy:
 
         total = 0
         after = 2
-        aepg = EpsilonGreedy(self.all_attrs, epsilon, l, f, state)
-        # pdb.set_trace()
-        aepg.update([self.priors], 1)
+        # aepg = EpsilonGreedy(self.all_attrs, epsilon, l, f, state)
+        # aepg.update([self.priors], 1)
+        # Setting up action set for the Epsilon-Greedy Algorithm
+        action_set = []
+        for cs in self.all_attrs:
+            action_set.append("add+" + str(cs))
+        for cs in self.all_attrs:
+            action_set.append("drop+" + str(cs))
+        action_set.append("reset")
+        action_set.append("unchanged")
+        aepg = EpsilonGreedy(action_set, epsilon, l, f, state)
+
+        # Assigning some probabilities based on prior
+        prior_set = []
+        for cs in self.priors:
+            prior_set.append("add+" + str(cs))
+        aepg.update([prior_set], 1)
 
         f1_score = []
-        prev_interactions = queue.Queue(maxsize=2)
+        prev_interactions = None #For now no-state
         no_of_intr = 0
+        prev_attrs = []
 
         for row in cur_data:
             userid, task, seqid, state = tuple(row)
@@ -119,41 +185,76 @@ class TrainGreedy:
             states = state.split(', ')
 
             if task == cur_task:
-                picked_attr = aepg.make_choice_adaptive(k, list(prev_interactions.queue))
-                ground = []
+                picked_action = aepg.make_choice_adaptive(k, None)
+
+                # Figuring out which action has been performed
+                cur_attrs = []
                 for s in states:
                     if len(s) >= 1:
-                        ground.append(s)
-
+                        cur_attrs.append(s)
                 if cat:
-                    ground = c.get_category(ground)
-                if len(ground) == 0:
-                    continue
+                    cur_attrs = c.get_category(cur_attrs)
+                action = None
+                if len(cur_attrs) == 0:
+                    action = "reset"
+                elif cur_attrs == prev_attrs:
+                    action = "unchanged"
+                elif len(prev_attrs) == len(cur_attrs):
+                    # Check if the interaction is equal
+                    action = "unchanged"
+                    for attrs in prev_attrs:
+                        if attrs not in cur_attrs:
+                            action = "replace"
+                            break
+                    if action == "unchanged":
+                        continue
 
-                if prev_interactions.full():
-                    prev_interactions.get()
-                    prev_interactions.put(ground)
+                    # pdb.set_trace()
+                    # replace can be considered as a combo of existing actions. 1. Drop attributes 2. Add attirbutes
+                    dropped = []
+                    for attrs in prev_attrs:
+                        if attrs not in cur_attrs:
+                            dropped.append(attrs)
+                    new_attrs = []
+                    for attrs in cur_attrs:
+                        if attrs not in prev_attrs:
+                            new_attrs.append(attrs)
                 else:
-                    prev_interactions.put(ground)
+                    if len(prev_attrs) < len(cur_attrs):  # new attribute has been added
+                        # Find out the new attribute that has been added
+                        new_attrs = []
+                        for attrs in cur_attrs:
+                            if attrs not in prev_attrs:
+                                new_attrs.append(attrs)
+                        action = "add"
+                    elif len(prev_attrs) > len(cur_attrs):  # attribute has been deleted
+                        # Find out which attributes has been deleted
+                        dropped = []
+                        for attrs in prev_attrs:
+                            if attrs not in cur_attrs:
+                                dropped.append(attrs)
+                        action = "drop"
 
-                # reinforcing the learning model
-                ##########################################################
-                payoff = 0
-                for attrs in picked_attr:
-                    if attrs in ground:
-                        payoff += 1
-                if payoff > 0:
-                    aepg.update([picked_attr], payoff)
+                prev_attrs = cur_attrs
+                cur_action = []
+                if action == "add":
+                    for indx in range(len(new_attrs)):
+                        cur_action.append("add+" + new_attrs[indx])
+                elif action == "drop":
+                    for indx in range(len(dropped)):
+                        cur_action.append("drop+" + dropped[indx])
+                elif action == "replace":
+                    for indx in range(len(new_attrs)):
+                        cur_action.append("add+" + new_attrs[indx])
+                else:
+                    cur_action.append(action)
 
-                payoff = 0
-                for attrs in ground:
-                    if attrs in self.final:
-                        payoff += 1
-                if payoff > 0:
-                    aepg.update([ground], payoff)
-                ###########################################################
+                aepg.update([cur_action], 1)
+
                 if no_of_intr >= after:
-                    _, _, get_f1 = e.f1_score(ground, picked_attr)
+                    get_f1 = 0
+                    if picked_action[0] in cur_action:
+                        get_f1 = 1
                     f1_score.append(get_f1)
                     total += 1
                 no_of_intr += 1
@@ -258,7 +359,7 @@ if __name__ == '__main__':
     #Adaptive Epsilon-Greedy
     print("***** F1-score Adaptive Epsilon-Greedy no-state *****")
     epoch = 10
-    k = 3
+    k = 1
     epsilon = [0.15, 0.05, 0.05]
     l = [8, 5, 6]
     f = [4, 2, 2]
