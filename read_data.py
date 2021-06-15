@@ -1,6 +1,7 @@
 import Categorizing
 import sqlite3
 import pdb
+import math
 
 class read_data:
 
@@ -142,4 +143,30 @@ if __name__ == '__main__':
     tasks = ['t2', 't3', 't4']
     for d in datasets:
         for t in tasks:
-            _, all, prior, final = obj.TableauDataset(d, t, True)
+            users, all, prior, final = obj.TableauDataset(d, t, True)
+            avg_inter = 0
+            check = 0
+            for u in users:
+                data = obj.read_cur_data(u, d)
+                # print("user {} dataset {} task {}".format(u, d, t))
+                cnt = 0
+                prev_state = None
+                less = 0
+                for row in data:
+                    userid, task, seqid, state = tuple(row)
+                    if task != t:
+                        continue
+                    if cnt > 1 and prev_state == state:
+                        continue
+                    prev_state = state
+                    cnt += 1
+                    # print(state)
+                # print(cnt)
+                avg_inter += cnt
+                if cnt < 10:
+                    check += 1
+                    # print("Here")
+            # print(len(users) - check)
+            avg_inter /= len(users)
+
+            print("Dataset {} Task {} Average Interaction: {}".format(d, t, math.floor(avg_inter)))

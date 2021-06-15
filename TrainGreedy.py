@@ -49,11 +49,11 @@ class TrainGreedy:
         epg = EpsilonGreedy(action_set, epsilon, 0, 0, state)
 
         # Assigning some probabilities based on prior
-        prior_set = []
-        for cs in self.priors:
-            prior_set.append("add+" + str(cs))
-        # pdb.set_trace()
-        epg.update([prior_set], 1)
+        # prior_set = []
+        # for cs in self.priors:
+        #     prior_set.append("add+" + str(cs))
+        # # pdb.set_trace()
+        # epg.update([prior_set], 1)
 
         f1_score = []
         prev_interactions = None # Because no-state
@@ -130,12 +130,28 @@ class TrainGreedy:
                 else:
                     cur_action.append(action)
 
-                epg.update([cur_action], 1)
+                # epg.update([cur_action], 1)
+                if action == "add":
+                    # rae.update_qtable(user, cur_action, 1, forgetting)
+                    cur_action = []
+                    for indx in range(len(new_attrs)):
+                        cur_action.append("drop+" + new_attrs[indx])
+                    epg.update([cur_action], 1)
+                elif action == "drop":
+                    epg.update([cur_action], 1)
+                else:
+                    epg.update([cur_action], 1)
 
                 if no_of_intr >= after:
+                    # _, _, get_f1 = e.f1_score(cur_action, picked_action)
+
+                    # calculating Recall (contains partial credits)
                     get_f1 = 0
-                    if picked_action[0] in cur_action:
-                        get_f1 = 1
+                    for a in cur_action:
+                        if a in picked_action:
+                            get_f1 += 1
+                    get_f1 /= len(cur_action)
+
                     f1_score.append(get_f1)
                     total += 1
                 no_of_intr += 1
@@ -249,12 +265,30 @@ class TrainGreedy:
                 else:
                     cur_action.append(action)
 
-                aepg.update([cur_action], 1)
-
+                # aepg.update([cur_action], 1)
+                #####
+                if action == "add":
+                    # rae.update_qtable(user, cur_action, 1, forgetting)
+                    cur_action = []
+                    for indx in range(len(new_attrs)):
+                        cur_action.append("drop+" + new_attrs[indx])
+                    aepg.update([cur_action], 1)
+                elif action == "drop":
+                    aepg.update([cur_action], 1)
+                else:
+                    aepg.update([cur_action], 1)
+                #####
                 if no_of_intr >= after:
+                    ########################
+                    # calculating Recall (contains partial credits)
                     get_f1 = 0
-                    if picked_action[0] in cur_action:
-                        get_f1 = 1
+                    for a in cur_action:
+                        if a in picked_action:
+                            get_f1 += 1
+                    get_f1 /= len(cur_action)
+                    ########################
+                    # _, _, get_f1 = e.f1_score(cur_action, picked_action)
+                    ########################
                     f1_score.append(get_f1)
                     total += 1
                 no_of_intr += 1
@@ -359,7 +393,7 @@ if __name__ == '__main__':
     #Adaptive Epsilon-Greedy
     print("***** F1-score Adaptive Epsilon-Greedy no-state *****")
     epoch = 10
-    k = 1
+    k = 3
     epsilon = [0.15, 0.05, 0.05]
     l = [8, 5, 6]
     f = [4, 2, 2]

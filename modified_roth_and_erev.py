@@ -41,7 +41,9 @@ class modified_roth_and_erev:
         else:
             #Updating Q-values for Pure Strategies similar to Basic Roth and Erev
             for attr in interactions:
+                # pdb.set_trace()
                 self.q_value[user][attr] += payoff
+
 
             #Introducing the Forgetting parameter
             for strategies in self.q_value[user]:

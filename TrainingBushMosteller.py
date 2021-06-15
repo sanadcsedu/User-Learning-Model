@@ -55,6 +55,7 @@ class TrainingBushMosteller:
         f1_score = []
         no_of_intr = 0
         prev_attrs = []
+        prev_states = []
 
         for row in cur_data:
             userid, task, seqid, state = tuple(row)
@@ -62,6 +63,12 @@ class TrainingBushMosteller:
             states = state.split(', ')
 
             if task == cur_task:
+
+                # if state == prev_states:
+                #     continue
+                # else:
+                #     prev_states = state
+
                 if len(states) >= 1:
                     picked_action = rbm.make_choice_nostate(k)
 
@@ -129,8 +136,29 @@ class TrainingBushMosteller:
 
                     # reinforcing the learning model
                     ##########################################################
-                    if picked_action[0] in cur_action:
+                    # if picked_action[0] in cur_action:
+                    #     # rbm.update(user, cur_action, 1)
+                    #     if action == "add":
+                    #         # rbm.update(user, cur_action, -1)
+                    #         cur_action = []
+                    #         for indx in range(len(new_attrs)):
+                    #             cur_action.append("drop+" + new_attrs[indx])
+                    #         rbm.update(user, cur_action, 1)
+                    #     elif action == "drop":
+                    #         # rbm.update(user, cur_action, -1)
+                    #     else:
+                    #         rbm.update(user, cur_action, 1)
+                    #
+                    # else:
+                        # rbm.update(user, cur_action, 1)
+                    if action == "add":
+                        # rbm.update(user, cur_action, -1)
+                        cur_action = []
+                        for indx in range(len(new_attrs)):
+                            cur_action.append("drop+" + new_attrs[indx])
                         rbm.update(user, cur_action, 1)
+                    # elif action == "drop":
+                        # rbm.update(user, cur_action, -1)
                     else:
                         rbm.update(user, cur_action, 1)
                         # rbm.update(user, picked_action, -1)
@@ -140,15 +168,35 @@ class TrainingBushMosteller:
                         # print("interaction: {}".format(cur_attrs))
                         # print("Picked: {}".format(picked_action))
                         # print("Cur Action: {}".format(cur_action))
-
+                        ############################
+                        # flag = True
+                        # for a in cur_action:
+                        #     if a not in picked_action:
+                        #         flag = False
+                        #         break
+                        # if flag:
+                        #     get_f1 = 1
+                        # else:
+                        #     get_f1 = 0
+                        ############################
+                        # _, _, get_f1 = e.f1_score(cur_action, picked_action)
+                        ############################
+                        #calculating Recall (contains partial credits)
                         get_f1 = 0
-                        if picked_action[0] in cur_action:
-                            get_f1 = 1
+                        for a in cur_action:
+                            if a in picked_action:
+                                get_f1 += 1
+                        get_f1 /= len(cur_action)
+                        # print(get_f1)
+                        ############################
                         f1_score.append(get_f1)
                         total += 1
                     no_of_intr += 1
 
-        return e.before_after(f1_score, total, self.threshold)
+        if total <= 5:
+            return -1, -1, -1
+        else:
+            return e.before_after(f1_score, total, self.threshold)
 
     #Bush and Mosteller algorithm with states
     def run_bush_mosteller_state(self,user, cur_data, dataset, cur_task, k, alpha, beta, cat = False):
@@ -265,15 +313,23 @@ class TrainingBushMosteller:
     def f1_data(self, obj, dataset, task, epoch, k, alpha, beta):
         f1_score = f1_before = f1_after = 0
         num_users = bush.users
+        minus = 0
         for user in num_users:
             avrg_user = 0
             avg_userb = avg_usera = 0
             data = obj.read_cur_data(user, dataset)
+            flag = True
             for experiment in range(epoch):
                 accu_b, accu_a, accu = self.run_bush_mosteller_nostate(user, data, dataset, task, k, alpha, beta, True)
+                if accu == -1:
+                    flag = False
+                    break
                 avrg_user += accu
                 avg_userb += accu_b
                 avg_usera += accu_a
+            if flag is False:
+                minus += 1
+                continue
             f1_score += (avrg_user / epoch)
             f1_before += (avg_userb / epoch)
             f1_after += (avg_usera / epoch)
@@ -292,7 +348,7 @@ if __name__ == '__main__':
     task = ['t2', 't3', 't4']
 
     epoch = 10
-    k = 1
+    k = 3
     #Hyper-parameter values for task t2, t3 and t4
     alpha = [0.5, 0.5, 0.5]
     beta = [0.1, 0.15, 0.05]

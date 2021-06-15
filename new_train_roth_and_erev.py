@@ -53,7 +53,8 @@ class TrainRothAndErev:
                 c.faa1()
 
         total = 0
-        f1_score = []
+        # f1_score = []
+        f1_score = 0
         no_of_intr = 0
         prev_attrs = []
 
@@ -80,7 +81,7 @@ class TrainRothAndErev:
                     # print("-> {}".format(action))
                 elif cur_attrs == prev_attrs:
                     action = "unchanged"
-                    # continue
+                    continue
                     # print("-> {}".format(action))
                 elif len(prev_attrs) == len(cur_attrs):
                     # Check if the interaction is equal
@@ -141,29 +142,29 @@ class TrainRothAndErev:
 
                 #reinforcing the learning model
                 ##########################################################
-                # if picked_action[0] in cur_action:
-                #     if action == "add":
-                #         # rae.update_qtable(user, cur_action, 1, forgetting)
-                #         cur_action = []
-                #         for indx in range(len(new_attrs)):
-                #             cur_action.append("drop+" + new_attrs[indx])
-                #         rae.update_qtable(user, cur_action, 1, forgetting)
-                #     elif action == "drop":
-                #         rae.update_qtable(user, cur_action, 1, forgetting)
-                #     else:
-                #         rae.update_qtable(user, cur_action, 1, forgetting)
-                #
-                # else:
-                if action == "add":
-                    # rae.update_qtable(user, cur_action, 1, forgetting)
-                    cur_action = []
-                    for indx in range(len(new_attrs)):
-                        cur_action.append("drop+" + new_attrs[indx])
-                    rae.update_qtable(user, cur_action, 1, forgetting)
-                elif action == "drop":
-                    rae.update_qtable(user, cur_action, 1, forgetting)
+                if picked_action[0] in cur_action:
+                    if action == "add":
+                        # rae.update_qtable(user, cur_action, 1, forgetting)
+                        cur_action = []
+                        for indx in range(len(new_attrs)):
+                            cur_action.append("drop+" + new_attrs[indx])
+                        rae.update_qtable(user, cur_action, 1, forgetting)
+                    elif action == "drop":
+                        rae.update_qtable(user, cur_action, 1, forgetting)
+                    else:
+                        rae.update_qtable(user, cur_action, 1, forgetting)
+
                 else:
-                    rae.update_qtable(user, cur_action, 1, forgetting)
+                    if action == "add":
+                        # rae.update_qtable(user, cur_action, 1, forgetting)
+                        cur_action = []
+                        for indx in range(len(new_attrs)):
+                            cur_action.append("drop+" + new_attrs[indx])
+                        rae.update_qtable(user, cur_action, 1, forgetting)
+                    elif action == "drop":
+                        rae.update_qtable(user, cur_action, 1, forgetting)
+                    else:
+                        rae.update_qtable(user, cur_action, 1, forgetting)
                     # rae.update_qtable(user, cur_action, 2, forgetting)
                     # rae.update_qtable(user, picked_action, -1, forgetting)
                 # pdb.set_trace()
@@ -174,25 +175,25 @@ class TrainRothAndErev:
 
                 if no_of_intr >= 2:
                     # print("interaction: {}".format(cur_attrs))
-                    # print("Ground: {}".format(cur_action))
                     # print("Picked: {}".format(picked_action))
+                    # print("Cur Action: {}".format(cur_action))
                     # pdb.set_trace()
-                    # _, _, get_f1 = e.f1_score(cur_action, picked_action)
+                    _, _, get_f1 = e.f1_score(cur_action, picked_action)
                     # get_f1 = 0
                     # if picked_action[0] in cur_action:
                     #     get_f1 = 1
-                    ######################
-                    # calculating Recall (contains partial credits)
-                    get_f1 = 0
-                    for a in cur_action:
-                        if a in picked_action:
-                            get_f1 += 1
-                    get_f1 /= len(cur_action)
-                    ######################
-                    f1_score.append(get_f1)
+                    # f1_score.append(get_f1)
+                    f1_score += get_f1
                     total += 1
                 no_of_intr += 1
-        return e.before_after(f1_score, total, self.threshold)
+        if total == 0:
+            # print("user {} dataset {} task {}".format(user, dataset, task))
+            return -1
+        else:
+            return f1_score / total
+
+        # return e.before_after(f1_score, total, self.threshold)
+        # return 0, 0, 0
 
     # Running Roth and Erev algorithm with states
     def run_roth_and_erev_state(self, cur_data, user, dataset, cur_task, k, forgetting, cat = True):
@@ -304,20 +305,25 @@ class TrainRothAndErev:
         f1_score = f1_before = f1_after = 0
         for user in self.users:
             avrg_user = 0
-            avg_userb = avg_usera = 0
+            # avg_userb = avg_usera = 0
             data = obj.read_cur_data(user, dataset)
             for experiment in range(epoch):
-                accu_b, accu_a, accu = self.run_roth_and_erev(data, user, dataset, task, k, ff, True)
+                # accu_b, accu_a, accu = self.run_roth_and_erev(data, user, dataset, task, k, ff, True)
+                accu = self.run_roth_and_erev(data, user, dataset, task, k, ff, True)
+                if accu == -1:
+                    print("user {} dataset {} task {}".format(user, dataset, task))
                 avrg_user += accu
-                avg_userb += accu_b
-                avg_usera += accu_a
+                # avg_userb += accu_b
+                # avg_usera += accu_a
             f1_score += (avrg_user / epoch)
-            f1_before += (avg_userb / epoch)
-            f1_after += (avg_usera / epoch)
+            # f1_before += (avg_userb / epoch)
+            # f1_after += (avg_usera / epoch)
         f1_score /= len(self.users)
-        f1_before /= len(self.users)
-        f1_after /= len(self.users)
-        print("Task {} f1_score, f1_before, f1_after = {:.2f} [{:.2f}, {:.2f}]".format(task, f1_score, f1_before, f1_after))
+        # f1_before /= len(self.users)
+        # f1_after /= len(self.users)
+        # print("Task {} f1_score, f1_before, f1_after = {:.2f} [{:.2f}, {:.2f}]".format(task, f1_score, f1_before, f1_after))
+        print("Task {} f1_score = {:.2f}".format(task, f1_score))
+
 
 if __name__ == '__main__':
     # roth = TrainRothAndErev()
@@ -329,9 +335,9 @@ if __name__ == '__main__':
     dataset = ['birdstrikes1', 'weather1', 'faa1']
     task = ['t2', 't3', 't4']
 
-    epoch = 10
-    k = 3
-    ff = [0, 0, 0]
+    epoch = 1
+    k = 1
+    ff = [0.25, 0.25, 0.25]
     print("***** F1-score Roth and Erev no-state *****")
     for d in dataset:
         print("Dataset: {}".format(d))
@@ -340,6 +346,7 @@ if __name__ == '__main__':
             users, all_attrs, priors, final = obj.TableauDataset(d, task[idx])
             roth = TrainRothAndErev()
             roth.set_data(users, all_attrs, priors, final)
-            roth.f1_data(obj, d, task[idx], epoch, k, ff[idx])
+            roth.f1_data(obj, d, task[idx], epoch, k, ff[idx]) #basic roth and erev
             # break
 
+    # sys.stdout.close()

@@ -99,8 +99,9 @@ class TrainHeuristics:
         after = 2
         f1_score = []
         no_of_intr = 0
-        prev_action = "reset"
+        prev_action = ["reset"]
         prev_attrs = []
+        unchgcnt = 0
 
         for row in cur_data:
             userid, ttask, seqid, state = tuple(row)
@@ -123,6 +124,7 @@ class TrainHeuristics:
                     action = "reset"
                 elif cur_attrs == prev_attrs:
                     action = "unchanged"
+                    unchgcnt += 1
                 elif len(prev_attrs) == len(cur_attrs):
                     #Check if the interaction is equal
                     action = "unchanged"
@@ -162,36 +164,62 @@ class TrainHeuristics:
 
                 prev_attrs = cur_attrs
 
+                cur_action = []
                 if action == "add":
-                    cur_action = "add+" + new_attrs[0]
+                    for indx in range(len(new_attrs)):
+                        cur_action.append("add+" + new_attrs[indx])
                 elif action == "drop":
-                    cur_action = "drop+" + dropped[0]
+                    for indx in range(len(dropped)):
+                        cur_action.append("drop+" + dropped[indx])
                 elif action == "replace":
-                    cur_action = "add+" + new_attrs[0]
+                    for indx in range(len(new_attrs)):
+                        cur_action.append("add+" + new_attrs[indx])
                 else:
-                    cur_action = action
+                    cur_action.append(action)
 
                 if no_of_intr >= after:
                     # _, _, get_f1 = e.f1_score(ground, picked_attr)
                     # print("interaction: {}".format(cur_attrs))
+                    # print("Ground: {}".format(cur_action))
                     # print("Picked: {}".format(picked_action))
-                    # print("Cur Action: {}".format(cur_action))
 
+                    ########################
+                    # calculating Recall (contains partial credits)
                     get_f1 = 0
-                    if cur_action == picked_action:
-                        get_f1 = 1
+                    for a in cur_action:
+                        if a in picked_action:
+                            get_f1 += 1
+                    get_f1 /= len(cur_action)
+                    ########################
+                    # _, _, get_f1 = e.f1_score(cur_action, picked_action)
+                    ########################
                     f1_score.append(get_f1)
                     total += 1
                 no_of_intr += 1
 
+                # temp = False
+                # for a in cur_action:
+                #     if a in picked_action:
+                #         temp = True
                 if cur_action == picked_action:
                     prev_action = cur_action
+                # if temp:
+                #     prev_action = cur_action
                 else:
+                    ret = []
+                    choices = action_set.copy()
+                    kk = k
+                    while kk > 0:
+                        pick = np.random.randint(0, len(choices))
+                        ret.append(choices[pick])
+                        del choices[pick]
+                        kk -= 1
                     # pick = np.random.randint(len(action_set))
-                    # prev_action = action_set[pick]
-                    prev_action = cur_action
+                    prev_action = ret
+                    # prev_action = cur_action
                 # pdb.set_trace()
         # print(f1_score)
+        # print(total)
         return e.before_after(f1_score, total, self.threshold)
 
     def f1_data(self, obj, dataset, task, epoch, k):
@@ -221,7 +249,7 @@ if __name__ == '__main__':
     dataset = ['birdstrikes1', 'weather1', 'faa1']
     task = ['t2', 't3', 't4']
 
-    epoch = 1
+    epoch = 10
     k = 3
 
     print("***** F1-score Win-Keep Lose-Randomize no-state *****")

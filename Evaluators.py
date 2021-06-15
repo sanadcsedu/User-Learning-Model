@@ -62,5 +62,7 @@ class Evaluators:
 
 if __name__ == "__main__":
     e = Evaluators()
-    p, r, f1 = e.f1_score(['A', 'B', 'C', 'D', 'E'], ['E', 'C'])
-    print("{} {} {}".format(p, r, f1))
+    p, r, f1 = e.f1_score(['A', 'B', 'C'], ['E', 'C'])
+    print("{:.2f} {:.2f} {:.2f}".format(p, r, f1))
+    p, r, f1 = e.f1_score(['A', 'B', 'C'], ['B', 'E', 'C', 'D'])
+    print("{:.2f} {:.2f} {:.2f}".format(p, r, f1))

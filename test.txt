@@ -1,0 +1,4494 @@
+***** F1-score Roth and Erev no-state *****
+Dataset: birdstrikes1
+###########################
+
+-> reset
+"damage"
+-> add ['damaged_parts']
+"damage"
+-> unchanged
+"damage"
+-> unchanged
+"ac_class", "damage"
+-> add ['airplane']
+"ac_class", "damage"
+-> unchanged
+"ac_class", "damage"
+-> unchanged
+"ac_class", "damage", "number of records"
+-> add ['aggregation']
+"ac_class", "damage", "number of records"
+-> unchanged
+"ac_class", "damage", "number of records"
+-> unchanged
+
+-> reset
+"ac_class"
+-> add ['airplane']
+"ac_class", "damage"
+-> add ['damaged_parts']
+"ac_class"
+-> drop ['damaged_parts']
+"ac_class", "damage"
+-> add ['damaged_parts']
+"ac_class", "damage"
+-> unchanged
+"ac_class"
+-> drop ['damaged_parts']
+"ac_class", "birds_struck"
+-> add ['birds']
+"ac_class", "birds_struck"
+-> unchanged
+"ac_class", "birds_struck"
+-> unchanged
+"ac_class", "birds_struck", "damage"
+-> add ['damaged_parts']
+"ac_class", "damage"
+-> drop ['birds']
+"ac_class", "damage"
+-> unchanged
+"ac_class", "damage"
+-> unchanged
+"ac_class", "damage"
+-> unchanged
+"ac_class", "damage"
+-> unchanged
+"ac_class", "damage"
+-> unchanged
+
+-> reset
+"dam_eng1"
+-> add ['damaged_parts']
+
+-> reset
+"damage"
+-> add ['damaged_parts']
+"ac_class", "damage", "number of records"
+-> add ['aggregation', 'airplane']
+"ac_class", "damage", "number of records"
+-> unchanged
+"ac_class", "damage", "number of records"
+-> unchanged
+"ac_class", "damage", "number of records"
+-> unchanged
+"ac_class", "damage", "number of records"
+-> unchanged
+"ac_class", "damage", "number of records"
+-> unchanged
+"ac_class", "damage", "number of records"
+-> unchanged
+"ac_class", "damage", "number of records"
+-> unchanged
+"ac_class", "damage", "number of records"
+-> unchanged
+"ac_class", "damage", "number of records"
+-> unchanged
+"ac_class", "damage", "number of records"
+-> unchanged
+"ac_class", "damage", "number of records"
+-> unchanged
+
+-> reset
+"damage"
+-> add ['damaged_parts']
+"damage"
+-> unchanged
+"ac_class", "damage"
+-> add ['airplane']
+"ac_class", "damage", "number of records"
+-> add ['aggregation']
+"ac_class", "damage", "number of records"
+-> unchanged
+"ac_class", "damage", "number of records"
+-> unchanged
+"ac_class", "damage", "number of records"
+-> unchanged
+"ac_class", "damage", "number of records"
+-> unchanged
+"ac_class", "damage", "number of records"
+-> unchanged
+
+-> reset
+"damage"
+-> add ['damaged_parts']
+
+-> reset
+"ac_class"
+-> add ['airplane']
+"ac_class", "damage"
+-> add ['damaged_parts']
+"ac_class", "damage"
+-> unchanged
+"ac_class", "damage"
+-> unchanged
+"damage"
+-> drop ['airplane']
+"ac_class", "damage"
+-> add ['airplane']
+"ac_class", "damage"
+-> unchanged
+"ac_class", "damage"
+-> unchanged
+"ac_class", "damage"
+-> unchanged
+"ac_class", "damage"
+-> unchanged
+
+-> reset
+"ac_class"
+-> add ['airplane']
+"ac_class", "damage"
+-> add ['damaged_parts']
+"ac_class", "damage"
+-> unchanged
+"ac_class", "damage"
+-> unchanged
+"ac_class", "damage"
+-> unchanged
+"ac_class", "damage", "indicated_damage"
+-> unchanged
+"ac_class", "damage", "indicated_damage"
+-> unchanged
+"ac_class", "damage", "indicated_damage"
+-> unchanged
+"ac_class", "damage", "indicated_damage"
+-> unchanged
+"ac_class", "damage", "indicated_damage"
+-> unchanged
+"ac_class", "damage", "indicated_damage"
+-> unchanged
+"ac_class", "damage", "indicated_damage"
+-> unchanged
+"ac_class", "damage", "indicated_damage"
+-> unchanged
+"ac_class", "damage", "indicated_damage"
+-> unchanged
+"ac_class", "damage", "indicated_damage"
+-> unchanged
+"ac_class", "damage", "indicated_damage"
+-> unchanged
+"ac_class", "damage", "indicated_damage"
+-> unchanged
+"ac_class", "damage", "indicated_damage"
+-> unchanged
+"ac_class", "damage", "indicated_damage"
+-> unchanged
+"ac_class", "damage", "indicated_damage"
+-> unchanged
+"ac_class", "damage", "indicated_damage"
+-> unchanged
+"ac_class", "damage", "indicated_damage"
+-> unchanged
+"ac_class", "damage", "indicated_damage"
+-> unchanged
+"ac_class", "damage", "indicated_damage"
+-> unchanged
+"ac_class", "damage", "indicated_damage"
+-> unchanged
+"ac_class", "damage", "indicated_damage"
+-> unchanged
+
+-> reset
+"damage"
+-> add ['damaged_parts']
+"ac_class", "damage"
+-> add ['airplane']
+"ac_class", "damage", "number of records"
+-> add ['aggregation']
+"ac_class", "damage", "number of records"
+-> unchanged
+"ac_class", "damage", "number of records"
+-> unchanged
+"ac_class", "damage", "number of records"
+-> unchanged
+"ac_class", "damage", "number of records"
+-> unchanged
+"ac_class", "damage", "number of records"
+-> unchanged
+"ac_class", "damage", "number of records"
+-> unchanged
+"ac_class", "damage", "number of records"
+-> unchanged
+
+-> reset
+"ac_class"
+-> add ['airplane']
+"ac_class"
+-> unchanged
+"ac_class"
+-> unchanged
+"ac_class", "damage"
+-> add ['damaged_parts']
+"ac_class", "damage", "species"
+-> unchanged
+"ac_class", "damage"
+-> unchanged
+"ac_class", "birds_struck", "damage"
+-> add ['birds']
+"ac_class", "damage"
+-> drop ['birds']
+"ac_class", "birds_struck", "damage"
+-> add ['birds']
+"ac_class", "damage"
+-> drop ['birds']
+"ac_class", "birds_struck", "damage"
+-> add ['birds']
+"ac_class", "birds_struck", "damage", "number of records"
+-> add ['aggregation']
+"ac_class", "birds_struck", "damage"
+-> drop ['aggregation']
+"ac_class", "birds_struck", "damage", "number of records"
+-> add ['aggregation']
+"ac_class", "birds_struck", "damage", "number of records"
+-> unchanged
+"ac_class", "birds_struck", "damage", "number of records"
+-> unchanged
+"ac_class", "birds_struck", "damage", "number of records"
+-> unchanged
+"ac_class", "birds_struck", "damage", "number of records"
+-> unchanged
+"ac_class", "birds_struck", "damage", "number of records"
+-> unchanged
+"ac_class", "birds_struck", "damage", "number of records"
+-> unchanged
+"ac_class", "birds_struck", "damage", "number of records"
+-> unchanged
+"dam_eng1", "dam_eng2", "dam_windshld", "dam_wing_rot", "damage"
+-> add ['damaged_parts']
+"dam_eng1", "dam_windshld", "dam_wing_rot", "damage"
+-> unchanged
+"dam_eng1", "dam_windshld", "damage"
+-> unchanged
+"dam_eng1", "damage"
+-> unchanged
+"ac_class", "dam_eng1", "damage"
+-> add ['airplane']
+"ac_class", "damage"
+-> unchanged
+"ac_class", "damage"
+-> unchanged
+"ac_class", "damage"
+-> unchanged
+"ac_class", "damage"
+-> unchanged
+
+-> reset
+"ac_class"
+-> add ['airplane']
+"ac_class", "damage"
+-> add ['damaged_parts']
+"ac_class", "damage"
+-> unchanged
+"ac_class", "damage"
+-> unchanged
+"ac_class", "damage"
+-> unchanged
+"ac_class", "damage"
+-> unchanged
+"damage"
+-> drop ['airplane']
+"ac_class", "damage"
+-> add ['airplane']
+"ac_class", "damage"
+-> unchanged
+"ac_class", "damage"
+-> unchanged
+"ac_class", "damage"
+-> unchanged
+"ac_class", "damage"
+-> unchanged
+"ac_class", "damage"
+-> unchanged
+"ac_class", "damage"
+-> unchanged
+"ac_class", "damage"
+-> unchanged
+"ac_class", "damage"
+-> unchanged
+"ac_class", "damage"
+-> unchanged
+"ac_class", "damage"
+-> unchanged
+"ac_class", "damage"
+-> unchanged
+"ac_class", "damage"
+-> unchanged
+"ac_class", "damage", "number of records"
+-> add ['aggregation']
+"ac_class", "damage", "number of records"
+-> unchanged
+"ac_class", "damage", "number of records"
+-> unchanged
+"ac_class", "damage", "number of records"
+-> unchanged
+"ac_class", "damage", "number of records"
+-> unchanged
+"ac_class", "damage", "number of records"
+-> unchanged
+"ac_class", "damage", "number of records"
+-> unchanged
+"ac_class", "damage", "number of records"
+-> unchanged
+"ac_class", "damage", "number of records"
+-> unchanged
+"ac_class", "damage", "number of records"
+-> unchanged
+"ac_class", "damage", "number of records"
+-> unchanged
+"ac_class", "damage", "number of records"
+-> unchanged
+"ac_class", "damage", "number of records"
+-> unchanged
+"ac_class", "damage", "number of records"
+-> unchanged
+"ac_class", "damage", "number of records"
+-> unchanged
+"ac_class", "damage", "number of records"
+-> unchanged
+"ac_class", "damage", "number of records"
+-> unchanged
+"ac_class", "damage", "number of records"
+-> unchanged
+"ac_class", "damage", "number of records"
+-> unchanged
+"ac_class", "damage", "number of records"
+-> unchanged
+"ac_class", "damage", "number of records"
+-> unchanged
+"ac_class", "damage", "number of records"
+-> unchanged
+"ac_class", "damage", "number of records"
+-> unchanged
+
+-> reset
+"ac_class"
+-> add ['airplane']
+"ac_class"
+-> unchanged
+"ac_class", "damage"
+-> add ['damaged_parts']
+"ac_class", "damage"
+-> unchanged
+"ac_class", "damage"
+-> unchanged
+"ac_class", "damage"
+-> unchanged
+"ac_class", "damage"
+-> unchanged
+"ac_class", "damage"
+-> unchanged
+"ac_class", "damage"
+-> unchanged
+"ac_class", "damage"
+-> unchanged
+"ac_class", "damage"
+-> unchanged
+"ac_class", "damage", "number of records"
+-> add ['aggregation']
+"ac_class", "damage", "number of records"
+-> unchanged
+"ac_class", "damage"
+-> drop ['aggregation']
+"ac_class", "damage", "number of records"
+-> add ['aggregation']
+"ac_class", "damage", "number of records"
+-> unchanged
+"ac_class", "damage", "number of records"
+-> unchanged
+"ac_class", "damage", "number of records"
+-> unchanged
+"ac_class", "damage", "number of records"
+-> unchanged
+"ac_class", "damage", "number of records"
+-> unchanged
+"ac_class", "damage", "number of records"
+-> unchanged
+"ac_class", "damage", "number of records"
+-> unchanged
+"ac_class", "damage", "number of records"
+-> unchanged
+"ac_class", "damage", "number of records"
+-> unchanged
+"ac_class", "damage", "number of records"
+-> unchanged
+"ac_class", "damage", "number of records"
+-> unchanged
+"ac_class", "damage", "number of records"
+-> unchanged
+"ac_class", "damage", "number of records"
+-> unchanged
+"ac_class", "damage"
+-> drop ['aggregation']
+"ac_class", "damage"
+-> unchanged
+"ac_class", "damage"
+-> unchanged
+"ac_class", "damage"
+-> unchanged
+"ac_class", "damage"
+-> unchanged
+"ac_class", "damage"
+-> unchanged
+Task t2 f1_score, f1_before, f1_after = 0.00 [0.00, 0.00]
+
+-> reset
+"incident_date"
+-> add ['event_time']
+"incident_date"
+-> unchanged
+"incident_date", "number of records"
+-> add ['aggregation']
+"incident_date", "number of records", "precip"
+-> add ['weather']
+"incident_date", "number of records", "precip", "sky"
+-> unchanged
+
+-> reset
+"incident_date"
+-> add ['event_time']
+"incident_date", "precip"
+-> add ['weather']
+"incident_date", "precip", "sky"
+-> unchanged
+"incident_date", "precip", "sky"
+-> unchanged
+"incident_date", "sky"
+-> unchanged
+"incident_date", "number of records", "sky"
+-> add ['aggregation']
+"incident_date", "number of records", "sky"
+-> unchanged
+"incident_date", "number of records", "sky"
+-> unchanged
+"incident_date", "number of records", "sky"
+-> unchanged
+"incident_date", "number of records", "sky"
+-> unchanged
+"incident_date", "number of records", "sky"
+-> unchanged
+"incident_date", "number of records", "sky"
+-> unchanged
+"incident_date", "number of records", "sky"
+-> unchanged
+"incident_date", "number of records", "sky"
+-> unchanged
+"incident_date", "number of records", "sky"
+-> unchanged
+"incident_date", "number of records", "precip", "sky"
+-> unchanged
+"incident_date", "number of records", "precip"
+-> unchanged
+"incident_date", "number of records", "precip"
+-> unchanged
+"incident_date", "number of records", "precip"
+-> unchanged
+"incident_date", "number of records", "precip"
+-> unchanged
+"incident_date", "number of records", "precip"
+-> unchanged
+"incident_date", "number of records"
+-> drop ['weather']
+"incident_date", "number of records", "precip"
+-> add ['weather']
+"incident_date", "number of records", "precip"
+-> unchanged
+
+-> reset
+"incident_date"
+-> add ['event_time']
+"birds_struck", "incident_date"
+-> add ['birds']
+"birds_struck", "incident_date"
+-> unchanged
+"birds_struck", "incident_date", "number of records"
+-> add ['aggregation']
+"incident_date", "number of records"
+-> drop ['birds']
+"incident_date"
+-> drop ['aggregation']
+"incident_date", "number of records"
+-> add ['aggregation']
+"incident_date", "number of records", "precip"
+-> add ['weather']
+"incident_date", "number of records", "precip"
+-> unchanged
+"incident_date", "number of records", "precip"
+-> unchanged
+"incident_date", "number of records", "precip", "sky"
+-> unchanged
+"incident_date", "number of records", "precip", "sky"
+-> unchanged
+"incident_date", "precip", "sky"
+-> drop ['aggregation']
+"incident_date", "number of records", "precip", "sky"
+-> add ['aggregation']
+"incident_date", "number of records", "precip", "sky"
+-> unchanged
+"incident_date", "number of records", "precip"
+-> unchanged
+"incident_date", "number of records", "precip", "sky"
+-> unchanged
+"incident_date", "number of records", "precip", "sky"
+-> unchanged
+"incident_date", "number of records", "precip", "sky"
+-> unchanged
+"incident_date", "number of records", "precip", "sky"
+-> unchanged
+"incident_date", "number of records", "precip", "sky"
+-> unchanged
+"incident_date", "number of records", "precip", "sky"
+-> unchanged
+"incident_date", "number of records", "precip", "sky"
+-> unchanged
+"incident_date", "number of records", "precip", "sky"
+-> unchanged
+"incident_date", "number of records", "precip", "sky"
+-> unchanged
+"incident_date", "number of records", "precip", "sky"
+-> unchanged
+"incident_date", "number of records", "precip", "sky"
+-> unchanged
+"incident_date", "number of records", "precip", "sky"
+-> unchanged
+"incident_date", "number of records", "precip", "sky"
+-> unchanged
+"incident_date", "number of records", "precip", "sky"
+-> unchanged
+"incident_date", "number of records", "precip", "sky"
+-> unchanged
+"incident_date", "number of records", "precip", "sky"
+-> unchanged
+"incident_date", "number of records", "precip", "sky"
+-> unchanged
+"incident_date", "number of records", "precip", "sky"
+-> unchanged
+"incident_date", "number of records", "precip", "sky"
+-> unchanged
+"incident_date", "number of records", "precip", "sky"
+-> unchanged
+"incident_date", "number of records", "precip", "sky"
+-> unchanged
+"incident_date", "number of records", "precip", "sky"
+-> unchanged
+"incident_date", "number of records", "precip", "sky"
+-> unchanged
+
+-> reset
+"precip"
+-> add ['weather']
+"precip"
+-> unchanged
+"precip"
+-> unchanged
+"number of records", "precip"
+-> add ['aggregation']
+"number of records", "precip"
+-> unchanged
+"number of records", "precip"
+-> unchanged
+
+-> reset
+"number of records", "reported_date"
+-> add ['aggregation', 'event_time']
+
+-> reset
+"incident_date", "number of records"
+-> add ['event_time', 'aggregation']
+"incident_date", "number of records", "precip"
+-> add ['weather']
+"incident_date", "number of records", "sky"
+-> unchanged
+"incident_date", "number of records", "sky"
+-> unchanged
+"incident_date", "number of records", "sky"
+-> unchanged
+"incident_date", "number of records", "sky"
+-> unchanged
+"incident_date", "number of records", "sky"
+-> unchanged
+"incident_date", "number of records", "precip", "sky"
+-> unchanged
+"incident_date", "number of records", "precip", "sky"
+-> unchanged
+"incident_date", "number of records", "precip", "sky"
+-> unchanged
+"incident_date", "number of records", "precip", "sky"
+-> unchanged
+
+-> reset
+"precip"
+-> add ['weather']
+
+-> reset
+"sky"
+-> add ['weather']
+
+-> reset
+"incident_month"
+-> add ['event_time']
+"incident_month", "precip"
+-> add ['weather']
+"incident_month", "precip", "sky"
+-> unchanged
+"incident_month", "number of records", "precip", "sky"
+-> add ['aggregation']
+"incident_month", "number of records", "precip", "sky"
+-> unchanged
+"incident_month", "number of records", "precip", "sky"
+-> unchanged
+"incident_month", "number of records", "precip", "sky"
+-> unchanged
+"number of records", "precip", "sky"
+-> drop ['event_time']
+"number of records", "precip", "sky"
+-> unchanged
+"incident_month", "number of records", "precip", "sky"
+-> add ['event_time']
+"number of records", "precip", "sky"
+-> drop ['event_time']
+"incident_date", "number of records", "precip", "sky"
+-> add ['event_time']
+"incident_date", "number of records", "precip", "sky"
+-> unchanged
+"incident_date", "number of records", "precip", "sky"
+-> unchanged
+"incident_date", "number of records", "precip"
+-> unchanged
+"incident_date", "number of records", "precip", "sky"
+-> unchanged
+"incident_date", "number of records", "sky"
+-> unchanged
+"incident_date", "number of records", "sky"
+-> unchanged
+
+-> reset
+"precip"
+-> add ['weather']
+"precip", "sky"
+-> unchanged
+"sky"
+-> unchanged
+"precip", "sky"
+-> unchanged
+"incident_date", "precip", "sky"
+-> add ['event_time']
+"incident_date", "precip", "sky"
+-> unchanged
+"incident_date", "precip", "sky"
+-> unchanged
+"incident_date", "precip", "sky"
+-> unchanged
+"incident_date", "precip", "sky"
+-> unchanged
+"incident_date", "number of records", "precip", "sky"
+-> add ['aggregation']
+"incident_date", "number of records", "precip", "sky"
+-> unchanged
+"incident_date", "number of records", "precip", "sky"
+-> unchanged
+"incident_date", "number of records", "precip", "sky"
+-> unchanged
+"incident_date", "number of records", "precip", "sky"
+-> unchanged
+"incident_date", "number of records", "precip", "sky"
+-> unchanged
+"incident_date", "number of records", "precip", "sky"
+-> unchanged
+
+-> reset
+"precip"
+-> add ['weather']
+"precip", "sky"
+-> unchanged
+"precip", "sky"
+-> unchanged
+"precip", "sky"
+-> unchanged
+"incident_date", "precip", "sky"
+-> add ['event_time']
+"incident_date", "precip", "sky"
+-> unchanged
+"incident_date", "precip", "sky"
+-> unchanged
+"incident_date", "precip", "sky"
+-> unchanged
+"incident_date", "precip", "sky"
+-> unchanged
+"incident_date", "sky"
+-> unchanged
+"incident_date", "sky"
+-> unchanged
+"incident_date", "sky"
+-> unchanged
+"incident_date", "sky"
+-> unchanged
+"incident_date", "sky"
+-> unchanged
+"incident_date", "sky"
+-> unchanged
+"incident_date", "sky"
+-> unchanged
+"incident_date", "sky"
+-> unchanged
+"incident_date", "sky"
+-> unchanged
+"incident_date", "sky"
+-> unchanged
+"incident_date", "sky"
+-> unchanged
+"incident_date", "sky"
+-> unchanged
+"incident_date", "sky"
+-> unchanged
+"incident_date", "sky"
+-> unchanged
+"incident_date", "sky"
+-> unchanged
+"incident_date", "sky"
+-> unchanged
+"incident_date", "sky"
+-> unchanged
+"incident_date", "sky"
+-> unchanged
+"incident_date", "sky"
+-> unchanged
+"incident_date", "sky"
+-> unchanged
+"incident_date", "sky"
+-> unchanged
+"incident_date", "sky"
+-> unchanged
+"incident_date", "sky"
+-> unchanged
+"incident_date", "sky"
+-> unchanged
+"incident_date", "sky"
+-> unchanged
+
+-> reset
+"precip"
+-> add ['weather']
+"precip", "sky"
+-> unchanged
+"incident_date", "precip", "sky"
+-> add ['event_time']
+"incident_date", "number of records", "precip", "sky"
+-> add ['aggregation']
+"incident_date", "number of records", "precip", "sky"
+-> unchanged
+"incident_date", "number of records", "precip", "sky"
+-> unchanged
+"incident_date", "number of records", "precip", "sky"
+-> unchanged
+"incident_date", "number of records", "precip", "sky"
+-> unchanged
+"incident_date", "number of records", "precip"
+-> unchanged
+"incident_date", "number of records", "precip"
+-> unchanged
+"incident_date", "number of records", "precip"
+-> unchanged
+"incident_date", "number of records", "precip", "sky"
+-> unchanged
+"incident_date", "number of records", "precip", "sky"
+-> unchanged
+"incident_date", "number of records", "sky"
+-> unchanged
+"incident_date", "number of records", "precip", "sky"
+-> unchanged
+
+-> reset
+"precip"
+-> add ['weather']
+"precip", "sky"
+-> unchanged
+"precip", "sky"
+-> unchanged
+"precip", "sky"
+-> unchanged
+"number of records", "precip", "sky"
+-> add ['aggregation']
+"number of records", "precip", "sky"
+-> unchanged
+"number of records", "precip", "sky"
+-> unchanged
+"number of records", "precip", "sky"
+-> unchanged
+"number of records", "precip", "sky"
+-> unchanged
+"number of records", "precip", "sky"
+-> unchanged
+"number of records", "precip", "sky"
+-> unchanged
+"number of records", "precip", "sky"
+-> unchanged
+"number of records", "precip", "sky"
+-> unchanged
+
+-> reset
+"ac_class", "damage"
+-> add ['damaged_parts', 'airplane']
+"incident_date"
+-> drop ['damaged_parts', 'airplane']
+"birds_struck", "incident_date"
+-> add ['birds']
+"incident_date"
+-> drop ['birds']
+"incident_date", "number of records"
+-> add ['aggregation']
+"incident_date", "number of records"
+-> unchanged
+"incident_date", "number of records"
+-> unchanged
+"incident_date", "number of records", "precip"
+-> add ['weather']
+"incident_date", "number of records"
+-> drop ['weather']
+"incident_date", "number of records", "precip"
+-> add ['weather']
+"incident_date", "number of records", "precip", "sky"
+-> unchanged
+"incident_date", "number of records", "precip"
+-> unchanged
+"incident_date", "number of records", "precip"
+-> unchanged
+"incident_date", "number of records", "precip"
+-> unchanged
+"incident_date", "number of records", "precip"
+-> unchanged
+"incident_date", "number of records", "precip"
+-> unchanged
+"incident_date", "number of records", "precip"
+-> unchanged
+"incident_date", "number of records", "precip"
+-> unchanged
+"incident_date", "number of records", "precip"
+-> unchanged
+"incident_date", "number of records", "precip"
+-> unchanged
+"incident_date", "number of records", "precip"
+-> unchanged
+"incident_date", "number of records", "precip"
+-> unchanged
+"incident_date", "number of records", "precip"
+-> unchanged
+"incident_date", "number of records", "precip"
+-> unchanged
+"incident_date", "number of records", "precip"
+-> unchanged
+"incident_date", "number of records", "precip"
+-> unchanged
+
+-> reset
+"precip"
+-> add ['weather']
+"precip", "sky"
+-> unchanged
+"precip", "sky", "time_of_day"
+-> add ['event_time']
+"number of records", "precip", "sky", "time_of_day"
+-> add ['aggregation']
+"number of records", "precip", "sky", "time_of_day"
+-> unchanged
+
+-> reset
+"incident_date"
+-> add ['event_time']
+"incident_date", "number of records"
+-> add ['aggregation']
+"incident_date", "number of records"
+-> unchanged
+"incident_date", "number of records"
+-> unchanged
+"incident_date", "number of records", "precip"
+-> add ['weather']
+"incident_date", "number of records", "precip"
+-> unchanged
+"incident_date", "number of records", "precip"
+-> unchanged
+"incident_date", "number of records", "precip"
+-> unchanged
+"incident_date", "number of records", "precip"
+-> unchanged
+"incident_date", "number of records", "precip", "sky"
+-> unchanged
+"incident_date", "number of records", "precip", "sky"
+-> unchanged
+"incident_date", "number of records", "precip", "sky"
+-> unchanged
+
+-> reset
+"incident_date"
+-> add ['event_time']
+"incident_date", "precip"
+-> add ['weather']
+"incident_date", "precip", "sky"
+-> unchanged
+"incident_date", "precip", "sky"
+-> unchanged
+"incident_date", "precip"
+-> unchanged
+"incident_date", "precip"
+-> unchanged
+"incident_date", "precip"
+-> unchanged
+"incident_date", "precip"
+-> unchanged
+"incident_date", "precip"
+-> unchanged
+"incident_date", "precip"
+-> unchanged
+"incident_date", "number of records", "precip"
+-> add ['aggregation']
+"incident_date", "number of records", "precip"
+-> unchanged
+"incident_date", "number of records", "precip"
+-> unchanged
+"incident_date", "number of records", "precip"
+-> unchanged
+"incident_date", "number of records", "precip"
+-> unchanged
+"incident_date", "number of records", "precip"
+-> unchanged
+"incident_date", "number of records", "precip"
+-> unchanged
+"incident_date", "number of records", "precip"
+-> unchanged
+"incident_date", "number of records", "precip"
+-> unchanged
+"incident_date", "number of records", "precip"
+-> unchanged
+"incident_date", "number of records", "precip"
+-> unchanged
+"incident_date", "number of records", "precip"
+-> unchanged
+Task t3 f1_score, f1_before, f1_after = 0.00 [0.00, 0.00]
+
+-> reset
+"ac_class", "number of records"
+-> add ['aggregation', 'airplane']
+"ac_class", "number of records"
+-> unchanged
+"ac_class", "atype", "number of records"
+-> unchanged
+"atype", "number of records"
+-> unchanged
+"atype", "number of records"
+-> unchanged
+"atype", "number of records", "phase_of_flt"
+-> add ['flight_related']
+"number of records", "phase_of_flt"
+-> drop ['airplane']
+"number of records"
+-> drop ['flight_related']
+"number of records", "precip"
+-> add ['weather']
+"number of records", "person", "precip"
+-> unchanged
+"number of records", "person"
+-> drop ['weather']
+"number of records", "operator", "person"
+-> add ['location']
+"number of records", "operator"
+-> unchanged
+"number of records", "operator"
+-> unchanged
+"ac_mass", "number of records", "operator"
+-> add ['airplane']
+"ac_mass", "number of records"
+-> drop ['location']
+"ac_mass", "number of records"
+-> unchanged
+"ac_mass"
+-> drop ['aggregation']
+"ac_mass", "number of records"
+-> add ['aggregation']
+"number of records"
+-> drop ['airplane']
+"number of records", "sky"
+-> add ['weather']
+"number of records", "sky", "state"
+-> add ['location']
+"number of records", "state"
+-> drop ['weather']
+
+-> reset
+"ac_class"
+-> add ['airplane']
+
+-> reset
+"state"
+-> add ['location']
+"number of records", "state"
+-> add ['aggregation']
+"number of records", "state"
+-> unchanged
+"number of records", "state"
+-> unchanged
+"number of records", "operator", "state"
+-> unchanged
+"number of records", "operator", "state"
+-> unchanged
+"number of records", "operator", "state"
+-> unchanged
+"number of records", "operator", "state"
+-> unchanged
+"number of records", "operator", "state"
+-> unchanged
+"number of records", "operator", "state"
+-> unchanged
+"number of records", "operator", "size", "state"
+-> add ['birds']
+"number of records", "operator", "size", "state"
+-> unchanged
+"number of records", "operator", "state"
+-> drop ['birds']
+"number of records", "operator", "precip", "state"
+-> add ['weather']
+"number of records", "operator", "state"
+-> drop ['weather']
+"number of records", "operator", "sky", "state"
+-> add ['weather']
+"number of records", "operator", "sky", "state"
+-> unchanged
+"number of records", "operator", "sky", "state"
+-> unchanged
+"birds_struck", "number of records", "operator", "sky", "state"
+-> add ['birds']
+"birds_struck", "number of records", "operator", "sky", "state"
+-> unchanged
+"birds_struck", "number of records", "operator", "sky", "state"
+-> unchanged
+"birds_struck", "number of records", "operator", "sky", "state"
+-> unchanged
+"birds_struck", "number of records", "operator", "sky", "state", "time_of_day"
+-> add ['event_time']
+"birds_struck", "number of records", "operator", "sky", "state", "time_of_day"
+-> unchanged
+"birds_struck", "number of records", "operator", "sky", "state", "time_of_day"
+-> unchanged
+"birds_struck", "number of records", "operator", "sky", "state", "time_of_day"
+-> unchanged
+"birds_struck", "number of records", "operator", "runway", "sky", "state", "time_of_day"
+-> unchanged
+"birds_struck", "number of records", "operator", "sky", "state", "time_of_day"
+-> unchanged
+"birds_struck", "number of records", "operator", "phase_of_flt", "sky", "state", "time_of_day"
+-> add ['flight_related']
+"birds_struck", "number of records", "operator", "phase_of_flt", "sky", "state", "time_of_day"
+-> unchanged
+"birds_struck", "number of records", "operator", "phase_of_flt", "sky", "state", "time_of_day"
+-> unchanged
+"birds_struck", "number of records", "operator", "phase_of_flt", "sky", "state", "time_of_day", "type_eng"
+-> add ['airplane']
+"birds_struck", "number of records", "operator", "phase_of_flt", "sky", "state", "time_of_day", "type_eng"
+-> unchanged
+"atype", "birds_struck", "number of records", "operator", "phase_of_flt", "sky", "state", "time_of_day", "type_eng"
+-> unchanged
+
+-> reset
+"incident_date", "number of records", "precip", "sky"
+-> add ['event_time', 'weather', 'aggregation']
+"incident_date", "number of records", "precip", "sky"
+-> unchanged
+"incident_date", "number of records", "precip", "sky"
+-> unchanged
+"incident_date", "number of records", "precip"
+-> unchanged
+"incident_date", "number of records", "precip"
+-> unchanged
+"incident_date", "number of records", "precip"
+-> unchanged
+"incident_date", "number of records"
+-> drop ['weather']
+"incident_date", "number of records", "precip"
+-> add ['weather']
+"incident_date", "number of records", "precip"
+-> unchanged
+"incident_date", "indicated_damage", "number of records", "precip"
+-> add ['damaged_parts']
+"incident_date", "indicated_damage", "number of records", "precip"
+-> unchanged
+"incident_date", "indicated_damage", "number of records", "precip"
+-> unchanged
+"incident_date", "indicated_damage", "number of records", "precip"
+-> unchanged
+"incident_date", "indicated_damage", "number of records", "precip"
+-> unchanged
+"incident_date", "number of records", "precip"
+-> drop ['damaged_parts']
+"damage", "incident_date", "number of records", "precip"
+-> add ['damaged_parts']
+"damage", "incident_date", "number of records", "precip"
+-> unchanged
+"damage", "incident_date", "number of records", "precip"
+-> unchanged
+
+-> reset
+
+-> reset
+
+-> reset
+
+-> reset
+
+-> reset
+
+-> reset
+"size"
+-> add ['birds']
+"number of records", "size"
+-> add ['aggregation']
+
+-> reset
+"warned"
+-> add ['flight_related']
+"number of records", "warned"
+-> add ['aggregation']
+
+-> reset
+"type_eng"
+-> add ['airplane']
+"number of records", "type_eng"
+-> add ['aggregation']
+"number of records", "type_eng"
+-> unchanged
+
+-> reset
+"runway"
+-> reset
+"number of records", "runway"
+-> add ['aggregation']
+
+-> reset
+"phase_of_flt"
+-> add ['flight_related']
+"number of records", "phase_of_flt"
+-> add ['aggregation']
+"number of records", "phase_of_flt"
+-> unchanged
+"number of records", "phase_of_flt"
+-> unchanged
+"calculation(phase of flt dedup)", "number of records"
+-> unchanged
+"calculation(phase of flt dedup)", "number of records"
+-> unchanged
+
+-> reset
+"reported_date"
+-> add ['event_time']
+
+-> reset
+"reported_date"
+-> add ['event_time']
+"reported_date"
+-> unchanged
+"height", "reported_date"
+-> add ['flight_related']
+"height", "number of records", "reported_date"
+-> add ['aggregation']
+"height", "number of records", "reported_date"
+-> unchanged
+"height", "number of records", "reported_date"
+-> unchanged
+"height", "number of records", "reported_date"
+-> unchanged
+"height", "number of records", "reported_date"
+-> unchanged
+"height", "number of records", "reported_date"
+-> unchanged
+"height", "number of records", "reported_date"
+-> unchanged
+"height", "number of records", "reported_date"
+-> unchanged
+"height", "number of records"
+-> drop ['event_time']
+"height", "incident_date", "number of records"
+-> add ['event_time']
+"height", "number of records"
+-> drop ['event_time']
+"height", "incident_date", "number of records"
+-> add ['event_time']
+"height", "incident_date", "number of records"
+-> unchanged
+"height", "incident_date", "number of records"
+-> unchanged
+"height", "incident_date"
+-> drop ['aggregation']
+"birds_seen", "height", "incident_date"
+-> add ['birds']
+"birds_seen", "incident_date"
+-> drop ['flight_related']
+"birds_seen", "birds_struck", "incident_date"
+-> unchanged
+"birds_seen", "birds_struck", "incident_date", "number of records"
+-> add ['aggregation']
+"birds_seen", "birds_struck", "incident_date", "number of records"
+-> unchanged
+"birds_seen", "birds_struck", "incident_date", "number of records"
+-> unchanged
+"birds_seen", "birds_struck", "number of records"
+-> drop ['event_time']
+"birds_seen", "birds_struck", "number of records"
+-> unchanged
+"birds_seen", "birds_struck", "number of records", "size"
+-> unchanged
+"birds_struck", "number of records", "size"
+-> unchanged
+"birds_struck", "number of records", "size"
+-> unchanged
+"birds_struck", "number of records", "size"
+-> unchanged
+"birds_struck", "number of records", "size"
+-> unchanged
+"airport", "birds_struck", "number of records", "size"
+-> add ['location']
+"airport", "birds_struck", "number of records"
+-> unchanged
+"airport", "birds_struck", "number of records"
+-> unchanged
+"birds_struck", "number of records"
+-> drop ['location']
+"birds_struck", "cost_repairs_infl_adj", "number of records"
+-> unchanged
+
+-> reset
+"incident_date", "number of records", "precip", "sky"
+-> add ['event_time', 'weather', 'aggregation']
+"incident_date", "number of records", "precip", "sky"
+-> unchanged
+
+-> reset
+"precip"
+-> add ['weather']
+"precip", "sky"
+-> unchanged
+"precip", "sky", "time_of_day"
+-> add ['event_time']
+"number of records", "precip", "sky", "time_of_day"
+-> add ['aggregation']
+"number of records", "precip", "sky", "time_of_day"
+-> unchanged
+"number of records", "precip", "sky", "time_of_day"
+-> unchanged
+"number of records", "precip", "sky", "time_of_day"
+-> unchanged
+"number of records", "precip", "time_of_day"
+-> unchanged
+"number of records", "precip", "time_of_day"
+-> unchanged
+"number of records", "time_of_day"
+-> drop ['weather']
+"number of records", "precip", "time_of_day"
+-> add ['weather']
+"number of records", "precip", "size", "time_of_day"
+-> add ['birds']
+"number of records", "precip", "size", "time_of_day"
+-> unchanged
+"number of records", "precip", "size", "time_of_day"
+-> unchanged
+"number of records", "precip", "time_of_day"
+-> drop ['birds']
+"number of records", "precip", "time_of_day"
+-> unchanged
+"number of records", "precip", "time_of_day"
+-> unchanged
+"number of records", "precip", "species", "time_of_day"
+-> unchanged
+"number of records", "precip", "time_of_day"
+-> unchanged
+"number of records", "precip", "time", "time_of_day"
+-> unchanged
+"number of records", "precip", "time", "time_of_day"
+-> unchanged
+"number of records", "precip", "time_of_day"
+-> unchanged
+"number of records", "precip", "time_of_day", "warned"
+-> add ['flight_related']
+"number of records", "precip", "time_of_day", "warned"
+-> unchanged
+
+-> reset
+"faaregion"
+-> add ['location']
+"faaregion", "index_nr"
+-> add ['flight_related']
+"faaregion", "index_nr"
+-> unchanged
+"faaregion", "index_nr"
+-> unchanged
+"faaregion", "index_nr"
+-> unchanged
+
+-> reset
+"location"
+-> add ['location']
+"location"
+-> unchanged
+"location"
+-> unchanged
+"location", "time_of_day"
+-> add ['event_time']
+"time_of_day"
+-> drop ['location']
+"index_nr", "time_of_day"
+-> add ['flight_related']
+"index_nr", "time_of_day"
+-> unchanged
+"index_nr", "time_of_day"
+-> unchanged
+"index_nr", "time_of_day"
+-> unchanged
+"index_nr", "time_of_day"
+-> unchanged
+
+-> reset
+"ac_class"
+-> add ['airplane']
+"ac_class"
+-> unchanged
+"ac_class"
+-> unchanged
+"ac_class", "index_nr"
+-> add ['flight_related']
+"ac_class", "index_nr"
+-> unchanged
+"ac_class", "index_nr"
+-> unchanged
+"ac_class", "index_nr"
+-> unchanged
+
+-> reset
+"phase_of_flt"
+-> add ['flight_related']
+
+-> reset
+"phase_of_flt"
+-> add ['flight_related']
+"index_nr", "phase_of_flt"
+-> unchanged
+"index_nr", "phase_of_flt"
+-> unchanged
+"index_nr", "phase_of_flt"
+-> unchanged
+"height", "index_nr", "phase_of_flt"
+-> unchanged
+"height", "index_nr", "phase_of_flt"
+-> unchanged
+"height", "index_nr", "phase_of_flt"
+-> unchanged
+"height", "index_nr", "phase_of_flt"
+-> unchanged
+"index_nr", "phase_of_flt"
+-> unchanged
+"height", "index_nr", "phase_of_flt"
+-> unchanged
+"index_nr", "phase_of_flt"
+-> unchanged
+"height", "index_nr", "phase_of_flt"
+-> unchanged
+"index_nr", "phase_of_flt"
+-> unchanged
+"height", "index_nr", "phase_of_flt"
+-> unchanged
+"height", "index_nr", "phase_of_flt"
+-> unchanged
+"height", "index_nr", "phase_of_flt"
+-> unchanged
+
+-> reset
+"birds_seen"
+-> add ['birds']
+"birds_seen", "number of records"
+-> add ['aggregation']
+"birds_seen", "birds_struck", "number of records"
+-> unchanged
+"birds_struck", "number of records"
+-> unchanged
+"birds_struck", "location", "number of records"
+-> add ['location']
+"location", "number of records"
+-> drop ['birds']
+"location", "number of records"
+-> unchanged
+"location", "number of records"
+-> unchanged
+"location", "number of records"
+-> unchanged
+"location", "number of records"
+-> unchanged
+"location", "number of records", "time_of_day"
+-> add ['event_time']
+"location", "number of records", "time_of_day"
+-> unchanged
+"location", "number of records", "species", "time_of_day"
+-> unchanged
+"location", "number of records", "species", "time_of_day"
+-> unchanged
+"location", "number of records", "time_of_day"
+-> unchanged
+"airport", "location", "number of records", "time_of_day"
+-> unchanged
+"airport", "location", "number of records"
+-> drop ['event_time']
+"location", "number of records"
+-> unchanged
+"atype", "location", "number of records"
+-> add ['airplane']
+"atype", "faaregion", "location", "number of records"
+-> unchanged
+"faaregion", "location", "number of records"
+-> drop ['airplane']
+"faaregion", "location", "number of records", "phase_of_flt"
+-> add ['flight_related']
+"location", "number of records", "phase_of_flt"
+-> unchanged
+
+-> reset
+"precip"
+-> add ['weather']
+"precip", "sky"
+-> unchanged
+"precip", "sky"
+-> unchanged
+"birds_struck", "precip", "sky"
+-> add ['birds']
+"birds_struck", "precip", "sky"
+-> unchanged
+"birds_struck", "precip", "sky"
+-> unchanged
+"birds_struck", "precip", "sky"
+-> unchanged
+"birds_struck", "precip", "sky"
+-> unchanged
+"birds_struck", "number of records", "precip", "sky"
+-> add ['aggregation']
+"birds_struck", "number of records", "precip", "sky"
+-> unchanged
+"birds_struck", "number of records", "precip", "sky"
+-> unchanged
+"birds_struck", "number of records", "precip", "sky"
+-> unchanged
+"birds_struck", "number of records", "precip", "sky"
+-> unchanged
+"birds_struck", "number of records", "precip", "sky"
+-> unchanged
+"birds_struck", "distance", "number of records", "precip", "sky"
+-> add ['location']
+"birds_struck", "number of records", "precip", "sky"
+-> drop ['location']
+"birds_struck", "number of records", "precip", "sky"
+-> unchanged
+"ac_class", "birds_struck", "number of records", "precip", "sky"
+-> add ['airplane']
+"ac_class", "birds_struck", "number of records", "precip", "sky"
+-> unchanged
+
+-> reset
+"state"
+-> add ['location']
+"latitude (generated)", "longitude (generated)", "state"
+-> unchanged
+"latitude (generated)", "longitude (generated)", "number of records", "state"
+-> add ['aggregation']
+"latitude (generated)", "longitude (generated)", "number of records", "state"
+-> unchanged
+"latitude (generated)", "longitude (generated)", "number of records", "sky", "state"
+-> add ['weather']
+"latitude (generated)", "longitude (generated)", "number of records", "state"
+-> drop ['weather']
+"ac_class", "birds_struck", "nr_injuries", "number of records", "precip", "sky"
+-> add ['birds', 'weather', 'airplane']
+"ac_class", "birds_struck", "nr_injuries", "number of records", "precip", "sky"
+-> unchanged
+"ac_class", "birds_struck", "number of records", "precip", "sky"
+-> unchanged
+"ac_class", "birds_struck", "nr_injuries", "number of records", "precip", "sky"
+-> unchanged
+"incident_date", "number of records", "precip"
+-> add ['event_time', 'weather', 'aggregation']
+"incident_date", "number of records", "precip"
+-> unchanged
+"incident_date", "number of records"
+-> drop ['weather']
+"incident_date", "number of records"
+-> unchanged
+"incident_date", "number of records"
+-> unchanged
+"incident_date", "number of records"
+-> unchanged
+"incident_date", "number of records"
+-> unchanged
+"incident_date", "number of records"
+-> unchanged
+"incident_date", "number of records"
+-> unchanged
+"incident_date", "number of records", "precip"
+-> add ['weather']
+"incident_date", "number of records", "precip"
+-> unchanged
+"incident_date", "number of records", "precip"
+-> unchanged
+"incident_date", "number of records", "precip"
+-> unchanged
+"incident_date", "number of records", "precip"
+-> unchanged
+
+-> reset
+"airport", "incident_month", "incident_year", "precip", "sky", "state", "time_of_day"
+-> add ['event_time', 'location', 'weather']
+"incident_month", "incident_year", "precip", "sky", "state", "time_of_day"
+-> unchanged
+"incident_year", "precip", "sky", "state", "time_of_day"
+-> unchanged
+"precip", "sky", "state", "time_of_day"
+-> unchanged
+"number of records", "precip", "sky", "state", "time_of_day"
+-> add ['aggregation']
+"number of records", "precip", "sky", "state", "time_of_day"
+-> unchanged
+"number of records", "precip", "time_of_day"
+-> drop ['location']
+"incident_date", "number of records", "precip", "time_of_day"
+-> unchanged
+"incident_date", "number of records", "precip", "time_of_day"
+-> unchanged
+"incident_date", "number of records", "precip"
+-> unchanged
+"incident_date", "number of records", "precip", "speed"
+-> add ['flight_related']
+"incident_date", "number of records", "precip", "speed"
+-> unchanged
+"incident_date", "number of records", "precip", "speed"
+-> unchanged
+"incident_date", "number of records", "precip", "speed", "time_of_day"
+-> unchanged
+"incident_date", "number of records", "precip", "speed", "time_of_day"
+-> unchanged
+"number of records", "precip", "speed", "time_of_day"
+-> unchanged
+"number of records", "precip", "time_of_day"
+-> drop ['flight_related']
+"number of records", "precip"
+-> drop ['event_time']
+"number of records", "precip"
+-> unchanged
+"number of records", "precip"
+-> unchanged
+"number of records", "precip", "size"
+-> add ['birds']
+"number of records", "precip", "size", "speed"
+-> add ['flight_related']
+"number of records", "precip", "speed"
+-> drop ['birds']
+"number of records", "precip", "speed"
+-> unchanged
+"number of records", "precip", "speed"
+-> unchanged
+"number of records", "precip", "speed"
+-> unchanged
+"number of records", "precip", "speed"
+-> unchanged
+"number of records", "precip"
+-> drop ['flight_related']
+"number of records", "precip", "sky"
+-> unchanged
+"number of records", "sky"
+-> unchanged
+"location", "number of records", "sky"
+-> add ['location']
+"location", "number of records"
+-> drop ['weather']
+"number of records"
+-> drop ['location']
+"enroute", "number of records"
+-> unchanged
+"enroute", "number of records"
+-> unchanged
+
+-> reset
+"incident_date"
+-> add ['event_time']
+"incident_date", "phase_of_flt"
+-> add ['flight_related']
+"incident_date", "phase_of_flt"
+-> unchanged
+"incident_date", "phase_of_flt", "speed"
+-> unchanged
+"incident_date", "phase_of_flt", "speed"
+-> unchanged
+"incident_date", "phase_of_flt", "speed"
+-> unchanged
+"incident_date", "phase_of_flt", "speed"
+-> unchanged
+"incident_date", "phase_of_flt"
+-> unchanged
+"incident_date", "phase_of_flt", "sky"
+-> add ['weather']
+"incident_date", "phase_of_flt", "precip", "sky"
+-> unchanged
+"incident_date", "phase_of_flt", "precip", "sky"
+-> unchanged
+"incident_date", "phase_of_flt", "precip", "sky"
+-> unchanged
+"incident_date", "phase_of_flt", "precip", "sky"
+-> unchanged
+"incident_date", "phase_of_flt", "precip", "sky"
+-> unchanged
+"incident_date", "phase_of_flt", "precip", "sky"
+-> unchanged
+"incident_date", "index_nr", "phase_of_flt", "precip", "sky"
+-> unchanged
+"incident_date", "index_nr", "phase_of_flt", "precip", "sky"
+-> unchanged
+"incident_date", "index_nr", "phase_of_flt"
+-> drop ['weather']
+"incident_date", "index_nr", "phase_of_flt"
+-> unchanged
+"incident_date", "index_nr", "phase_of_flt"
+-> unchanged
+"index_nr", "phase_of_flt"
+-> drop ['event_time']
+"index_nr", "phase_of_flt", "precip"
+-> add ['weather']
+"index_nr", "phase_of_flt", "precip", "sky"
+-> unchanged
+"index_nr", "phase_of_flt", "sky"
+-> unchanged
+"index_nr", "phase_of_flt", "sky"
+-> unchanged
+Task t4 f1_score, f1_before, f1_after = 0.00 [0.00, 0.00]
+Dataset: weather1
+###########################
+
+-> reset
+"date"
+-> add ['time']
+"date", "tmax_f"
+-> add ['temperature']
+"date", "tmax_f"
+-> unchanged
+"date", "tmax_f"
+-> unchanged
+"date", "tmax_f"
+-> unchanged
+"date", "tmax_f"
+-> unchanged
+"date", "tmax_f"
+-> unchanged
+"date", "tmax_f"
+-> unchanged
+"date", "tmax_f"
+-> unchanged
+"date", "tmax_f"
+-> unchanged
+"date", "tmax_f"
+-> unchanged
+"date", "tmax_f"
+-> unchanged
+"date", "tmax_f"
+-> unchanged
+"date", "tmax_f"
+-> unchanged
+"date", "tmax_f"
+-> unchanged
+"date", "id", "tmax_f"
+-> unchanged
+"date", "id", "tmax_f"
+-> unchanged
+"date", "id", "tmax_f", "tmin_f"
+-> unchanged
+"date", "id", "tmax_f", "tmin_f"
+-> unchanged
+"date", "id", "tmax_f", "tmin_f"
+-> unchanged
+"date", "id", "tmax_f"
+-> unchanged
+"date", "id", "tmax_f", "tmin_f"
+-> unchanged
+"date", "tmax_f", "tmin_f"
+-> unchanged
+"date", "tmax_f", "tmin_f"
+-> unchanged
+
+-> reset
+"date"
+-> add ['time']
+"date", "tmax"
+-> add ['temperature']
+"date", "tmax"
+-> unchanged
+"date", "tmax"
+-> unchanged
+"date", "tmax", "tmin"
+-> unchanged
+"date", "tmax", "tmin"
+-> unchanged
+"date", "tmax", "tmin"
+-> unchanged
+"date", "tmax", "tmin"
+-> unchanged
+"date", "tmax", "tmin"
+-> unchanged
+"date", "tmax", "tmin"
+-> unchanged
+"date", "tmax", "tmin"
+-> unchanged
+"date", "tmax", "tmin"
+-> unchanged
+"date", "tmax", "tmin"
+-> unchanged
+"date", "tmax", "tmin"
+-> unchanged
+"date", "tmax", "tmin"
+-> unchanged
+"date", "tmax", "tmax_f", "tmin"
+-> unchanged
+"date", "tmax", "tmax_f", "tmin", "tmin_f"
+-> unchanged
+"date", "tmax", "tmax_f", "tmin", "tmin_f"
+-> unchanged
+"date", "tmax", "tmax_f", "tmin", "tmin_f"
+-> unchanged
+"date", "tmax", "tmax_f", "tmin", "tmin_f"
+-> unchanged
+"date", "tmax", "tmax_f", "tmin", "tmin_f"
+-> unchanged
+"date", "tmax", "tmax_f", "tmin", "tmin_f"
+-> unchanged
+"date", "tmax", "tmax_f", "tmin", "tmin_f"
+-> unchanged
+"date", "tmax", "tmax_f", "tmin", "tmin_f"
+-> unchanged
+"date", "tmax", "tmax_f", "tmin", "tmin_f"
+-> unchanged
+"date", "tmax", "tmax_f", "tmin", "tmin_f"
+-> unchanged
+"date", "tmax", "tmax_f", "tmin", "tmin_f"
+-> unchanged
+
+-> reset
+"tmin"
+-> add ['temperature']
+"tmax", "tmin"
+-> unchanged
+"date", "tmax", "tmin"
+-> add ['time']
+"date", "tmax", "tmin"
+-> unchanged
+"date", "tmax", "tmin"
+-> unchanged
+"date", "tmax", "tmin"
+-> unchanged
+
+-> reset
+"date"
+-> add ['time']
+"date", "tmax", "tmin"
+-> add ['temperature']
+"date", "tmax", "tmin"
+-> unchanged
+"date", "tmax", "tmin"
+-> unchanged
+"date", "tmax", "tmin"
+-> unchanged
+"date", "tmax", "tmin"
+-> unchanged
+"date", "tmax", "tmin"
+-> unchanged
+"date", "tmax", "tmin"
+-> unchanged
+"date", "tmax", "tmin"
+-> unchanged
+"date", "tmax", "tmin"
+-> unchanged
+"date", "tmax", "tmax_f"
+-> add ['time', 'temperature']
+
+-> reset
+"tmax_f"
+-> add ['temperature']
+
+-> reset
+"tmax"
+-> add ['temperature']
+"tmax", "tmin"
+-> unchanged
+"tmax", "tmin"
+-> unchanged
+"tmax", "tmin"
+-> unchanged
+"tmax", "tmin"
+-> unchanged
+"date", "tmax", "tmin"
+-> add ['time']
+"date", "tmax", "tmin"
+-> unchanged
+"date", "tmax", "tmin"
+-> unchanged
+"date", "tmax", "tmin"
+-> unchanged
+"date", "tmax", "tmin"
+-> unchanged
+"date", "tmax", "tmin"
+-> unchanged
+"date", "tmax", "tmin"
+-> unchanged
+"date", "tmax", "tmin"
+-> unchanged
+"date", "tmax", "tmin"
+-> unchanged
+"date", "tmax", "tmin"
+-> unchanged
+"date", "tmax", "tmin"
+-> unchanged
+"date", "tmax", "tmin"
+-> unchanged
+"date", "tmax", "tmin"
+-> unchanged
+"date", "tmax", "tmin"
+-> unchanged
+"date", "tmax", "tmin"
+-> unchanged
+"date", "tmax", "tmin"
+-> unchanged
+"date", "tmax", "tmin"
+-> unchanged
+"date", "tmax", "tmin"
+-> unchanged
+"date", "tmax", "tmin"
+-> unchanged
+"date", "tmax", "tmin"
+-> unchanged
+"date", "tmax", "tmin"
+-> unchanged
+
+-> reset
+"tmax_f"
+-> add ['temperature']
+"tmax_f", "tmin_f"
+-> unchanged
+"tmax_f", "tmin_f"
+-> unchanged
+"tmax_f", "tmin_f"
+-> unchanged
+"date", "tmax_f", "tmin_f"
+-> add ['time']
+"date", "tmax_f", "tmin_f"
+-> unchanged
+
+-> reset
+"date"
+-> add ['time']
+"date", "tmax"
+-> add ['temperature']
+"date"
+-> drop ['temperature']
+"date", "tmax"
+-> add ['temperature']
+"date", "tmax", "tmin"
+-> unchanged
+"date", "tmax"
+-> unchanged
+"date", "tmax", "tmin"
+-> unchanged
+"date", "tmax", "tmin"
+-> unchanged
+"date", "tmin"
+-> unchanged
+"date"
+-> drop ['temperature']
+"calculation(avg_max_temp)", "date"
+-> unchanged
+"calculation(avg_max_temp)", "calculation(avg_min_temp)", "date"
+-> unchanged
+"calculation(avg_max_temp)", "calculation(avg_min_temp)", "date"
+-> unchanged
+"calculation(avg_max_temp)", "calculation(avg_min_temp)", "date"
+-> unchanged
+"calculation(avg_min_temp)", "date"
+-> unchanged
+"date"
+-> unchanged
+"calculation(avg_max_temp)", "date"
+-> unchanged
+"calculation(avg_max_temp)", "calculation(avg_min_temp)", "date"
+-> unchanged
+"calculation(avg_max_temp)", "calculation(avg_min_temp)", "date"
+-> unchanged
+"calculation(avg_max_temp)", "calculation(avg_min_temp)", "date"
+-> unchanged
+"calculation(avg_max_temp)", "calculation(avg_min_temp)", "date"
+-> unchanged
+"calculation(avg_max_temp)", "calculation(avg_min_temp)", "date"
+-> unchanged
+
+-> reset
+"tmax_f"
+-> add ['temperature']
+"tmax_f", "tmin_f"
+-> unchanged
+"tmax_f", "tmin_f"
+-> unchanged
+"date", "tmax_f", "tmin_f"
+-> add ['time']
+"date", "tmax_f", "tmin_f"
+-> unchanged
+"date", "tmax_f", "tmin_f"
+-> unchanged
+"date", "tmax_f", "tmin_f"
+-> unchanged
+"date", "tmax_f", "tmin_f"
+-> unchanged
+"date", "tmax_f", "tmin_f"
+-> unchanged
+"date", "tmax_f", "tmin_f"
+-> unchanged
+"date", "tmax_f", "tmin_f"
+-> unchanged
+"date", "tmax_f", "tmin_f"
+-> unchanged
+"date", "tmax_f", "tmin_f"
+-> unchanged
+"date", "tmax", "tmax_f", "tmin_f"
+-> unchanged
+"date", "tmax", "tmax_f", "tmin", "tmin_f"
+-> unchanged
+"date", "tmax", "tmax_f", "tmin", "tmin_f"
+-> unchanged
+"date", "tmax", "tmax_f", "tmin", "tmin_f"
+-> unchanged
+"date", "tmax", "tmax_f", "tmin", "tmin_f"
+-> unchanged
+"date", "tmax", "tmax_f", "tmin", "tmin_f"
+-> unchanged
+"date", "tmax", "tmax_f", "tmin_f"
+-> unchanged
+"date", "tmax", "tmax_f", "tmin_f"
+-> unchanged
+"date", "tmax_f", "tmin_f"
+-> unchanged
+"date", "tmax_f", "tmin_f"
+-> unchanged
+"date", "tmax_f", "tmin_f"
+-> unchanged
+"date", "tmax_f", "tmin_f"
+-> unchanged
+"date", "tmax_f", "tmin_f"
+-> unchanged
+"date", "tmax_f", "tmin_f"
+-> unchanged
+
+-> reset
+"date", "tmax", "tmin"
+-> add ['time', 'temperature']
+"date", "tmax", "tmin"
+-> unchanged
+"date", "tmax", "tmin"
+-> unchanged
+"date", "tmax", "tmin"
+-> unchanged
+"date", "name", "tmax", "tmin"
+-> unchanged
+"date", "name", "tmax", "tmin"
+-> unchanged
+"date", "tmax", "tmin"
+-> unchanged
+"date", "tmax", "tmin"
+-> unchanged
+"date", "tmax", "tmin"
+-> unchanged
+"date", "tmax", "tmin"
+-> unchanged
+"date", "tmax", "tmin"
+-> unchanged
+"date", "tmax", "tmin"
+-> unchanged
+"date", "state", "tmax", "tmin"
+-> add ['location']
+"date", "state", "tmax", "tmin"
+-> unchanged
+"date", "state", "tmax", "tmin"
+-> unchanged
+
+-> reset
+"date"
+-> add ['time']
+"date", "tmax_f"
+-> add ['temperature']
+"date", "tmax_f", "tmin_f"
+-> unchanged
+"date", "tmax_f", "tmin_f"
+-> unchanged
+"date", "tmax_f", "tmin_f"
+-> unchanged
+"date", "tmax_f", "tmin_f"
+-> unchanged
+"date", "tmax_f", "tmin_f"
+-> unchanged
+"date", "tmax_f", "tmin_f"
+-> unchanged
+"date", "tmax_f", "tmin_f"
+-> unchanged
+"date", "tmax_f", "tmin_f"
+-> unchanged
+"date", "tmax_f", "tmin_f"
+-> unchanged
+"date", "tmax_f", "tmin_f"
+-> unchanged
+"date", "tmax_f", "tmin_f"
+-> unchanged
+"date", "tmax_f", "tmin_f"
+-> unchanged
+"date"
+-> add ['time']
+"date", "tmax"
+-> add ['temperature']
+"date"
+-> drop ['temperature']
+"date", "tmax_f", "tmin_f"
+-> add ['temperature']
+"date", "tmin_f"
+-> unchanged
+"date"
+-> drop ['temperature']
+"date", "tmax_f", "tmin_f"
+-> add ['temperature']
+"date", "tmax_f", "tmin_f"
+-> unchanged
+"date", "tmax_f", "tmin_f"
+-> unchanged
+"date", "tmax_f", "tmin_f"
+-> unchanged
+"date", "tmax_f", "tmin_f"
+-> unchanged
+"tmax_f", "tmin_f"
+-> drop ['time']
+"date", "tmax_f", "tmin_f"
+-> add ['time']
+"date", "tmax_f", "tmin_f"
+-> unchanged
+"date", "tmax_f", "tmin_f"
+-> unchanged
+"date", "tmax_f", "tmin_f"
+-> unchanged
+"date", "tmax_f", "tmin_f"
+-> unchanged
+"date", "tmax_f", "tmin_f"
+-> unchanged
+"date", "tmax_f", "tmin_f"
+-> unchanged
+"date", "tmax_f", "tmin_f"
+-> unchanged
+"date", "tmax_f", "tmin_f"
+-> unchanged
+"date", "tmax_f", "tmin_f"
+-> unchanged
+
+-> reset
+"tmax"
+-> add ['temperature']
+"tmax"
+-> unchanged
+"tmax"
+-> unchanged
+"tmax", "tmin"
+-> unchanged
+"tmax", "tmin"
+-> unchanged
+"date", "tmax", "tmin"
+-> add ['time']
+"date", "tmax", "tmin"
+-> unchanged
+"date", "tmax", "tmin"
+-> unchanged
+"date", "tmax", "tmin"
+-> unchanged
+"date", "tmax", "tmin"
+-> unchanged
+"date", "tmax", "tmin"
+-> unchanged
+"date", "tmax", "tmin", "tmin_f"
+-> unchanged
+"date", "tmax", "tmax_f", "tmin", "tmin_f"
+-> unchanged
+"date", "tmax", "tmax_f", "tmin", "tmin_f"
+-> unchanged
+"date", "tmax", "tmax_f", "tmin", "tmin_f"
+-> unchanged
+"date", "tmax", "tmax_f", "tmin", "tmin_f"
+-> unchanged
+"date", "tmax", "tmax_f", "tmin", "tmin_f"
+-> unchanged
+"date", "tmax_f", "tmin", "tmin_f"
+-> unchanged
+"date", "tmax", "tmax_f", "tmin", "tmin_f"
+-> unchanged
+"date", "tmax", "tmax_f", "tmin", "tmin_f"
+-> unchanged
+Task t2 f1_score, f1_before, f1_after = 0.00 [0.00, 0.00]
+
+-> reset
+"latitude (generated)", "longitude (generated)"
+-> add ['location']
+"longitude (generated)"
+-> unchanged
+
+-> reset
+"lat", "lng"
+-> add ['location']
+"lat", "lng"
+-> unchanged
+"lat", "lng"
+-> unchanged
+
+-> reset
+"latitude (generated)", "longitude (generated)", "state"
+-> add ['location']
+"lat", "lng", "state"
+-> unchanged
+"lat", "lng", "state"
+-> unchanged
+"lat", "lng", "state"
+-> unchanged
+"lat", "lng", "state"
+-> unchanged
+
+-> reset
+"state"
+-> add ['location']
+"state"
+-> unchanged
+"state"
+-> unchanged
+"highwinds", "state"
+-> add ['windy']
+"highwinds", "state"
+-> unchanged
+"highwinds", "state"
+-> unchanged
+"highwinds", "state"
+-> unchanged
+"highwinds", "state"
+-> unchanged
+"highwinds", "state"
+-> unchanged
+"highwinds", "state"
+-> unchanged
+"highwinds", "state"
+-> unchanged
+"highwinds", "state"
+-> unchanged
+"highwinds", "state"
+-> unchanged
+"highwinds", "latitude (generated)", "longitude (generated)", "state"
+-> unchanged
+"highwinds", "latitude (generated)", "longitude (generated)", "state"
+-> unchanged
+
+-> reset
+"highwinds"
+-> add ['windy']
+"highwinds", "state"
+-> add ['location']
+"highwinds", "state"
+-> unchanged
+"highwinds", "state"
+-> unchanged
+"highwinds", "state"
+-> unchanged
+"highwinds", "state"
+-> unchanged
+"highwinds", "state"
+-> unchanged
+"highwinds", "state"
+-> unchanged
+"date", "highwinds", "state"
+-> add ['time']
+"date", "highwinds", "state"
+-> unchanged
+"date", "highwinds", "state"
+-> unchanged
+"date", "highwinds", "state"
+-> unchanged
+
+-> reset
+"lat"
+-> add ['location']
+
+-> reset
+"lat"
+-> add ['location']
+"lat"
+-> unchanged
+"lat", "lng"
+-> unchanged
+"lat", "lng"
+-> unchanged
+"lat", "lng"
+-> unchanged
+"lat", "lng"
+-> unchanged
+"lat", "lng"
+-> unchanged
+"highwinds", "lat", "lng"
+-> add ['windy']
+"highwinds", "lat", "lng"
+-> unchanged
+"highwinds", "lat", "lng"
+-> unchanged
+"highwinds", "lat", "lng"
+-> unchanged
+"highwinds", "lat", "lng"
+-> unchanged
+"highwinds", "lat", "lng"
+-> unchanged
+"highwinds", "lat", "lng"
+-> unchanged
+"highwinds", "lat", "lng"
+-> unchanged
+"highwinds", "lat", "lng"
+-> unchanged
+"highwinds", "lat", "lng"
+-> unchanged
+"highwinds", "lat", "lng"
+-> unchanged
+"highwinds", "lat", "lng"
+-> unchanged
+"highwinds", "lat", "lng"
+-> unchanged
+
+-> reset
+"lat"
+-> add ['location']
+"lat", "lng"
+-> unchanged
+"lat", "lng"
+-> unchanged
+"lat", "lng"
+-> unchanged
+"lat", "lng"
+-> unchanged
+"lat", "lng"
+-> unchanged
+"lat", "lng"
+-> unchanged
+"highwinds", "lat", "lng"
+-> add ['windy']
+"highwinds", "lat", "lng"
+-> unchanged
+
+-> reset
+"number of records"
+-> add ['aggregation']
+"highwinds", "number of records"
+-> add ['windy']
+"highwinds", "number of records"
+-> unchanged
+"highwinds", "lat", "lng", "number of records"
+-> add ['location']
+"highwinds", "lat", "lng", "number of records"
+-> unchanged
+"highwinds", "lat", "lng", "number of records"
+-> unchanged
+"highwinds", "lat", "lng", "number of records"
+-> unchanged
+"highwinds", "lat", "lng", "number of records"
+-> unchanged
+"highwinds", "lat", "lng", "number of records"
+-> unchanged
+"highwinds", "lat", "lng", "number of records"
+-> unchanged
+"highwinds", "lat", "lng", "number of records"
+-> unchanged
+"highwinds", "lat", "lng", "number of records"
+-> unchanged
+"highwinds", "lat", "lng", "number of records"
+-> unchanged
+"highwinds", "lat", "lng", "number of records"
+-> unchanged
+
+-> reset
+"highwinds"
+-> add ['windy']
+"highwinds", "state"
+-> add ['location']
+"highwinds", "latitude (generated)", "longitude (generated)", "state"
+-> unchanged
+"highwinds", "latitude (generated)", "longitude (generated)", "state"
+-> unchanged
+"highwinds", "latitude (generated)", "longitude (generated)", "state"
+-> unchanged
+"highwinds", "latitude (generated)", "longitude (generated)", "state"
+-> unchanged
+"latitude (generated)", "longitude (generated)", "state"
+-> drop ['windy']
+"highwinds", "latitude (generated)", "longitude (generated)", "state"
+-> add ['windy']
+"highwinds", "latitude (generated)", "longitude (generated)"
+-> unchanged
+"latitude (generated)", "longitude (generated)"
+-> drop ['windy']
+"highwinds", "latitude (generated)", "longitude (generated)"
+-> add ['windy']
+"latitude (generated)", "longitude (generated)"
+-> drop ['windy']
+"calculation(high_wind_count)", "latitude (generated)", "longitude (generated)"
+-> unchanged
+"calculation(high_wind_count)", "latitude (generated)", "longitude (generated)"
+-> unchanged
+"calculation(high_wind_count)", "latitude (generated)", "longitude (generated)"
+-> unchanged
+"calculation(high_wind_count)", "latitude (generated)", "longitude (generated)"
+-> unchanged
+"calculation(high_wind_count)", "latitude (generated)", "longitude (generated)"
+-> unchanged
+"latitude (generated)", "longitude (generated)"
+-> unchanged
+
+-> reset
+
+-> reset
+"highwinds"
+-> add ['windy']
+"highwinds", "lat"
+-> add ['location']
+"highwinds", "lat", "lng"
+-> unchanged
+"highwinds", "lat", "lng"
+-> unchanged
+"highwinds", "lat", "lng"
+-> unchanged
+"highwinds", "lat", "lng"
+-> unchanged
+"highwinds", "lat", "lng"
+-> unchanged
+"highwinds", "lat", "lng"
+-> unchanged
+"highwinds", "lat", "lng"
+-> unchanged
+"highwinds", "lat", "lng"
+-> unchanged
+"highwinds", "lat", "lng"
+-> unchanged
+"highwinds", "lat", "lng"
+-> unchanged
+"highwinds", "lat", "lng"
+-> unchanged
+"highwinds", "lat", "lng"
+-> unchanged
+"highwinds", "lat", "lng"
+-> unchanged
+"highwinds", "lat", "lng"
+-> unchanged
+"highwinds", "lat", "lng"
+-> unchanged
+"highwinds", "lat", "lng", "tornado"
+-> add ['tornado']
+"highwinds", "lat", "lng", "tornado"
+-> unchanged
+
+-> reset
+"latitude (generated)", "longitude (generated)", "state"
+-> add ['location']
+"latitude (generated)", "longitude (generated)", "state"
+-> unchanged
+"latitude (generated)", "longitude (generated)", "state"
+-> unchanged
+"highwinds", "latitude (generated)", "longitude (generated)", "state"
+-> add ['windy']
+"highwinds", "latitude (generated)", "longitude (generated)", "state"
+-> unchanged
+
+-> reset
+"state"
+-> add ['location']
+"state"
+-> unchanged
+"state"
+-> unchanged
+
+-> reset
+"state"
+-> add ['location']
+
+-> reset
+"state"
+-> add ['location']
+"state"
+-> unchanged
+"highwinds", "state"
+-> add ['windy']
+
+-> reset
+"highwinds"
+-> add ['windy']
+
+-> reset
+"lng"
+-> add ['location']
+
+-> reset
+"lat"
+-> add ['location']
+"lat", "lng"
+-> unchanged
+"lat", "lng"
+-> unchanged
+"highwinds", "lat", "lng"
+-> add ['windy']
+"highwinds", "lat", "lng"
+-> unchanged
+"highwinds", "lat", "lng"
+-> unchanged
+"highwinds", "lat", "lng"
+-> unchanged
+"highwinds", "lat", "lng"
+-> unchanged
+"highwinds", "lat", "lng"
+-> unchanged
+"highwinds", "lat", "lng"
+-> unchanged
+"highwinds", "lat", "lng"
+-> unchanged
+"highwinds", "lat", "lng"
+-> unchanged
+"highwinds", "lat", "lng"
+-> unchanged
+"highwinds", "lat", "lng"
+-> unchanged
+"highwinds", "lat", "lng"
+-> unchanged
+"highwinds", "lat", "lng"
+-> unchanged
+"highwinds", "lat", "lng"
+-> unchanged
+"highwinds", "lat", "lng"
+-> unchanged
+"highwinds", "lat", "lng"
+-> unchanged
+"highwinds", "lat", "lng"
+-> unchanged
+"highwinds", "lat", "lng"
+-> unchanged
+"highwinds", "lat", "lng"
+-> unchanged
+"highwinds", "lat", "lng"
+-> unchanged
+"highwinds", "lat", "lng"
+-> unchanged
+"highwinds", "lat", "lng"
+-> unchanged
+"highwinds", "lat", "lng"
+-> unchanged
+"highwinds", "lat", "lng"
+-> unchanged
+
+-> reset
+"latitude (generated)", "longitude (generated)", "state"
+-> add ['location']
+"latitude (generated)", "longitude (generated)", "state"
+-> unchanged
+"latitude (generated)", "longitude (generated)", "state"
+-> unchanged
+"latitude (generated)", "longitude (generated)", "state"
+-> unchanged
+"latitude (generated)", "longitude (generated)", "state"
+-> unchanged
+"latitude (generated)", "longitude (generated)", "state"
+-> unchanged
+"latitude (generated)", "longitude (generated)", "state"
+-> unchanged
+"latitude (generated)", "longitude (generated)", "state"
+-> unchanged
+"longitude (generated)", "state"
+-> unchanged
+"state"
+-> unchanged
+"state"
+-> unchanged
+"state"
+-> unchanged
+"state"
+-> unchanged
+"highwinds", "state"
+-> add ['windy']
+"state"
+-> drop ['windy']
+"highwinds", "state"
+-> add ['windy']
+"highwinds", "state"
+-> unchanged
+"state"
+-> drop ['windy']
+"highwinds", "state"
+-> add ['windy']
+"highwinds", "state"
+-> unchanged
+"highwinds", "state"
+-> unchanged
+"highwinds", "state"
+-> unchanged
+
+-> reset
+"lat"
+-> add ['location']
+"lat", "lng"
+-> unchanged
+"lat", "lng"
+-> unchanged
+"lat", "lng", "state"
+-> unchanged
+"lat", "lng", "state"
+-> unchanged
+"lat", "lng", "state"
+-> unchanged
+
+-> reset
+"latitude (generated)", "longitude (generated)", "state"
+-> add ['location']
+"latitude (generated)", "longitude (generated)", "state"
+-> unchanged
+"latitude (generated)", "longitude (generated)", "state"
+-> unchanged
+"latitude (generated)", "longitude (generated)", "state"
+-> unchanged
+
+-> reset
+
+-> reset
+"highwinds"
+-> add ['windy']
+"highwinds"
+-> unchanged
+"highwinds"
+-> unchanged
+"date", "highwinds"
+-> add ['time']
+"date", "highwinds"
+-> unchanged
+"date", "highwinds"
+-> unchanged
+"date", "highwinds"
+-> unchanged
+"date", "highwinds"
+-> unchanged
+"date", "highwinds"
+-> unchanged
+"date", "highwinds"
+-> unchanged
+"date", "highwinds"
+-> unchanged
+"date", "highwinds"
+-> unchanged
+"date", "highwinds"
+-> unchanged
+"date", "highwinds"
+-> unchanged
+Task t3 f1_score, f1_before, f1_after = 0.00 [0.00, 0.00]
+
+-> reset
+"state"
+-> add ['location']
+"lat", "lng", "state"
+-> unchanged
+"lat", "lng", "state"
+-> unchanged
+"lat", "lng", "state"
+-> unchanged
+"lat", "lng", "state"
+-> unchanged
+"lat", "lng", "state"
+-> unchanged
+"lat", "lng", "state"
+-> unchanged
+"lat", "lng", "state"
+-> unchanged
+"lat", "lng", "state"
+-> unchanged
+"lat", "lng", "state"
+-> unchanged
+"lat", "lng", "state"
+-> unchanged
+"lat", "lng", "state"
+-> unchanged
+"lat", "lng", "state"
+-> unchanged
+"lat", "lng", "state"
+-> unchanged
+"date", "lat", "lng", "state"
+-> add ['time']
+"date", "lat", "lng", "state"
+-> unchanged
+"date", "lat", "lng", "state"
+-> unchanged
+"date", "lat", "lng", "state"
+-> unchanged
+"date", "lat", "lng", "state"
+-> unchanged
+"date", "lat", "lng", "state"
+-> unchanged
+"date", "lat", "lng", "state"
+-> unchanged
+"date", "lat", "lng", "state"
+-> unchanged
+"date", "lat", "lng", "state", "tmin_f"
+-> add ['temperature']
+"date", "lat", "lng", "state", "tmax_f", "tmin_f"
+-> unchanged
+"date", "lat", "lng", "state", "tmax_f", "tmin_f"
+-> unchanged
+"date", "lat", "lng", "state", "tmax_f", "tmin_f"
+-> unchanged
+"date", "lat", "lng", "state", "tmax_f", "tmin_f"
+-> unchanged
+"date", "lat", "lng", "state", "tmax_f", "tmin_f"
+-> unchanged
+"date", "lat", "lng", "state", "tmax_f", "tmin_f"
+-> unchanged
+"date", "lat", "lng", "state", "tmax_f", "tmin_f"
+-> unchanged
+"date", "lat", "lng", "state", "tmax_f", "tmin_f"
+-> unchanged
+"date", "lat", "lng", "state", "tmax_f", "tmin_f"
+-> unchanged
+"date", "lat", "lng", "state", "tmax_f", "tmin_f"
+-> unchanged
+"date", "lat", "lng", "state", "tmax_f", "tmin_f"
+-> unchanged
+"date", "lat", "lng", "state", "tmax_f", "tmin_f"
+-> unchanged
+"date", "lat", "lng", "state", "tmax_f", "tmin_f"
+-> unchanged
+"date", "lat", "lng", "state", "tmax_f", "tmin_f"
+-> unchanged
+"date", "lat", "lng", "state", "tmax_f", "tmin_f"
+-> unchanged
+"date", "freezingrain", "lat", "lng", "state", "tmax_f", "tmin_f"
+-> add ['rain']
+"date", "freezingrain", "lat", "lng", "state", "tmax_f"
+-> unchanged
+"date", "freezingrain", "lat", "lng", "state"
+-> drop ['temperature']
+"date", "freezingrain", "lat", "lng", "state", "tmax_f"
+-> add ['temperature']
+"date", "freezingrain", "lat", "lng", "state", "tmax_f", "tmin_f"
+-> unchanged
+"blowingsnow", "blowingspray", "date", "drizzle", "dust", "fog", "freezingrain", "lat", "lng", "state", "tmax_f", "tmin_f"
+-> add ['snow', 'windy', 'fog']
+"blowingsnow", "blowingspray", "date", "drizzle", "dust", "fog", "freezingrain", "lat", "lng", "state", "tmin_f"
+-> unchanged
+"blowingsnow", "blowingspray", "date", "drizzle", "dust", "fog", "freezingrain", "lat", "lng", "state"
+-> drop ['temperature']
+
+-> reset
+"date"
+-> add ['time']
+"date"
+-> unchanged
+"date"
+-> unchanged
+"date"
+-> unchanged
+"date"
+-> unchanged
+"blowingsnow", "blowingspray", "date", "drizzle", "dust", "elevation", "fog", "freezingdrizzle", "freezingrain", "glaze", "groundfog", "hail", "heavyfog", "highwinds", "icefog", "icepellets", "mist", "number of records", "prcp", "rain", "smoke"
+-> add ['aggregation', 'snow', 'windy', 'rain', 'fog', 'smoke']
+"blowingsnow", "blowingspray", "date", "drizzle", "dust", "elevation", "fog", "freezingdrizzle", "freezingrain", "glaze", "groundfog", "hail", "heavyfog", "highwinds", "icefog", "icepellets", "mist", "number of records", "prcp", "rain", "smoke"
+-> unchanged
+"blowingsnow", "blowingspray", "date", "drizzle", "dust", "elevation", "fog", "freezingdrizzle", "freezingrain", "glaze", "groundfog", "hail", "heavyfog", "highwinds", "icefog", "icepellets", "mist", "number of records", "prcp", "rain", "smoke"
+-> unchanged
+"blowingsnow", "blowingspray", "date", "drizzle", "dust", "elevation", "fog", "freezingdrizzle", "freezingrain", "glaze", "groundfog", "hail", "heavyfog", "highwinds", "icefog", "icepellets", "mist", "number of records", "prcp", "rain", "smoke"
+-> unchanged
+"blowingsnow", "blowingspray", "date", "drizzle", "dust", "elevation", "fog", "freezingdrizzle", "freezingrain", "glaze", "groundfog", "hail", "heavyfog", "highwinds", "icefog", "icepellets", "mist", "number of records", "prcp", "rain", "smoke"
+-> unchanged
+"blowingsnow", "blowingspray", "date", "drizzle", "dust", "fog", "freezingdrizzle", "freezingrain", "glaze", "groundfog", "hail", "heavyfog", "highwinds", "icefog", "icepellets", "mist", "number of records", "prcp", "rain", "smoke"
+-> unchanged
+"blowingsnow", "blowingspray", "date", "drizzle", "dust", "fog", "freezingdrizzle", "freezingrain", "glaze", "groundfog", "hail", "heavyfog", "highwinds", "icefog", "icepellets", "mist", "number of records", "prcp", "rain", "smoke"
+-> unchanged
+"blowingsnow", "blowingspray", "date", "drizzle", "dust", "fog", "freezingdrizzle", "freezingrain", "glaze", "groundfog", "hail", "heavyfog", "highwinds", "icefog", "icepellets", "mist", "prcp", "rain", "smoke"
+-> drop ['aggregation']
+"blowingsnow", "blowingspray", "date", "drizzle", "dust", "fog", "freezingdrizzle", "freezingrain", "glaze", "groundfog", "hail", "heavyfog", "highwinds", "icefog", "icepellets", "mist", "prcp", "rain", "smoke"
+-> unchanged
+"blowingsnow", "blowingspray", "date", "drizzle", "dust", "fog", "freezingdrizzle", "freezingrain", "glaze", "groundfog", "hail", "heavyfog", "highwinds", "icefog", "icepellets", "mist", "prcp", "rain", "smoke"
+-> unchanged
+"blowingsnow", "blowingspray", "date", "drizzle", "dust", "fog", "freezingdrizzle", "freezingrain", "glaze", "groundfog", "hail", "heavyfog", "highwinds", "icefog", "icepellets", "mist", "prcp", "rain", "smoke"
+-> unchanged
+"blowingsnow", "blowingspray", "date", "drizzle", "dust", "fog", "freezingdrizzle", "freezingrain", "glaze", "groundfog", "hail", "heavyfog", "highwinds", "icefog", "icepellets", "mist", "prcp", "rain", "smoke"
+-> unchanged
+"blowingsnow", "blowingspray", "date", "drizzle", "dust", "fog", "freezingdrizzle", "freezingrain", "glaze", "groundfog", "hail", "heavyfog", "highwinds", "icefog", "icepellets", "mist", "prcp", "rain", "smoke"
+-> unchanged
+"blowingsnow", "blowingspray", "date", "drizzle", "dust", "fog", "freezingdrizzle", "freezingrain", "glaze", "groundfog", "hail", "heavyfog", "highwinds", "icefog", "icepellets", "mist", "prcp", "rain", "smoke"
+-> unchanged
+"blowingsnow", "blowingspray", "date", "drizzle", "dust", "fog", "freezingdrizzle", "freezingrain", "glaze", "groundfog", "hail", "heavyfog", "highwinds", "icefog", "icepellets", "mist", "prcp", "rain", "smoke", "state"
+-> add ['location']
+"blowingsnow", "blowingspray", "date", "drizzle", "dust", "fog", "freezingdrizzle", "freezingrain", "glaze", "groundfog", "hail", "heavyfog", "highwinds", "icefog", "icepellets", "lat", "mist", "prcp", "rain", "smoke", "state"
+-> unchanged
+
+-> reset
+"state"
+-> add ['location']
+"state"
+-> unchanged
+"latitude (generated)", "longitude (generated)", "state"
+-> unchanged
+"latitude (generated)", "longitude (generated)", "state"
+-> unchanged
+"latitude (generated)", "longitude (generated)", "state"
+-> unchanged
+"longitude (generated)", "state"
+-> unchanged
+"state"
+-> unchanged
+"lat", "state"
+-> unchanged
+"lat", "lng", "state"
+-> unchanged
+"lat", "lng", "state"
+-> unchanged
+"lat", "lng", "state"
+-> unchanged
+"lat", "lng", "state"
+-> unchanged
+"blowingsnow", "blowingspray", "date", "drizzle", "dust", "fog", "freezingdrizzle", "freezingrain", "glaze", "groundfog", "hail", "heavyfog", "highwinds", "icefog", "icepellets", "lat", "mist", "prcp", "rain", "smoke", "state"
+-> add ['time', 'snow', 'windy', 'rain', 'fog', 'smoke']
+"blowingsnow", "blowingspray", "date", "drizzle", "dust", "fog", "freezingdrizzle", "freezingrain", "glaze", "groundfog", "hail", "heavyfog", "highwinds", "icefog", "icepellets", "lat", "lng", "mist", "prcp", "rain", "smoke", "state"
+-> unchanged
+
+-> reset
+"state"
+-> add ['location']
+"latitude (generated)", "longitude (generated)", "state"
+-> unchanged
+"latitude (generated)", "longitude (generated)", "state"
+-> unchanged
+"latitude (generated)", "longitude (generated)", "state"
+-> unchanged
+"latitude (generated)", "longitude (generated)", "state"
+-> unchanged
+"latitude (generated)", "longitude (generated)", "state"
+-> unchanged
+"latitude (generated)", "longitude (generated)", "state"
+-> unchanged
+"latitude (generated)", "longitude (generated)", "state"
+-> unchanged
+"latitude (generated)", "longitude (generated)", "state"
+-> unchanged
+"latitude (generated)", "longitude (generated)", "state"
+-> unchanged
+"latitude (generated)", "longitude (generated)", "state"
+-> unchanged
+"latitude (generated)", "longitude (generated)", "state"
+-> unchanged
+"latitude (generated)", "longitude (generated)", "state"
+-> unchanged
+"latitude (generated)", "longitude (generated)", "state"
+-> unchanged
+"latitude (generated)", "longitude (generated)", "state", "station"
+-> unchanged
+"latitude (generated)", "longitude (generated)", "state"
+-> unchanged
+"lat", "latitude (generated)", "longitude (generated)", "state"
+-> unchanged
+"lat", "latitude (generated)", "lng", "longitude (generated)", "state"
+-> unchanged
+"lat", "latitude (generated)", "lng", "state"
+-> unchanged
+"lat", "lng", "state"
+-> unchanged
+"lat", "lng", "state"
+-> unchanged
+"lat", "lng", "state"
+-> unchanged
+"lat", "lng", "state"
+-> unchanged
+"lat", "lng", "state"
+-> unchanged
+"lat", "lng", "state"
+-> unchanged
+"lat", "lng", "state"
+-> unchanged
+
+-> reset
+
+-> reset
+"date"
+-> add ['time']
+"blowingsnow", "blowingspray", "date", "drizzle", "dust", "fog", "freezingdrizzle", "freezingrain", "glaze", "groundfog", "hail", "heavyfog", "highwinds", "icefog", "icepellets", "mist", "prcp", "rain", "smoke", "snow", "snowgeneral", "snwd", "thunder", "tmax", "tmax_f", "tmin", "tmin_f", "tornado"
+-> add ['snow', 'temperature', 'windy', 'rain', 'fog', 'tornado', 'smoke']
+"blowingsnow", "blowingspray", "date", "drizzle", "dust", "fog", "freezingdrizzle", "freezingrain", "glaze", "groundfog", "hail", "heavyfog", "highwinds", "icefog", "icepellets", "mist", "prcp", "rain", "smoke", "snow", "snowgeneral", "snwd", "thunder", "tmax", "tmax_f", "tmin", "tmin_f", "tornado"
+-> unchanged
+"blowingsnow", "blowingspray", "date", "drizzle", "dust", "fog", "freezingdrizzle", "freezingrain", "glaze", "groundfog", "hail", "heavyfog", "highwinds", "icefog", "icepellets", "mist", "prcp", "rain", "smoke", "snow", "snowgeneral", "snwd", "thunder", "tmax", "tmax_f", "tmin", "tmin_f", "tornado"
+-> unchanged
+"blowingsnow", "blowingspray", "date", "drizzle", "dust", "fog", "freezingdrizzle", "freezingrain", "glaze", "groundfog", "hail", "heavyfog", "highwinds", "icefog", "icepellets", "mist", "prcp", "rain", "smoke", "snow", "snowgeneral", "snwd", "thunder", "tmax", "tmax_f", "tmin", "tmin_f", "tornado"
+-> unchanged
+
+-> reset
+"date"
+-> add ['time']
+"date"
+-> unchanged
+"date", "prcp"
+-> add ['rain']
+"date", "prcp"
+-> unchanged
+"date", "prcp"
+-> unchanged
+"date", "prcp"
+-> unchanged
+"date", "prcp"
+-> unchanged
+"date", "prcp"
+-> unchanged
+"date", "prcp"
+-> unchanged
+"date", "prcp"
+-> unchanged
+"date", "prcp"
+-> unchanged
+"date", "prcp"
+-> unchanged
+"date", "prcp"
+-> unchanged
+"date", "prcp"
+-> unchanged
+"date", "prcp"
+-> unchanged
+"date", "prcp"
+-> unchanged
+"date", "lat", "prcp"
+-> add ['location']
+"date", "lat", "lng", "prcp"
+-> unchanged
+"date", "lat", "lng", "prcp"
+-> unchanged
+"date", "lat", "lng", "prcp"
+-> unchanged
+"date", "lat", "lng", "prcp"
+-> unchanged
+"date", "lat", "lng", "prcp"
+-> unchanged
+"date", "lat", "lng", "prcp"
+-> unchanged
+"date", "lat", "lng", "prcp"
+-> unchanged
+"date", "lat", "lng", "prcp"
+-> unchanged
+"date", "lat", "lng", "prcp"
+-> unchanged
+
+-> reset
+"date"
+-> add ['time']
+
+-> reset
+"lat"
+-> add ['location']
+"lat", "lng"
+-> unchanged
+"lat", "lng"
+-> unchanged
+"lat", "lng"
+-> unchanged
+"lat", "lng"
+-> unchanged
+"lat", "lng"
+-> unchanged
+"lat", "lng"
+-> unchanged
+"date", "state"
+-> add ['time']
+"date", "state", "tmax_f"
+-> add ['temperature']
+"date", "state", "tmax_f", "tmin_f"
+-> unchanged
+"date", "state", "tmax_f", "tmin_f"
+-> unchanged
+"date", "state", "tmax_f", "tmin_f"
+-> unchanged
+"date", "state", "tmax_f", "tmin_f"
+-> unchanged
+"date", "state", "tmax_f", "tmin_f"
+-> unchanged
+"date", "state", "tmax_f", "tmin_f"
+-> unchanged
+"date", "state", "tmax_f", "tmin_f"
+-> unchanged
+"date", "rain", "state", "tmax_f", "tmin_f"
+-> add ['rain']
+"date", "rain", "state", "tmax_f", "tmin_f"
+-> unchanged
+"date", "rain", "state", "tmin_f"
+-> unchanged
+"date", "rain", "state"
+-> drop ['temperature']
+"date", "rain", "state"
+-> unchanged
+"date", "number of records", "rain", "state"
+-> add ['aggregation']
+"lat", "lng"
+-> drop ['aggregation', 'time', 'rain']
+"lat", "lng", "state"
+-> unchanged
+"lat", "lng", "state"
+-> unchanged
+"lat", "lng", "state"
+-> unchanged
+"lat", "lng", "state"
+-> unchanged
+"lat", "lng", "state"
+-> unchanged
+"lat", "lng", "state"
+-> unchanged
+"lat", "lng", "state"
+-> unchanged
+"lat", "lng", "state"
+-> unchanged
+"date", "lat", "rain", "state", "tmax_f", "tmin_f"
+-> add ['time', 'rain', 'temperature']
+"date", "rain", "state", "tmax_f", "tmin_f"
+-> unchanged
+
+-> reset
+"date"
+-> add ['time']
+"date"
+-> unchanged
+"date"
+-> unchanged
+"date", "state"
+-> add ['location']
+"date", "rain", "state"
+-> add ['rain']
+"date", "rain", "state"
+-> unchanged
+"date", "rain", "state"
+-> unchanged
+"date", "rain", "snow", "state"
+-> add ['snow']
+"date", "rain", "snow", "state"
+-> unchanged
+"date", "rain", "snow", "state"
+-> unchanged
+"date", "icefog", "rain", "snow", "state"
+-> add ['fog']
+"date", "icefog", "rain", "snow", "snowgeneral", "state"
+-> unchanged
+"date", "icefog", "mist", "rain", "snow", "snowgeneral", "state"
+-> unchanged
+"date", "hail", "icefog", "mist", "rain", "snow", "snowgeneral", "state"
+-> unchanged
+"date", "hail", "icefog", "mist", "rain", "snow", "snowgeneral", "state", "thunder"
+-> unchanged
+"date", "hail", "icefog", "mist", "rain", "snow", "snowgeneral", "state", "thunder"
+-> unchanged
+"date", "hail", "icefog", "mist", "rain", "snow", "snowgeneral", "state", "thunder"
+-> unchanged
+"date", "hail", "icefog", "mist", "rain", "snow", "snowgeneral", "state", "thunder"
+-> unchanged
+"date", "hail", "icefog", "mist", "rain", "snow", "snowgeneral", "state", "thunder"
+-> unchanged
+"date", "hail", "icefog", "icepellets", "mist", "rain", "snow", "snowgeneral", "state", "thunder"
+-> unchanged
+"date", "hail", "icefog", "icepellets", "mist", "name", "rain", "snow", "snowgeneral", "state", "thunder"
+-> unchanged
+"date", "hail", "icefog", "icepellets", "mist", "name", "rain", "snow", "snowgeneral", "state", "thunder"
+-> unchanged
+"date", "hail", "icefog", "icepellets", "mist", "name", "prcp", "rain", "snow", "snowgeneral", "state", "thunder"
+-> unchanged
+
+-> reset
+"date"
+-> add ['time']
+"date"
+-> unchanged
+"date"
+-> unchanged
+"date"
+-> unchanged
+
+-> reset
+"date"
+-> add ['time']
+
+-> reset
+"date"
+-> add ['time']
+"date"
+-> unchanged
+"date"
+-> unchanged
+"date"
+-> unchanged
+"date"
+-> unchanged
+"date"
+-> unchanged
+"date"
+-> unchanged
+"date"
+-> unchanged
+"calculation(avg_max_temp)", "date"
+-> unchanged
+"calculation(avg_max_temp)", "calculation(avg_min_temp)", "date"
+-> unchanged
+"calculation(avg_max_temp)", "calculation(avg_min_temp)", "date"
+-> unchanged
+"calculation(avg_max_temp)", "calculation(avg_min_temp)", "date", "state"
+-> add ['location']
+"calculation(avg_max_temp)", "calculation(avg_min_temp)", "date", "state"
+-> unchanged
+"calculation(avg_max_temp)", "calculation(avg_min_temp)", "date", "latitude (generated)", "longitude (generated)", "state"
+-> unchanged
+"calculation(avg_max_temp)", "calculation(avg_min_temp)", "date", "latitude (generated)", "longitude (generated)", "state"
+-> unchanged
+"calculation(avg_max_temp)", "calculation(avg_min_temp)", "date", "state"
+-> unchanged
+"calculation(avg_max_temp)", "calculation(avg_min_temp)", "date", "latitude (generated)", "longitude (generated)", "state"
+-> unchanged
+"calculation(avg_max_temp)", "calculation(avg_min_temp)", "date", "latitude (generated)", "state"
+-> unchanged
+"calculation(avg_max_temp)", "calculation(avg_min_temp)", "date", "state"
+-> unchanged
+"calculation(avg_max_temp)", "calculation(avg_min_temp)", "date", "state"
+-> unchanged
+"calculation(avg_max_temp)", "calculation(avg_min_temp)", "date", "latitude (generated)", "longitude (generated)", "state"
+-> unchanged
+"calculation(avg_max_temp)", "calculation(avg_min_temp)", "date", "latitude (generated)", "longitude (generated)", "state"
+-> unchanged
+"calculation(avg_max_temp)", "calculation(avg_min_temp)", "date", "latitude (generated)", "state"
+-> unchanged
+"calculation(avg_max_temp)", "calculation(avg_min_temp)", "date", "state"
+-> unchanged
+"calculation(avg_max_temp)", "calculation(avg_min_temp)", "date"
+-> drop ['location']
+"calculation(avg_min_temp)", "date"
+-> unchanged
+"date"
+-> unchanged
+"calculation(avg_max_temp)", "date"
+-> unchanged
+"calculation(avg_max_temp)", "calculation(avg_min_temp)", "date"
+-> unchanged
+"calculation(avg_max_temp)", "calculation(avg_min_temp)", "date"
+-> unchanged
+"drizzle", "fog", "groundfog", "heavyfog", "mist"
+-> add ['rain', 'fog']
+"calculation(avg_max_temp)", "calculation(avg_min_temp)", "date", "state"
+-> replace added ['time', 'location'] dropped ['rain', 'fog']
+"calculation(avg_max_temp)", "calculation(avg_min_temp)", "date", "state"
+-> unchanged
+
+-> reset
+"state"
+-> add ['location']
+"state"
+-> unchanged
+"date", "state"
+-> add ['time']
+"date", "state"
+-> unchanged
+"date", "state"
+-> unchanged
+"date", "state", "tmax_f"
+-> add ['temperature']
+"date", "state", "tmax_f", "tmin_f"
+-> unchanged
+"date", "state", "tmax_f", "tmin_f"
+-> unchanged
+"date", "state", "tmax_f", "tmin_f"
+-> unchanged
+"date", "rain", "state", "tmax_f", "tmin_f"
+-> add ['rain']
+"date", "rain", "state", "tmax_f", "tmin_f"
+-> unchanged
+"date", "rain", "state", "tmax_f", "tmin_f"
+-> unchanged
+"date", "rain", "state", "tmax_f", "tmin_f"
+-> unchanged
+"date", "rain", "state", "tmax_f", "tmin_f"
+-> unchanged
+"date", "prcp", "rain", "state", "tmax_f", "tmin_f"
+-> unchanged
+"date", "groundfog", "prcp", "rain", "state", "tmax_f", "tmin_f"
+-> add ['fog']
+"date", "groundfog", "prcp", "state", "tmax_f", "tmin_f"
+-> unchanged
+"date", "prcp", "state", "tmax_f", "tmin_f"
+-> drop ['fog']
+"date", "heavyfog", "prcp", "state", "tmax_f", "tmin_f"
+-> add ['fog']
+"date", "heavyfog", "prcp", "state", "tmax_f", "tmin_f"
+-> unchanged
+"date", "heavyfog", "prcp", "state", "tmax_f", "tmin_f"
+-> unchanged
+"date", "heavyfog", "prcp", "state", "tmax_f", "tmin_f"
+-> unchanged
+"date", "heavyfog", "prcp", "state", "tmax_f", "tmin_f"
+-> unchanged
+"date", "heavyfog", "prcp", "state", "tmax_f", "tmin_f"
+-> unchanged
+"date", "heavyfog", "prcp", "state", "tmax_f", "tmin_f"
+-> unchanged
+"date", "heavyfog", "prcp", "state", "tmax_f", "tmin_f"
+-> unchanged
+"date", "heavyfog", "prcp", "state", "tmax_f", "tmin_f"
+-> unchanged
+"date", "heavyfog", "prcp", "state", "tmax_f", "tmin_f"
+-> unchanged
+"date", "heavyfog", "prcp", "state", "tmax_f", "tmin_f"
+-> unchanged
+"date", "heavyfog", "prcp", "state", "tmax_f", "tmin_f"
+-> unchanged
+"date", "heavyfog", "prcp", "snow", "state", "tmax_f", "tmin_f"
+-> add ['snow']
+"date", "heavyfog", "prcp", "snow", "state", "tmax_f", "tmin_f"
+-> unchanged
+
+-> reset
+
+-> reset
+"date"
+-> add ['time']
+"date"
+-> unchanged
+"date"
+-> unchanged
+"date"
+-> unchanged
+"date", "name"
+-> unchanged
+"date", "name", "prcp"
+-> add ['rain']
+"date", "prcp"
+-> unchanged
+"date"
+-> drop ['rain']
+"date"
+-> unchanged
+"date"
+-> unchanged
+"date", "prcp"
+-> add ['rain']
+"date", "prcp"
+-> unchanged
+"date", "prcp"
+-> unchanged
+"date", "prcp"
+-> unchanged
+"date"
+-> drop ['rain']
+"date"
+-> unchanged
+"date", "prcp"
+-> add ['rain']
+"date", "prcp", "state"
+-> add ['location']
+"lat", "lng", "name"
+-> drop ['time', 'rain']
+"lat", "lng", "name"
+-> unchanged
+"date", "name", "prcp", "state"
+-> add ['time', 'rain']
+
+-> reset
+"state"
+-> add ['location']
+"state"
+-> unchanged
+"lat", "state"
+-> unchanged
+"lat", "lng", "state"
+-> unchanged
+"lat", "lng", "state", "tmax_f"
+-> add ['temperature']
+"lat", "lng", "state", "tmax_f"
+-> unchanged
+"date", "lat", "lng", "state", "tmax_f"
+-> add ['time']
+"date", "lat", "lng", "state", "tmax_f"
+-> unchanged
+"date", "lat", "lng", "state", "tmax_f"
+-> unchanged
+"date", "lat", "lng", "state", "tmax_f"
+-> unchanged
+"date", "lat", "lng", "state", "tmax_f"
+-> unchanged
+"date", "lat", "lng", "state", "tmax_f"
+-> unchanged
+"date", "lat", "lng", "state", "tmax_f"
+-> unchanged
+"date", "lat", "lng", "state", "tmax_f"
+-> unchanged
+"date", "lat", "lng", "state", "tmax_f"
+-> unchanged
+"date", "lat", "lng", "state", "tmax_f"
+-> unchanged
+"date", "lat", "lng", "state", "tmax_f"
+-> unchanged
+"date", "lat", "lng", "state", "tmax", "tmax_f"
+-> unchanged
+"date", "lat", "lng", "state", "tmax"
+-> unchanged
+"date", "lat", "lng", "state", "tmax"
+-> unchanged
+"date", "lat", "lng", "state"
+-> drop ['temperature']
+"date", "lat", "lng", "state", "tmin_f"
+-> add ['temperature']
+"date", "lat", "lng", "state", "tmin_f"
+-> unchanged
+"date", "lat", "lng", "state"
+-> drop ['temperature']
+"date", "lat", "lng", "rain", "state"
+-> add ['rain']
+"date", "lat", "lng", "state"
+-> drop ['rain']
+"date", "drizzle", "lat", "lng", "state"
+-> add ['rain']
+"date", "lat", "lng", "state"
+-> drop ['rain']
+"date", "lat", "lng", "prcp", "state"
+-> add ['rain']
+"date", "lat", "lng", "prcp", "state"
+-> unchanged
+
+-> reset
+"state"
+-> add ['location']
+"name", "state"
+-> unchanged
+"date", "name", "state"
+-> add ['time']
+"blowingsnow", "blowingspray", "date", "drizzle", "dust", "elevation", "fog", "freezingdrizzle", "freezingrain", "glaze", "groundfog", "hail", "heavyfog", "highwinds", "icefog", "icepellets", "lat", "lng", "mist", "name", "prcp", "rain", "smoke", "snow", "snowgeneral", "snwd", "state", "thunder", "tmax_f", "tmin_f", "tornado"
+-> add ['snow', 'temperature', 'windy', 'rain', 'fog', 'tornado', 'smoke']
+"blowingsnow", "blowingspray", "date", "drizzle", "dust", "elevation", "fog", "freezingdrizzle", "freezingrain", "glaze", "groundfog", "hail", "heavyfog", "highwinds", "icefog", "icepellets", "lat", "lng", "mist", "name", "prcp", "rain", "smoke", "snow", "snowgeneral", "snwd", "state", "thunder", "tmax_f", "tmin_f", "tornado"
+-> unchanged
+"blowingsnow", "blowingspray", "date", "drizzle", "dust", "elevation", "fog", "freezingdrizzle", "freezingrain", "glaze", "groundfog", "hail", "heavyfog", "highwinds", "icefog", "icepellets", "lat", "lng", "mist", "name", "prcp", "rain", "smoke", "snow", "snowgeneral", "snwd", "state", "thunder", "tmax_f", "tmin_f", "tornado"
+-> unchanged
+"blowingsnow", "blowingspray", "date", "drizzle", "dust", "fog", "freezingdrizzle", "freezingrain", "glaze", "groundfog", "hail", "heavyfog", "highwinds", "icefog", "icepellets", "lat", "lng", "mist", "name", "prcp", "rain", "smoke", "snow", "snowgeneral", "snwd", "state", "thunder", "tmax_f", "tmin_f", "tornado"
+-> unchanged
+"blowingsnow", "blowingspray", "date", "drizzle", "dust", "fog", "freezingdrizzle", "freezingrain", "glaze", "groundfog", "hail", "heavyfog", "highwinds", "icefog", "icepellets", "lat", "lng", "mist", "name", "prcp", "rain", "smoke", "snow", "snowgeneral", "snwd", "state", "thunder", "tmax_f", "tmin_f", "tornado"
+-> unchanged
+"blowingsnow", "blowingspray", "date", "drizzle", "dust", "fog", "freezingdrizzle", "freezingrain", "glaze", "groundfog", "hail", "heavyfog", "highwinds", "icefog", "icepellets", "lat", "lng", "mist", "name", "prcp", "rain", "smoke", "snow", "snowgeneral", "snwd", "state", "thunder", "tmax_f", "tmin_f", "tornado"
+-> unchanged
+"blowingsnow", "blowingspray", "date", "drizzle", "dust", "fog", "freezingdrizzle", "freezingrain", "glaze", "groundfog", "hail", "heavyfog", "highwinds", "icefog", "icepellets", "lat", "lng", "mist", "name", "prcp", "rain", "smoke", "snow", "snowgeneral", "snwd", "state", "thunder", "tmax_f", "tmin_f", "tornado"
+-> unchanged
+"blowingsnow", "blowingspray", "date", "drizzle", "dust", "fog", "freezingdrizzle", "freezingrain", "glaze", "groundfog", "hail", "heavyfog", "highwinds", "icefog", "icepellets", "lat", "lng", "mist", "name", "prcp", "rain", "smoke", "snow", "snowgeneral", "snwd", "state", "thunder", "tmax_f", "tmin_f", "tornado"
+-> unchanged
+"blowingsnow", "blowingspray", "date", "drizzle", "dust", "fog", "freezingdrizzle", "freezingrain", "glaze", "groundfog", "hail", "heavyfog", "highwinds", "icefog", "icepellets", "lat", "lng", "mist", "name", "prcp", "rain", "smoke", "snow", "snowgeneral", "snwd", "state", "thunder", "tmax_f", "tmin_f", "tornado"
+-> unchanged
+"blowingsnow", "blowingspray", "date", "drizzle", "dust", "fog", "freezingdrizzle", "freezingrain", "glaze", "groundfog", "hail", "heavyfog", "highwinds", "icefog", "icepellets", "lat", "lng", "mist", "name", "prcp", "rain", "smoke", "snow", "snowgeneral", "snwd", "state", "thunder", "tmax_f", "tmin_f", "tornado"
+-> unchanged
+"blowingsnow", "blowingspray", "date", "drizzle", "dust", "fog", "freezingdrizzle", "freezingrain", "glaze", "groundfog", "hail", "heavyfog", "highwinds", "icefog", "icepellets", "lat", "lng", "mist", "name", "prcp", "rain", "smoke", "snow", "snowgeneral", "snwd", "state", "thunder", "tmax_f", "tmin_f", "tornado"
+-> unchanged
+"blowingsnow", "blowingspray", "date", "drizzle", "dust", "elevation", "fog", "freezingdrizzle", "freezingrain", "glaze", "groundfog", "hail", "heavyfog", "highwinds", "icefog", "icepellets", "lat", "lng", "mist", "name", "prcp", "rain", "smoke", "snow", "snowgeneral", "snwd", "state", "thunder", "tmax_f", "tmin_f", "tornado"
+-> unchanged
+"blowingsnow", "blowingspray", "date", "drizzle", "dust", "elevation", "fog", "freezingdrizzle", "freezingrain", "glaze", "groundfog", "hail", "heavyfog", "highwinds", "icefog", "icepellets", "lat", "lng", "mist", "name", "prcp", "rain", "smoke", "snow", "snowgeneral", "snwd", "state", "thunder", "tmax_f", "tmin_f", "tornado"
+-> unchanged
+"blowingsnow", "blowingspray", "date", "drizzle", "dust", "elevation", "fog", "freezingdrizzle", "freezingrain", "glaze", "groundfog", "hail", "heavyfog", "highwinds", "icefog", "icepellets", "lat", "lng", "mist", "name", "prcp", "rain", "smoke", "snow", "snowgeneral", "snwd", "state", "thunder", "tmax_f", "tmin_f", "tornado"
+-> unchanged
+"blowingsnow", "blowingspray", "date", "drizzle", "dust", "elevation", "fog", "freezingdrizzle", "freezingrain", "glaze", "groundfog", "hail", "heavyfog", "highwinds", "icefog", "icepellets", "lat", "lng", "mist", "name", "prcp", "rain", "smoke", "snow", "snowgeneral", "snwd", "state", "thunder", "tmax_f", "tmin_f", "tornado"
+-> unchanged
+"blowingsnow", "blowingspray", "date", "drizzle", "dust", "elevation", "fog", "freezingdrizzle", "freezingrain", "glaze", "groundfog", "hail", "heavyfog", "highwinds", "icefog", "icepellets", "lat", "lng", "mist", "name", "prcp", "rain", "smoke", "snow", "snowgeneral", "snwd", "state", "thunder", "tmax_f", "tmin_f", "tornado"
+-> unchanged
+"blowingsnow", "blowingspray", "date", "drizzle", "dust", "elevation", "fog", "freezingdrizzle", "freezingrain", "glaze", "groundfog", "hail", "heavyfog", "highwinds", "icefog", "icepellets", "lat", "lng", "mist", "name", "prcp", "rain", "smoke", "snow", "snowgeneral", "snwd", "state", "thunder", "tmax_f", "tmin_f", "tornado"
+-> unchanged
+"blowingsnow", "blowingspray", "date", "drizzle", "dust", "elevation", "fog", "freezingdrizzle", "freezingrain", "glaze", "groundfog", "hail", "heavyfog", "highwinds", "icefog", "icepellets", "lat", "lng", "mist", "name", "prcp", "rain", "smoke", "snow", "snowgeneral", "snwd", "state", "thunder", "tmax_f", "tmin_f", "tornado"
+-> unchanged
+"blowingsnow", "blowingspray", "date", "drizzle", "dust", "elevation", "fog", "freezingdrizzle", "freezingrain", "glaze", "groundfog", "hail", "heavyfog", "highwinds", "icefog", "icepellets", "lat", "lng", "mist", "name", "prcp", "rain", "smoke", "snow", "snowgeneral", "snwd", "state", "thunder", "tmax_f", "tmin_f", "tornado"
+-> unchanged
+
+-> reset
+"date"
+-> add ['time']
+"date", "drizzle"
+-> add ['rain']
+"date", "drizzle", "name"
+-> unchanged
+"date", "drizzle", "name", "number of records"
+-> add ['aggregation']
+"date", "drizzle", "name"
+-> drop ['aggregation']
+"blowingsnow", "date", "drizzle", "name"
+-> add ['snow']
+"blowingsnow", "date", "drizzle", "name"
+-> unchanged
+"blowingsnow", "blowingspray", "date", "drizzle", "dust", "fog", "freezingdrizzle", "freezingrain", "glaze", "groundfog", "hail", "heavyfog", "highwinds", "icefog", "icepellets", "mist", "name", "prcp", "rain", "smoke", "snow", "snowgeneral", "snwd", "thunder", "tornado", "unknownprecipitation"
+-> add ['windy', 'fog', 'tornado', 'smoke']
+"blowingsnow", "blowingspray", "date", "drizzle", "dust", "fog", "freezingdrizzle", "freezingrain", "glaze", "groundfog", "hail", "heavyfog", "highwinds", "icefog", "icepellets", "mist", "name", "prcp", "rain", "smoke", "snow", "snowgeneral", "snwd", "thunder", "tornado", "unknownprecipitation"
+-> unchanged
+"blowingsnow", "blowingspray", "date", "drizzle", "dust", "fog", "freezingdrizzle", "freezingrain", "glaze", "groundfog", "hail", "heavyfog", "highwinds", "icefog", "icepellets", "mist", "name", "prcp", "rain", "smoke", "snow", "snowgeneral", "snwd", "thunder", "tornado", "unknownprecipitation"
+-> unchanged
+"blowingsnow", "blowingspray", "date", "drizzle", "dust", "fog", "freezingdrizzle", "freezingrain", "glaze", "groundfog", "hail", "heavyfog", "highwinds", "icefog", "icepellets", "mist", "name", "prcp", "rain", "smoke", "snow", "snowgeneral", "snwd", "thunder", "tornado", "unknownprecipitation"
+-> unchanged
+"date", "name", "prcp", "rain", "smoke", "snow", "snowgeneral", "snwd", "thunder", "tornado", "unknownprecipitation"
+-> drop ['windy', 'fog']
+"date", "name", "prcp"
+-> drop ['snow', 'smoke', 'tornado']
+"date", "name", "prcp", "rain", "smoke", "snow", "snowgeneral", "snwd", "thunder", "tornado", "unknownprecipitation"
+-> add ['snow', 'smoke', 'tornado']
+"blowingsnow", "blowingspray", "date", "drizzle", "dust", "fog", "freezingdrizzle", "freezingrain", "glaze", "groundfog", "hail", "heavyfog", "highwinds", "icefog", "icepellets", "mist", "name", "prcp", "rain", "smoke", "snow", "snowgeneral", "snwd", "thunder", "tornado", "unknownprecipitation"
+-> add ['windy', 'fog']
+"blowingsnow", "blowingspray", "date", "drizzle", "dust", "fog", "freezingdrizzle", "freezingrain", "glaze", "groundfog", "hail", "heavyfog", "highwinds", "icefog", "icepellets", "mist", "name", "prcp", "rain", "smoke", "snow", "snowgeneral", "snwd", "thunder", "tornado", "unknownprecipitation"
+-> unchanged
+"blowingsnow", "blowingspray", "date", "drizzle", "dust", "fog", "freezingdrizzle", "freezingrain", "glaze", "groundfog", "hail", "heavyfog", "highwinds", "icefog", "icepellets", "mist", "name", "prcp", "rain", "smoke", "snow", "snowgeneral", "snwd", "thunder", "tornado", "unknownprecipitation"
+-> unchanged
+"blowingsnow", "blowingspray", "date", "drizzle", "dust", "fog", "freezingdrizzle", "freezingrain", "glaze", "groundfog", "hail", "heavyfog", "highwinds", "icefog", "icepellets", "mist", "name", "prcp", "rain", "smoke", "snow", "snowgeneral", "snwd", "thunder", "tornado", "unknownprecipitation"
+-> unchanged
+"blowingsnow", "blowingspray", "date", "drizzle", "dust", "fog", "freezingdrizzle", "freezingrain", "glaze", "groundfog", "hail", "heavyfog", "highwinds", "icefog", "icepellets", "mist", "name", "prcp", "rain", "smoke", "snow", "snowgeneral", "snwd", "thunder", "tornado", "unknownprecipitation"
+-> unchanged
+"blowingsnow", "blowingspray", "date", "drizzle", "dust", "fog", "freezingdrizzle", "freezingrain", "glaze", "groundfog", "hail", "heavyfog", "highwinds", "icefog", "icepellets", "mist", "name", "prcp", "rain", "smoke", "snow", "snowgeneral", "snwd", "thunder", "tornado", "unknownprecipitation"
+-> unchanged
+"blowingsnow", "blowingspray", "date", "drizzle", "dust", "fog", "freezingdrizzle", "freezingrain", "glaze", "groundfog", "hail", "heavyfog", "highwinds", "icefog", "icepellets", "mist", "name", "prcp", "rain", "smoke", "snow", "snowgeneral", "snwd", "thunder", "tornado", "unknownprecipitation"
+-> unchanged
+"blowingsnow", "blowingspray", "date", "drizzle", "dust", "fog", "freezingdrizzle", "freezingrain", "glaze", "groundfog", "hail", "heavyfog", "highwinds", "icefog", "icepellets", "mist", "name", "prcp", "rain", "smoke", "snow", "snowgeneral", "snwd", "thunder", "tornado", "unknownprecipitation"
+-> unchanged
+"blowingsnow", "blowingspray", "date", "drizzle", "dust", "fog", "freezingdrizzle", "freezingrain", "glaze", "groundfog", "hail", "heavyfog", "highwinds", "icefog", "icepellets", "mist", "name", "prcp", "rain", "smoke", "snow", "snowgeneral", "snwd", "thunder", "tornado", "unknownprecipitation"
+-> unchanged
+"blowingsnow", "blowingspray", "date", "drizzle", "dust", "fog", "freezingdrizzle", "freezingrain", "glaze", "groundfog", "hail", "heavyfog", "highwinds", "icefog", "icepellets", "mist", "name", "prcp", "rain", "smoke", "snow", "snowgeneral", "snwd", "thunder", "tornado", "unknownprecipitation"
+-> unchanged
+"blowingsnow", "blowingspray", "date", "drizzle", "dust", "fog", "freezingdrizzle", "freezingrain", "glaze", "groundfog", "hail", "heavyfog", "highwinds", "icefog", "icepellets", "mist", "name", "prcp", "rain", "smoke", "snow", "snowgeneral", "snwd", "thunder", "tornado", "unknownprecipitation"
+-> unchanged
+"blowingsnow", "blowingspray", "date", "drizzle", "dust", "fog", "freezingdrizzle", "freezingrain", "glaze", "groundfog", "hail", "heavyfog", "highwinds", "icefog", "icepellets", "mist", "name", "prcp", "rain", "smoke", "snow", "snowgeneral", "snwd", "thunder", "tornado", "unknownprecipitation"
+-> unchanged
+"blowingsnow", "blowingspray", "date", "drizzle", "dust", "fog", "freezingdrizzle", "freezingrain", "glaze", "groundfog", "hail", "heavyfog", "highwinds", "icefog", "icepellets", "mist", "name", "prcp", "rain", "smoke", "snow", "snowgeneral", "snwd", "thunder", "tornado", "unknownprecipitation"
+-> unchanged
+"blowingsnow", "blowingspray", "date", "drizzle", "dust", "fog", "freezingdrizzle", "freezingrain", "glaze", "groundfog", "hail", "heavyfog", "highwinds", "icefog", "icepellets", "mist", "name", "rain", "smoke", "snow", "snowgeneral", "snwd", "thunder", "tornado", "unknownprecipitation"
+-> unchanged
+
+-> reset
+Task t4 f1_score, f1_before, f1_after = 0.00 [0.00, 0.00]
+Dataset: faa1
+###########################
+
+-> reset
+"flightdate"
+-> add ['time']
+"flightdate", "number of records"
+-> add ['aggregate']
+"flightdate", "number of records"
+-> unchanged
+"flightdate", "number of records"
+-> unchanged
+"flightdate", "number of records"
+-> unchanged
+"flightdate", "number of records"
+-> unchanged
+"flightdate", "number of records", "uniquecarrier"
+-> add ['carrier']
+"flightdate", "number of records", "uniquecarrier"
+-> unchanged
+"flightdate", "number of records", "uniquecarrier"
+-> unchanged
+"flightdate", "number of records", "uniquecarrier"
+-> unchanged
+"flightdate", "number of records", "uniquecarrier"
+-> unchanged
+"flightdate", "number of records", "uniquecarrier"
+-> unchanged
+"flightdate", "number of records", "uniquecarrier"
+-> unchanged
+"flightdate", "number of records", "uniquecarrier"
+-> unchanged
+"flightdate", "number of records", "uniquecarrier"
+-> unchanged
+"flightdate", "number of records", "uniquecarrier"
+-> unchanged
+"flightdate", "number of records", "uniquecarrier"
+-> unchanged
+
+-> reset
+"flightdate"
+-> add ['time']
+"flightdate"
+-> unchanged
+"flightdate"
+-> unchanged
+"flightdate"
+-> unchanged
+"flightdate", "uniquecarrier"
+-> add ['carrier']
+"flightdate", "number of records", "uniquecarrier"
+-> add ['aggregate']
+"flightdate", "number of records", "uniquecarrier"
+-> unchanged
+"flightdate", "number of records", "uniquecarrier"
+-> unchanged
+"flightdate", "number of records", "uniquecarrier"
+-> unchanged
+"flightdate", "number of records", "uniquecarrier"
+-> unchanged
+"flightdate", "number of records", "uniquecarrier"
+-> unchanged
+"flightdate", "number of records", "uniquecarrier"
+-> unchanged
+"flightdate", "number of records", "uniquecarrier"
+-> unchanged
+"flightdate", "number of records", "uniquecarrier"
+-> unchanged
+"flightdate", "number of records", "uniquecarrier"
+-> unchanged
+"flightdate", "number of records", "uniquecarrier"
+-> unchanged
+
+-> reset
+"flightdate"
+-> add ['time']
+"flightdate", "number of records"
+-> add ['aggregate']
+"flightdate", "number of records"
+-> unchanged
+"flightdate", "number of records", "uniquecarrier"
+-> add ['carrier']
+"flightdate", "number of records", "uniquecarrier"
+-> unchanged
+"flightdate", "number of records", "uniquecarrier"
+-> unchanged
+
+-> reset
+"flightdate"
+-> add ['time']
+
+-> reset
+"flightdate"
+-> add ['time']
+"flightdate", "number of records"
+-> add ['aggregate']
+"flightdate", "number of records"
+-> unchanged
+"flightdate", "number of records"
+-> unchanged
+"flightdate", "number of records"
+-> unchanged
+"flightdate", "number of records"
+-> unchanged
+"flightdate", "number of records", "uniquecarrier"
+-> add ['carrier']
+"flightdate", "number of records", "uniquecarrier"
+-> unchanged
+"flightdate", "number of records"
+-> drop ['carrier']
+"flightdate", "number of records", "uniquecarrier"
+-> add ['carrier']
+
+-> reset
+"flightdate", "number of records", "uniquecarrier"
+-> add ['aggregate', 'time', 'carrier']
+"flightdate", "number of records"
+-> drop ['carrier']
+"flightdate", "number of records", "uniquecarrier"
+-> add ['carrier']
+"flightdate", "number of records", "uniquecarrier"
+-> unchanged
+"flightdate", "number of records", "uniquecarrier"
+-> unchanged
+"flightdate", "number of records", "uniquecarrier"
+-> unchanged
+"flightdate", "number of records", "uniquecarrier"
+-> unchanged
+"flightdate", "number of records", "uniquecarrier"
+-> unchanged
+"flightdate", "number of records", "uniquecarrier"
+-> unchanged
+"flightdate", "number of records", "uniquecarrier"
+-> unchanged
+"flightdate", "number of records", "uniquecarrier"
+-> unchanged
+"flightdate", "number of records", "uniquecarrier"
+-> unchanged
+"flightdate", "number of records", "uniquecarrier"
+-> unchanged
+"flightdate", "number of records", "uniquecarrier"
+-> unchanged
+"flightdate", "number of records", "uniquecarrier"
+-> unchanged
+"flightdate", "number of records", "uniquecarrier"
+-> unchanged
+"flightdate", "number of records", "uniquecarrier"
+-> unchanged
+"flightdate", "number of records", "uniquecarrier"
+-> unchanged
+"flightdate", "number of records", "uniquecarrier"
+-> unchanged
+
+-> reset
+"flightdate"
+-> add ['time']
+"flightdate"
+-> unchanged
+"airtime", "flightdate"
+-> unchanged
+"airtime", "flightdate"
+-> unchanged
+"airtime", "flightdate", "uniquecarrier"
+-> add ['carrier']
+"airtime", "flightdate", "uniquecarrier"
+-> unchanged
+"airtime", "flightdate", "uniquecarrier"
+-> unchanged
+"airtime", "flightdate", "uniquecarrier"
+-> unchanged
+"airtime", "flightdate", "uniquecarrier"
+-> unchanged
+"airtime", "flightdate", "uniquecarrier"
+-> unchanged
+"airtime", "flightdate", "uniquecarrier"
+-> unchanged
+"airtime", "flightdate", "uniquecarrier"
+-> unchanged
+"airtime", "flightdate", "uniquecarrier"
+-> unchanged
+"airtime", "flightdate", "uniquecarrier"
+-> unchanged
+"airtime", "flightdate", "uniquecarrier"
+-> unchanged
+"airtime", "flightdate", "uniquecarrier"
+-> unchanged
+"airtime", "flightdate", "uniquecarrier"
+-> unchanged
+"airtime", "flightdate", "uniquecarrier"
+-> unchanged
+"airtime", "flightdate", "uniquecarrier"
+-> unchanged
+"airtime", "flightdate", "uniquecarrier"
+-> unchanged
+"airtime", "flightdate", "uniquecarrier"
+-> unchanged
+"airtime", "flightdate", "uniquecarrier"
+-> unchanged
+"airtime", "flightdate", "uniquecarrier"
+-> unchanged
+"airtime", "flightdate", "uniquecarrier"
+-> unchanged
+"airtime", "flightdate", "uniquecarrier"
+-> unchanged
+"airtime", "flightdate", "uniquecarrier"
+-> unchanged
+"airtime", "flightdate", "uniquecarrier"
+-> unchanged
+"airtime", "flightdate", "uniquecarrier"
+-> unchanged
+"airtime", "flightdate", "uniquecarrier"
+-> unchanged
+"airtime", "flightdate", "uniquecarrier"
+-> unchanged
+"airtime", "flightdate", "uniquecarrier"
+-> unchanged
+
+-> reset
+"flightdate"
+-> add ['time']
+"flightdate"
+-> unchanged
+"flightdate", "number of records"
+-> add ['aggregate']
+"flightdate", "number of records"
+-> unchanged
+"flightdate", "number of records"
+-> unchanged
+"flightdate", "number of records", "uniquecarrier"
+-> add ['carrier']
+"flightdate", "number of records"
+-> drop ['carrier']
+"flightdate", "number of records", "uniquecarrier"
+-> add ['carrier']
+"flightdate", "number of records", "uniquecarrier"
+-> unchanged
+"flightdate", "number of records", "uniquecarrier"
+-> unchanged
+"flightdate", "number of records", "uniquecarrier"
+-> unchanged
+"flightdate", "number of records", "uniquecarrier"
+-> unchanged
+"flightdate", "number of records", "uniquecarrier"
+-> unchanged
+"flightdate", "number of records", "uniquecarrier"
+-> unchanged
+"flightdate", "number of records", "uniquecarrier"
+-> unchanged
+"flightdate", "number of records", "uniquecarrier"
+-> unchanged
+"flightdate", "number of records", "uniquecarrier"
+-> unchanged
+"flightdate", "number of records", "uniquecarrier"
+-> unchanged
+"flightdate", "number of records", "uniquecarrier"
+-> unchanged
+"flightdate", "number of records", "uniquecarrier"
+-> unchanged
+"flightdate", "number of records", "uniquecarrier"
+-> unchanged
+
+-> reset
+"flightdate", "number of records"
+-> add ['aggregate', 'time']
+"flightdate", "number of records"
+-> unchanged
+"flightdate", "number of records"
+-> unchanged
+"flightdate", "number of records"
+-> unchanged
+"flightdate", "number of records"
+-> unchanged
+"flightdate", "number of records"
+-> unchanged
+"flightdate", "number of records"
+-> unchanged
+"flightdate", "number of records"
+-> unchanged
+"flightdate", "number of records", "uniquecarrier"
+-> add ['carrier']
+"flightdate", "number of records", "uniquecarrier"
+-> unchanged
+
+-> reset
+"number of records"
+-> add ['aggregate']
+"flightdate", "number of records"
+-> add ['time']
+"flightdate", "number of records"
+-> unchanged
+"flightdate", "number of records"
+-> unchanged
+"flightdate", "number of records"
+-> unchanged
+"flightdate", "number of records"
+-> unchanged
+"flightdate", "number of records"
+-> unchanged
+"flightdate", "number of records"
+-> unchanged
+"flightdate", "number of records"
+-> unchanged
+"flightdate", "number of records"
+-> unchanged
+"flightdate", "number of records"
+-> unchanged
+"flightdate", "number of records"
+-> unchanged
+"flightdate", "number of records"
+-> unchanged
+"flightdate", "number of records"
+-> unchanged
+"flightdate", "number of records"
+-> unchanged
+"flightdate", "number of records"
+-> unchanged
+"flightdate", "number of records"
+-> unchanged
+"flightdate", "number of records"
+-> unchanged
+"flightdate", "number of records"
+-> unchanged
+"flightdate", "number of records"
+-> unchanged
+"flightdate", "number of records"
+-> unchanged
+"flightdate", "number of records"
+-> unchanged
+"flightdate", "number of records", "uniquecarrier"
+-> add ['carrier']
+"flightdate", "number of records", "uniquecarrier"
+-> unchanged
+"flightdate", "number of records", "uniquecarrier"
+-> unchanged
+"flightdate", "number of records", "uniquecarrier"
+-> unchanged
+"flightdate", "number of records", "uniquecarrier"
+-> unchanged
+"flightdate", "number of records", "uniquecarrier"
+-> unchanged
+"flightdate", "number of records", "uniquecarrier"
+-> unchanged
+Task t2 f1_score, f1_before, f1_after = 0.00 [0.00, 0.00]
+
+-> reset
+"distance"
+-> add ['distance']
+"arrdelay", "distance"
+-> add ['delay']
+"distance"
+-> drop ['delay']
+
+-> reset
+"uniquecarrier"
+-> add ['carrier']
+"distance", "uniquecarrier"
+-> add ['distance']
+"arrdelay", "distance", "uniquecarrier"
+-> add ['delay']
+"arrdelay", "distance", "uniquecarrier"
+-> unchanged
+"arrdelay", "distance", "uniquecarrier"
+-> unchanged
+"arrdelay", "distance", "uniquecarrier"
+-> unchanged
+"arrdelay", "distance", "uniquecarrier"
+-> unchanged
+"arrdelay", "distance", "uniquecarrier"
+-> unchanged
+
+-> reset
+"distance"
+-> add ['distance']
+"distance"
+-> unchanged
+"distance"
+-> unchanged
+"arrdelay", "distance"
+-> add ['delay']
+"arrdelay", "distance"
+-> unchanged
+
+-> reset
+"arrdelay"
+-> add ['delay']
+"arrdelay", "distance"
+-> add ['distance']
+"arrdelay", "distance"
+-> unchanged
+"arrdelay", "distance"
+-> unchanged
+"arrdelay", "distance"
+-> unchanged
+"arrdelay", "distance"
+-> unchanged
+"arrdelay", "distance"
+-> unchanged
+"arrdelay", "distance"
+-> unchanged
+"arrdelay", "distance"
+-> unchanged
+"arrdelay", "distance"
+-> unchanged
+"arrdelay", "distance", "number of records"
+-> add ['aggregate']
+"arrdelay", "distance", "number of records"
+-> unchanged
+"arrdelay", "distance", "number of records"
+-> unchanged
+"arrdelay", "distance"
+-> drop ['aggregate']
+
+-> reset
+"distance"
+-> add ['distance']
+"arrdelay", "distance"
+-> add ['delay']
+"arrdelay", "distance"
+-> unchanged
+"arrdelay", "distance"
+-> unchanged
+"arrdelay", "distance", "uniquecarrier"
+-> add ['carrier']
+
+-> reset
+"distance"
+-> add ['distance']
+"distance", "uniquecarrier"
+-> add ['carrier']
+"distance", "uniquecarrier"
+-> unchanged
+"distance", "uniquecarrier"
+-> unchanged
+"arrdelay", "distance", "uniquecarrier"
+-> add ['delay']
+"arrdelay", "distance", "uniquecarrier"
+-> unchanged
+"arrdelay", "distance", "uniquecarrier"
+-> unchanged
+"arrdelay", "distance", "uniquecarrier"
+-> unchanged
+"arrdelay", "deststate", "distance", "uniquecarrier"
+-> add ['dest']
+"arrdelay", "deststate", "distance"
+-> drop ['carrier']
+"arrdelay", "deststate", "distance", "originstate"
+-> add ['origin']
+"arrdelay", "distance", "originstate"
+-> drop ['dest']
+"arrdelay", "distance", "latitude (generated)", "longitude (generated)", "originstate"
+-> add ['aggregate']
+"arrdelay", "deststate", "distance", "latitude (generated)", "longitude (generated)", "originstate"
+-> add ['dest']
+"arrdelay", "deststate", "distance", "latitude (generated)", "longitude (generated)"
+-> drop ['origin']
+"arrdelay", "deststate", "distance"
+-> drop ['aggregate']
+"arrdelay", "deststate", "distance", "uniquecarrier"
+-> add ['carrier']
+"arrdelay", "distance", "uniquecarrier"
+-> drop ['dest']
+"arrdelay", "distance", "uniquecarrier"
+-> unchanged
+"arrdelay", "distance", "uniquecarrier"
+-> unchanged
+"arrdelay", "distance", "uniquecarrier"
+-> unchanged
+"arrdelay", "distance", "uniquecarrier"
+-> unchanged
+
+-> reset
+"arrdelay", "distance"
+-> add ['delay', 'distance']
+"arrdelay", "distance"
+-> unchanged
+"arrdelay", "distance"
+-> unchanged
+"arrdelay", "distance"
+-> unchanged
+"arrdelay", "distance"
+-> unchanged
+"arrdelay", "distance", "uniquecarrier"
+-> add ['carrier']
+"arrdelay", "distance", "uniquecarrier"
+-> unchanged
+"arrdelay", "distance", "uniquecarrier"
+-> unchanged
+"arrdelay", "distance", "uniquecarrier"
+-> unchanged
+"arrdelay", "depdelay", "distance", "uniquecarrier"
+-> unchanged
+
+-> reset
+"arrdelay"
+-> add ['delay']
+"arrdelay"
+-> unchanged
+"arrdelay", "distance"
+-> add ['distance']
+"arrdelay", "distance"
+-> unchanged
+"arrdelay", "distance"
+-> unchanged
+"arrdelay", "distance"
+-> unchanged
+"arrdelay", "distance"
+-> unchanged
+"arrdelay", "distance"
+-> unchanged
+
+-> reset
+
+-> reset
+"distance"
+-> add ['distance']
+"distance", "number of records"
+-> add ['aggregate']
+"distance", "number of records"
+-> unchanged
+"distance", "number of records"
+-> unchanged
+"arrdelay", "distance", "number of records"
+-> add ['delay']
+"arrdelay", "distance", "number of records"
+-> unchanged
+"arrdelay", "distance", "number of records"
+-> unchanged
+"arrdelay", "distance", "number of records"
+-> unchanged
+
+-> reset
+"arrdelay", "distance"
+-> add ['delay', 'distance']
+"arrdelay", "distance"
+-> unchanged
+"arrdelay", "distance"
+-> unchanged
+"arrdelay"
+-> drop ['distance']
+
+-> reset
+"distance"
+-> add ['distance']
+"arrdelay", "distance"
+-> add ['delay']
+"arrdelay", "distance"
+-> unchanged
+"arrdelay", "distance", "number of records"
+-> add ['aggregate']
+
+-> reset
+"distance"
+-> add ['distance']
+"distance"
+-> unchanged
+"arrdelay", "distance"
+-> add ['delay']
+"distance"
+-> drop ['delay']
+"calculation(delay?)", "distance"
+-> add ['delay']
+"calculation(delay?)", "distance"
+-> unchanged
+"calculation(delay?)", "distance"
+-> unchanged
+"calculation(delay?)", "distance"
+-> unchanged
+"calculation(delay?)", "distance"
+-> unchanged
+Task t3 f1_score, f1_before, f1_after = 0.00 [0.00, 0.00]
+
+-> reset
+"latitude (generated)", "longitude (generated)", "origincityname"
+-> add ['aggregate', 'origin']
+"distance", "latitude (generated)", "longitude (generated)", "origincityname"
+-> add ['distance']
+"distance", "latitude (generated)", "longitude (generated)", "origincityname"
+-> unchanged
+"arrdelay", "distance", "latitude (generated)", "longitude (generated)", "origincityname"
+-> add ['delay']
+"arrdelay", "distance", "latitude (generated)", "longitude (generated)"
+-> drop ['origin']
+"arrdelay", "destcityname", "distance", "latitude (generated)", "longitude (generated)"
+-> add ['dest']
+"destcityname", "distance", "latitude (generated)", "longitude (generated)", "uniquecarrier"
+-> replace added ['carrier'] dropped ['delay']
+
+-> reset
+"uniquecarrier"
+-> add ['carrier']
+"uniquecarrier"
+-> unchanged
+"dest", "uniquecarrier"
+-> add ['dest']
+"dest", "origin", "uniquecarrier"
+-> add ['origin']
+"dest", "origin"
+-> drop ['carrier']
+"dest", "origin", "uniquecarrier"
+-> add ['carrier']
+
+-> reset
+"dest", "number of records", "origin", "uniquecarrier"
+-> add ['aggregate', 'dest', 'carrier', 'origin']
+"origin"
+-> drop ['aggregate', 'dest', 'carrier']
+"dest", "origin"
+-> add ['dest']
+"dest", "origin"
+-> unchanged
+"arrdelay", "dest", "origin"
+-> add ['delay']
+"arrdelay", "depdelay", "dest", "origin"
+-> unchanged
+"arrdelay", "depdelay", "dest", "origin"
+-> unchanged
+"arrdelay", "depdelay", "dest", "origin"
+-> unchanged
+"arrdelay", "depdelay", "dest"
+-> drop ['origin']
+"arrdelay", "depdelay", "dest"
+-> unchanged
+"dest", "number of records", "origin", "uniquecarrier"
+-> add ['aggregate', 'carrier', 'origin']
+"dest", "number of records", "origin", "uniquecarrier"
+-> unchanged
+"dest", "number of records", "origin", "uniquecarrier"
+-> unchanged
+"dest", "number of records", "origin", "uniquecarrier"
+-> unchanged
+"dest", "number of records", "origin", "uniquecarrier"
+-> unchanged
+"dest", "number of records", "origin", "uniquecarrier"
+-> unchanged
+"arrdelay", "depdelay", "dest"
+-> drop ['aggregate', 'carrier', 'origin']
+
+-> reset
+"latitude (generated)", "longitude (generated)", "origincityname"
+-> add ['aggregate', 'origin']
+"latitude (generated)", "longitude (generated)", "origincityname", "uniquecarrier"
+-> add ['carrier']
+"latitude (generated)", "longitude (generated)", "origincityname", "uniquecarrier"
+-> unchanged
+"latitude (generated)", "longitude (generated)", "origincityname", "uniquecarrier"
+-> unchanged
+"latitude (generated)", "longitude (generated)", "origincityname", "uniquecarrier"
+-> unchanged
+"latitude (generated)", "longitude (generated)", "origincityname", "uniquecarrier"
+-> unchanged
+"latitude (generated)", "longitude (generated)", "origincityname", "uniquecarrier"
+-> unchanged
+"latitude (generated)", "longitude (generated)", "origincityname", "uniquecarrier"
+-> unchanged
+"latitude (generated)", "longitude (generated)", "origincityname", "uniquecarrier"
+-> unchanged
+"latitude (generated)", "longitude (generated)", "origincityname", "uniquecarrier"
+-> unchanged
+
+-> reset
+"uniquecarrier"
+-> add ['carrier']
+"dest", "uniquecarrier"
+-> add ['dest']
+"dest", "origin", "uniquecarrier"
+-> add ['origin']
+"dest", "number of records", "origin", "uniquecarrier"
+-> add ['aggregate']
+"dest", "number of records", "origin", "uniquecarrier"
+-> unchanged
+"dest", "origin", "uniquecarrier"
+-> drop ['aggregate']
+"dest", "origin", "uniquecarrier"
+-> unchanged
+"dest", "origin", "uniquecarrier"
+-> unchanged
+"dest", "number of records", "origin", "uniquecarrier"
+-> add ['aggregate']
+"dest", "number of records", "origin", "uniquecarrier"
+-> unchanged
+"calculation([dest]+[origin])", "dest", "number of records", "origin", "uniquecarrier"
+-> unchanged
+"calculation([dest]+[origin])", "dest", "number of records", "uniquecarrier"
+-> drop ['origin']
+"calculation([dest]+[origin])", "number of records", "uniquecarrier"
+-> unchanged
+"calculation([dest]+[origin])", "dest", "number of records", "uniquecarrier"
+-> unchanged
+"calculation([dest]+[origin])", "dest", "number of records", "origin", "uniquecarrier"
+-> add ['origin']
+"dest", "number of records", "origin", "uniquecarrier"
+-> unchanged
+"dest", "number of records", "origin", "uniquecarrier"
+-> unchanged
+"dest", "number of records", "uniquecarrier"
+-> drop ['origin']
+"dest", "number of records", "uniquecarrier"
+-> unchanged
+"dest", "number of records", "origin", "uniquecarrier"
+-> add ['origin']
+"dest", "number of records", "uniquecarrier"
+-> drop ['origin']
+"dest", "number of records", "uniquecarrier"
+-> unchanged
+"dest", "number of records", "uniquecarrier"
+-> unchanged
+"dest", "flightdate", "number of records", "uniquecarrier"
+-> add ['time']
+"dest", "flightdate", "number of records", "uniquecarrier"
+-> unchanged
+"dest", "flightdate", "number of records", "uniquecarrier"
+-> unchanged
+"dest", "flightdate", "number of records", "uniquecarrier"
+-> unchanged
+"dest", "flightdate", "number of records", "uniquecarrier"
+-> unchanged
+"dest", "flightdate", "number of records", "uniquecarrier"
+-> unchanged
+"dest", "flightdate", "number of records", "uniquecarrier"
+-> unchanged
+"dest", "flightdate", "number of records", "uniquecarrier"
+-> unchanged
+"dest", "flightdate", "number of records", "uniquecarrier"
+-> unchanged
+"dest", "flightdate", "number of records", "uniquecarrier"
+-> unchanged
+"dest", "flightdate", "number of records", "uniquecarrier"
+-> unchanged
+"dest", "number of records", "uniquecarrier"
+-> drop ['time']
+"dest", "number of records", "uniquecarrier"
+-> unchanged
+"dest", "number of records", "uniquecarrier"
+-> unchanged
+
+-> reset
+"origin"
+-> add ['origin']
+"origin", "uniquecarrier"
+-> add ['carrier']
+"origin", "uniquecarrier"
+-> unchanged
+"origin", "uniquecarrier"
+-> unchanged
+"origin", "uniquecarrier"
+-> unchanged
+"origin", "uniquecarrier"
+-> unchanged
+
+-> reset
+"uniquecarrier"
+-> add ['carrier']
+"latitude (generated)", "uniquecarrier"
+-> add ['aggregate']
+"latitude (generated)", "longitude (generated)", "uniquecarrier"
+-> unchanged
+"latitude (generated)", "longitude (generated)"
+-> drop ['carrier']
+"longitude (generated)"
+-> unchanged
+
+-> reset
+"uniquecarrier"
+-> add ['carrier']
+"longitude (generated)", "uniquecarrier"
+-> add ['aggregate']
+"longitude (generated)", "uniquecarrier"
+-> unchanged
+"longitude (generated)"
+-> drop ['carrier']
+"longitude (generated)"
+-> unchanged
+
+-> reset
+"originstate"
+-> add ['origin']
+"latitude (generated)", "longitude (generated)", "originstate"
+-> add ['aggregate']
+"latitude (generated)", "longitude (generated)", "originstate", "uniquecarrier"
+-> add ['carrier']
+"latitude (generated)", "longitude (generated)", "originstate", "uniquecarrier", "weatherdelay"
+-> add ['delay']
+"latitude (generated)", "longitude (generated)", "number of records", "originstate", "uniquecarrier", "weatherdelay"
+-> unchanged
+"latitude (generated)", "longitude (generated)", "number of records", "uniquecarrier", "weatherdelay"
+-> drop ['origin']
+"deststate", "latitude (generated)", "longitude (generated)", "number of records", "uniquecarrier", "weatherdelay"
+-> add ['dest']
+"deststate", "latitude (generated)", "longitude (generated)", "number of records", "uniquecarrier", "weatherdelay"
+-> unchanged
+"deststate", "latitude (generated)", "longitude (generated)", "uniquecarrier", "weatherdelay"
+-> unchanged
+"deststate", "latitude (generated)", "longitude (generated)", "uniquecarrier", "weatherdelay"
+-> unchanged
+"deststate", "lateaircraftdelay", "latitude (generated)", "longitude (generated)", "uniquecarrier"
+-> unchanged
+"deststate", "lateaircraftdelay", "latitude (generated)", "longitude (generated)", "number of records", "uniquecarrier"
+-> unchanged
+"deststate", "lateaircraftdelay", "latitude (generated)", "longitude (generated)", "number of records", "uniquecarrier"
+-> unchanged
+"carrierdelay", "deststate", "latitude (generated)", "longitude (generated)", "number of records", "uniquecarrier"
+-> unchanged
+"deststate", "lateaircraftdelay", "latitude (generated)", "longitude (generated)", "number of records", "uniquecarrier"
+-> unchanged
+"deststate", "lateaircraftdelay", "latitude (generated)", "longitude (generated)", "number of records", "uniquecarrier"
+-> unchanged
+"deststate", "latitude (generated)", "longitude (generated)", "number of records", "securitydelay", "uniquecarrier"
+-> unchanged
+
+-> reset
+"uniquecarrier"
+-> add ['carrier']
+"number of records", "uniquecarrier"
+-> add ['aggregate']
+"number of records", "originstate", "uniquecarrier"
+-> add ['origin']
+"number of records", "originstate"
+-> drop ['carrier']
+"number of records", "originstate"
+-> unchanged
+"number of records", "originstate"
+-> unchanged
+"number of records", "originstate", "uniquecarrier"
+-> add ['carrier']
+"number of records", "originstate", "uniquecarrier"
+-> unchanged
+"number of records", "originstate", "uniquecarrier"
+-> unchanged
+"cancellationcode", "number of records", "originstate", "uniquecarrier"
+-> add ['cancellation']
+"cancellationcode", "number of records", "originstate", "uniquecarrier"
+-> unchanged
+"deststate", "latitude (generated)", "longitude (generated)", "number of records", "securitydelay", "uniquecarrier"
+-> replace added ['delay', 'dest'] dropped ['cancellation', 'origin']
+
+-> reset
+"latitude (generated)", "longitude (generated)", "origincityname"
+-> add ['aggregate', 'origin']
+"latitude (generated)", "longitude (generated)", "origincityname", "uniquecarrier"
+-> add ['carrier']
+"latitude (generated)", "longitude (generated)", "origincityname"
+-> drop ['carrier']
+"latitude (generated)", "longitude (generated)", "origincityname", "uniquecarrier"
+-> add ['carrier']
+"latitude (generated)", "longitude (generated)", "origincityname", "uniquecarrier"
+-> unchanged
+"latitude (generated)", "longitude (generated)", "origincityname", "uniquecarrier"
+-> unchanged
+"latitude (generated)", "longitude (generated)", "origincityname"
+-> drop ['carrier']
+"latitude (generated)", "longitude (generated)", "number of records", "origincityname"
+-> unchanged
+"latitude (generated)", "longitude (generated)", "number of records", "origincityname", "uniquecarrier"
+-> add ['carrier']
+
+-> reset
+"origincityname"
+-> add ['origin']
+"number of records", "origincityname"
+-> add ['aggregate']
+"number of records", "origincityname", "uniquecarrier"
+-> add ['carrier']
+"number of records", "origincityname", "uniquecarrier"
+-> unchanged
+"number of records", "origincityname", "uniquecarrier"
+-> unchanged
+"number of records", "origincityname", "uniquecarrier"
+-> unchanged
+"number of records", "origincityname", "uniquecarrier"
+-> unchanged
+"number of records", "origincityname", "uniquecarrier"
+-> unchanged
+"number of records", "origincityname", "uniquecarrier"
+-> unchanged
+"number of records", "origincityname", "uniquecarrier"
+-> unchanged
+"number of records", "origincityname", "uniquecarrier"
+-> unchanged
+"number of records", "origincityname", "uniquecarrier"
+-> unchanged
+"number of records", "origincityname", "uniquecarrier"
+-> unchanged
+"number of records", "origincityname", "uniquecarrier"
+-> unchanged
+"number of records", "origincityname", "uniquecarrier"
+-> unchanged
+"number of records", "origincityname", "uniquecarrier"
+-> unchanged
+"number of records", "origincityname", "uniquecarrier"
+-> unchanged
+
+-> reset
+"uniquecarrier"
+-> add ['carrier']
+"origin", "uniquecarrier"
+-> add ['origin']
+"number of records", "origin", "uniquecarrier"
+-> add ['aggregate']
+"number of records", "origin", "uniquecarrier"
+-> unchanged
+"number of records", "origin", "uniquecarrier"
+-> unchanged
+"number of records", "origin", "uniquecarrier"
+-> unchanged
+"number of records", "origin", "uniquecarrier"
+-> unchanged
+"number of records", "origin", "uniquecarrier"
+-> unchanged
+"number of records", "origin", "uniquecarrier"
+-> unchanged
+"number of records", "origin", "uniquecarrier"
+-> unchanged
+
+-> reset
+"number of records", "origin", "uniquecarrier"
+-> add ['aggregate', 'carrier', 'origin']
+"number of records", "uniquecarrier"
+-> drop ['origin']
+"dest", "number of records", "uniquecarrier"
+-> add ['dest']
+"dest", "number of records", "uniquecarrier"
+-> unchanged
+
+-> reset
+"dest", "number of records", "uniquecarrier"
+-> add ['aggregate', 'dest', 'carrier']
+"number of records", "uniquecarrier"
+-> drop ['dest']
+"airtime", "number of records", "uniquecarrier"
+-> add ['time']
+"airtime", "number of records", "uniquecarrier"
+-> unchanged
+"airtime", "uniquecarrier"
+-> drop ['aggregate']
+"airtime", "origin", "uniquecarrier"
+-> add ['origin']
+"airtime", "origin", "uniquecarrier"
+-> unchanged
+"airtime", "origin", "uniquecarrier"
+-> unchanged
+"airtime", "origin", "uniquecarrier"
+-> unchanged
+"origin", "uniquecarrier"
+-> drop ['time']
+"arrdelay", "origin", "uniquecarrier"
+-> add ['delay']
+"arrdelay", "origin", "uniquecarrier"
+-> unchanged
+"arrdelay", "origin", "uniquecarrier"
+-> unchanged
+"origin", "uniquecarrier"
+-> drop ['delay']
+"calculation(total delays)", "origin", "uniquecarrier"
+-> add ['delay']
+"dest", "number of records", "uniquecarrier"
+-> replace added ['aggregate', 'dest'] dropped ['origin', 'delay']
+"number of records", "origin", "uniquecarrier"
+-> replace added ['origin'] dropped ['dest']
+
+-> reset
+"cancellationcode"
+-> add ['cancellation']
+"cancellationcode"
+-> unchanged
+"cancellationcode", "number of records"
+-> add ['aggregate']
+"cancellationcode", "number of records"
+-> unchanged
+"cancellationcode", "number of records", "uniquecarrier"
+-> add ['carrier']
+
+-> reset
+"uniquecarrier"
+-> add ['carrier']
+"latitude (generated)", "longitude (generated)", "origincityname", "uniquecarrier"
+-> add ['aggregate', 'origin']
+"latitude (generated)", "longitude (generated)", "origincityname", "uniquecarrier"
+-> unchanged
+"longitude (generated)", "origincityname", "uniquecarrier"
+-> unchanged
+"origincityname", "uniquecarrier"
+-> drop ['aggregate']
+"uniquecarrier"
+-> drop ['origin']
+"origincityname", "uniquecarrier"
+-> add ['origin']
+"depdelay", "origincityname", "uniquecarrier"
+-> add ['delay']
+"depdelay", "origincityname", "uniquecarrier"
+-> unchanged
+"depdelay", "origincityname", "uniquecarrier"
+-> unchanged
+"depdelay", "origincityname", "uniquecarrier"
+-> unchanged
+"depdelay", "origincityname", "uniquecarrier"
+-> unchanged
+"depdelay", "uniquecarrier"
+-> drop ['origin']
+"uniquecarrier"
+-> drop ['delay']
+"destcityname", "uniquecarrier"
+-> add ['dest']
+"destcityname", "uniquecarrier"
+-> unchanged
+"arrdelay", "destcityname", "uniquecarrier"
+-> add ['delay']
+"arrdelay", "destcityname", "uniquecarrier"
+-> unchanged
+"arrdelay", "destcityname", "number of records", "uniquecarrier"
+-> add ['aggregate']
+"arrdelay", "destcityname", "number of records", "uniquecarrier"
+-> unchanged
+"arrdelay", "destcityname", "number of records", "uniquecarrier"
+-> unchanged
+"arrdelay", "destcityname", "number of records", "uniquecarrier"
+-> unchanged
+"depdelay", "number of records", "origincityname", "uniquecarrier"
+-> replace added ['origin'] dropped ['dest']
+"depdelay", "number of records", "origincityname", "uniquecarrier"
+-> unchanged
+"depdelay", "number of records", "origincityname", "uniquecarrier"
+-> unchanged
+"depdelay", "number of records", "origincityname", "uniquecarrier"
+-> unchanged
+"depdelay", "number of records", "origincityname", "uniquecarrier"
+-> unchanged
+"depdelay", "number of records", "origincityname", "uniquecarrier"
+-> unchanged
+"arrdelay", "destcityname", "number of records", "uniquecarrier"
+-> replace added ['dest'] dropped ['origin']
+
+-> reset
+"dest"
+-> add ['dest']
+"calculation(is delta flight)", "dest"
+-> add ['carrier']
+"calculation(is delta flight)", "dest", "number of records"
+-> add ['aggregate']
+"calculation(is delta flight)", "dest", "number of records"
+-> unchanged
+"calculation(is delta flight)", "dest", "flightdate", "number of records"
+-> add ['time']
+"calculation(is delta flight)", "dest", "flightdate", "number of records"
+-> unchanged
+"calculation(is delta flight)", "dest", "flightdate", "number of records"
+-> unchanged
+"calculation(is delta flight)", "calculation(percent delta)", "dest", "flightdate", "number of records"
+-> unchanged
+"calculation(is delta flight)", "calculation(percent delta)", "dest", "flightdate", "number of records"
+-> unchanged
+"calculation(is delta flight)", "calculation(percent delta)", "dest", "flightdate", "number of records"
+-> unchanged
+"calculation(is delta flight)", "calculation(percent delta)", "dest", "flightdate", "number of records"
+-> unchanged
+"calculation(is delta flight)", "calculation(percent delta)", "dest", "flightdate", "number of records"
+-> unchanged
+"calculation(is delta flight)", "calculation(percent delta)", "dest", "flightdate", "number of records"
+-> unchanged
+"calculation(is delta flight)", "calculation(percent delta)", "dest", "flightdate", "number of records"
+-> unchanged
+
+-> reset
+"uniquecarrier"
+-> add ['carrier']
+"dest", "uniquecarrier"
+-> add ['dest']
+"dest", "uniquecarrier"
+-> unchanged
+"dest", "number of records", "uniquecarrier"
+-> add ['aggregate']
+"dest", "number of records", "uniquecarrier"
+-> unchanged
+"dest", "number of records", "uniquecarrier"
+-> unchanged
+"dest", "number of records", "uniquecarrier"
+-> unchanged
+"dest", "number of records", "uniquecarrier"
+-> unchanged
+"dest", "number of records", "uniquecarrier"
+-> unchanged
+"dest", "number of records", "uniquecarrier"
+-> unchanged
+"dest", "number of records", "uniquecarrier"
+-> unchanged
+"dest", "number of records", "uniquecarrier"
+-> unchanged
+"dest", "number of records", "uniquecarrier"
+-> unchanged
+"dest", "number of records", "uniquecarrier"
+-> unchanged
+"dest", "number of records", "uniquecarrier"
+-> unchanged
+"dest", "number of records", "uniquecarrier"
+-> unchanged
+"dest", "number of records", "uniquecarrier"
+-> unchanged
+"dest", "number of records", "uniquecarrier"
+-> unchanged
+"dest", "number of records", "uniquecarrier"
+-> unchanged
+"dest", "number of records", "uniquecarrier"
+-> unchanged
+"dest", "number of records", "uniquecarrier"
+-> unchanged
+"dest", "number of records", "uniquecarrier"
+-> unchanged
+"dest", "number of records", "uniquecarrier"
+-> unchanged
+"dest", "number of records", "uniquecarrier"
+-> unchanged
+"dest", "number of records", "uniquecarrier"
+-> unchanged
+"dest", "number of records", "uniquecarrier"
+-> unchanged
+"dest", "number of records", "uniquecarrier"
+-> unchanged
+"dest", "number of records", "uniquecarrier"
+-> unchanged
+"dest", "number of records", "uniquecarrier"
+-> unchanged
+"dest", "number of records", "uniquecarrier"
+-> unchanged
+"dest", "number of records", "uniquecarrier"
+-> unchanged
+"dest", "number of records", "uniquecarrier"
+-> unchanged
+"dest", "number of records", "uniquecarrier"
+-> unchanged
+"dest", "number of records", "uniquecarrier"
+-> unchanged
+"dest", "number of records", "uniquecarrier"
+-> unchanged
+Task t4 f1_score, f1_before, f1_after = 0.00 [0.00, 0.00]
