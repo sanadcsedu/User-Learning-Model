@@ -136,4 +136,3 @@ class modified_roth_and_erev:
             temp_prob[attrs] /= norm
         # print(temp_prob)
         return self.select_from_ptable(user, temp_prob, k)
-

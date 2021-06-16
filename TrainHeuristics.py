@@ -20,7 +20,7 @@ class TrainHeuristics:
         self.all_attrs = None
         self.priors = None
         self.final = None
-        self.threshold = 0.4
+        self.threshold = 0.8
 
     def set_data(self, users, all_attrs, priors, final):
         self.users = users
@@ -244,7 +244,7 @@ class TrainHeuristics:
 
 if __name__ == '__main__':
     obj = read_data.read_data()
-    obj.create_connection(r"D:\Tableau Learning\Tableau.db")
+    obj.create_connection(r"/nfs/stak/users/sahasa/Downloads/Tableau.db")
 
     dataset = ['birdstrikes1', 'weather1', 'faa1']
     task = ['t2', 't3', 't4']

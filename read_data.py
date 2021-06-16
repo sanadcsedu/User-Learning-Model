@@ -138,7 +138,7 @@ class read_data:
 
 if __name__ == '__main__':
     obj = read_data()
-    obj.create_connection(r"D:\Tableau Learning\Tableau.db")
+    obj.create_connection(r"/nfs/stak/users/sahasa/Downloads/Tableau.db")
     datasets = ['birdstrikes1', 'weather1', 'faa1']
     tasks = ['t2', 't3', 't4']
     for d in datasets:

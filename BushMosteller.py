@@ -165,8 +165,3 @@ class BushMosteller:
             del choices[pick]
             k -= 1
         return ret
-
-
-
-
-

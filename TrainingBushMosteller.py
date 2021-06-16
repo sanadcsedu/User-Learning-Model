@@ -13,7 +13,7 @@ class TrainingBushMosteller:
         self.all_attrs = None
         self.priors = None
         self.final = None
-        self.threshold = 0.4
+        self.threshold = 0.8
 
     def set_data(self, users, all_attrs, priors, final):
         self.users = users
@@ -55,7 +55,6 @@ class TrainingBushMosteller:
         f1_score = []
         no_of_intr = 0
         prev_attrs = []
-        prev_states = []
 
         for row in cur_data:
             userid, task, seqid, state = tuple(row)
@@ -63,140 +62,108 @@ class TrainingBushMosteller:
             states = state.split(', ')
 
             if task == cur_task:
-
-                # if state == prev_states:
-                #     continue
-                # else:
-                #     prev_states = state
-
-                if len(states) >= 1:
+                flag = True
+                while True:
                     picked_action = rbm.make_choice_nostate(k)
+                    if flag: #If this interaction corresponds to Replace -> then we need two interaction add and drop
+                        # Figuring out which action has been performed
+                        cur_attrs = []
+                        for s in states:
+                            if len(s) >= 1:
+                                cur_attrs.append(s)
+                        if cat:
+                            cur_attrs = c.get_category(cur_attrs)
 
-                    # Figuring out which action has been performed
-                    cur_attrs = []
-                    for s in states:
-                        if len(s) >= 1:
-                            cur_attrs.append(s)
-                    if cat:
-                        cur_attrs = c.get_category(cur_attrs)
-                    action = None
-                    if len(cur_attrs) == 0:
-                        action = "reset"
-                    elif cur_attrs == prev_attrs:
-                        action = "unchanged"
-                    elif len(prev_attrs) == len(cur_attrs):
-                        # Check if the interaction is equal
-                        action = "unchanged"
-                        for attrs in prev_attrs:
-                            if attrs not in cur_attrs:
-                                action = "replace"
-                                break
-                        if action == "unchanged":
-                            continue
-
-                        # pdb.set_trace()
-                        # replace can be considered as a combo of existing actions. 1. Drop attributes 2. Add attirbutes
-                        dropped = []
-                        for attrs in prev_attrs:
-                            if attrs not in cur_attrs:
-                                dropped.append(attrs)
-                        new_attrs = []
-                        for attrs in cur_attrs:
-                            if attrs not in prev_attrs:
-                                new_attrs.append(attrs)
-                    else:
-                        if len(prev_attrs) < len(cur_attrs):  # new attribute has been added
-                            # Find out the new attribute that has been added
-                            new_attrs = []
-                            for attrs in cur_attrs:
-                                if attrs not in prev_attrs:
-                                    new_attrs.append(attrs)
-                            action = "add"
-                        elif len(prev_attrs) > len(cur_attrs):  # attribute has been deleted
-                            # Find out which attributes has been deleted
-                            dropped = []
+                        action = None
+                        if len(cur_attrs) == 0:
+                            action = "reset"
+                        elif cur_attrs == prev_attrs:
+                            action = "unchanged"
+                        elif len(prev_attrs) == len(cur_attrs):
+                            # Check if the interaction is equal
+                            action = "unchanged"
                             for attrs in prev_attrs:
                                 if attrs not in cur_attrs:
-                                    dropped.append(attrs)
-                            action = "drop"
+                                    action = "replace"
+                                    break
+                            # replace can be considered as a combo of existing actions. 1. Drop attributes 2. Add attirbutes
+                            if action == "replace":
+                                dropped = []
+                                for attrs in prev_attrs:
+                                    if attrs not in cur_attrs:
+                                        dropped.append(attrs)
+                                added = []
+                                for attrs in cur_attrs:
+                                    if attrs not in prev_attrs:
+                                        added.append(attrs)
+                        else:
+                            if len(prev_attrs) < len(cur_attrs):  # new attribute has been added
+                                # Find out the new attribute that has been added
+                                new_attrs = []
+                                for attrs in cur_attrs:
+                                    if attrs not in prev_attrs:
+                                        new_attrs.append(attrs)
+                                action = "add"
+                            elif len(prev_attrs) > len(cur_attrs):  # attribute has been deleted
+                                # Find out which attributes has been deleted
+                                dropped = []
+                                for attrs in prev_attrs:
+                                    if attrs not in cur_attrs:
+                                        dropped.append(attrs)
+                                action = "drop"
 
-                    prev_attrs = cur_attrs
-                    cur_action = []
-                    if action == "add":
-                        for indx in range(len(new_attrs)):
-                            cur_action.append("add+" + new_attrs[indx])
-                    elif action == "drop":
-                        for indx in range(len(dropped)):
-                            cur_action.append("drop+" + dropped[indx])
-                    elif action == "replace":
-                        for indx in range(len(new_attrs)):
-                            cur_action.append("add+" + new_attrs[indx])
-                    else:
-                        cur_action.append(action)
+                        prev_attrs = cur_attrs
+                        cur_action = []
+                        if action == "add":
+                            for indx in range(len(new_attrs)):
+                                cur_action.append("add+" + new_attrs[indx])
+                        elif action == "drop":
+                            for indx in range(len(new_attrs)):
+                                cur_action.append("drop+" + new_attrs[indx])
+                        elif action == "replace":
+                            for indx in range(len(dropped)):
+                                cur_action.append("drop+" + dropped[indx])
+                            flag = False
+
+                        else:
+                            cur_action.append(action)
+
+                    else:# Time for ADD (previous replace interaction was switched with DROP)
+                        cur_action = []
+                        action = "add"
+                        for indx in range(len(added)):
+                            cur_action.append("add+" + added[indx])
+                        flag = True
 
                     # reinforcing the learning model
                     ##########################################################
-                    # if picked_action[0] in cur_action:
-                    #     # rbm.update(user, cur_action, 1)
-                    #     if action == "add":
-                    #         # rbm.update(user, cur_action, -1)
-                    #         cur_action = []
-                    #         for indx in range(len(new_attrs)):
-                    #             cur_action.append("drop+" + new_attrs[indx])
-                    #         rbm.update(user, cur_action, 1)
-                    #     elif action == "drop":
-                    #         # rbm.update(user, cur_action, -1)
-                    #     else:
-                    #         rbm.update(user, cur_action, 1)
-                    #
-                    # else:
-                        # rbm.update(user, cur_action, 1)
                     if action == "add":
-                        # rbm.update(user, cur_action, -1)
+                        rbm.update(user, cur_action, -1)
                         cur_action = []
                         for indx in range(len(new_attrs)):
                             cur_action.append("drop+" + new_attrs[indx])
                         rbm.update(user, cur_action, 1)
-                    # elif action == "drop":
-                        # rbm.update(user, cur_action, -1)
+                    elif action == "drop":
+                        rbm.update(user, cur_action, -1)
                     else:
                         rbm.update(user, cur_action, 1)
-                        # rbm.update(user, picked_action, -1)
+                        # rbm.update(user, picked_action, -1) [awful performance if penalized]
                     ###########################################################
 
                     if no_of_intr >= 2:
-                        # print("interaction: {}".format(cur_attrs))
-                        # print("Picked: {}".format(picked_action))
-                        # print("Cur Action: {}".format(cur_action))
-                        ############################
-                        # flag = True
-                        # for a in cur_action:
-                        #     if a not in picked_action:
-                        #         flag = False
-                        #         break
-                        # if flag:
-                        #     get_f1 = 1
-                        # else:
-                        #     get_f1 = 0
-                        ############################
-                        # _, _, get_f1 = e.f1_score(cur_action, picked_action)
-                        ############################
                         #calculating Recall (contains partial credits)
                         get_f1 = 0
                         for a in cur_action:
                             if a in picked_action:
                                 get_f1 += 1
                         get_f1 /= len(cur_action)
-                        # print(get_f1)
-                        ############################
                         f1_score.append(get_f1)
                         total += 1
                     no_of_intr += 1
+                    if flag:
+                        break
 
-        if total <= 5:
-            return -1, -1, -1
-        else:
-            return e.before_after(f1_score, total, self.threshold)
+        return e.before_after(f1_score, total, self.threshold)
 
     #Bush and Mosteller algorithm with states
     def run_bush_mosteller_state(self,user, cur_data, dataset, cur_task, k, alpha, beta, cat = False):
@@ -343,7 +310,7 @@ if __name__ == '__main__':
     # bush.hyperparameter()
 
     obj = read_data.read_data()
-    obj.create_connection(r"D:\Tableau Learning\Tableau.db")
+    obj.create_connection(r"/nfs/stak/users/sahasa/Downloads/Tableau.db")
     dataset = ['birdstrikes1', 'weather1', 'faa1']
     task = ['t2', 't3', 't4']
 
